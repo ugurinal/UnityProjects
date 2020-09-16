@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="636f3b17-ecaf-4532-8cdb-fadf3c130210" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PowerUp.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Paddle.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Ball.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DeadLine.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8FD0E395-0530-4D4A-8835-C8FF254D8FC1/fe/7597ff85/Input.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LevelButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Block.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/78327B6C-3C08-4CA5-975B-799474D7A953/66/570619f9/Random.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayerPrefs.cs" />
+        <option value="$PROJECT_DIR$/Assets/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Timer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Buttons.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Block.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Paddle.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/DeadLine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Ball.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SceneLoader.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Level.cs" />
+        <option value="$PROJECT_DIR$/Assets/PowerUp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LevelButton.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UnGUaRURMD7kUR2Jin89swoHfd" />
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="do_not_show_Android_plugin_suggestion" value="true" />
+    <property name="settings.editor.selected.configurable" value="discord-application" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="userSelectedPid" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="userSelectedPid" value="false" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="636f3b17-ecaf-4532-8cdb-fadf3c130210" name="Default Changelist" comment="" />
+      <created>1575984963246</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575984963246</updated>
+      <workItem from="1575984967225" duration="4085000" />
+      <workItem from="1576008065528" duration="11705000" />
+      <workItem from="1576104625435" duration="4881000" />
+      <workItem from="1576152432543" duration="9256000" />
+      <workItem from="1576253146023" duration="608000" />
+      <workItem from="1576331909139" duration="2157000" />
+      <workItem from="1576361845712" duration="4693000" />
+      <workItem from="1576412502558" duration="12982000" />
+      <workItem from="1576446901527" duration="3496000" />
+      <workItem from="1576452730121" duration="621000" />
+      <workItem from="1576453557320" duration="56000" />
+      <workItem from="1576531709951" duration="5475000" />
+      <workItem from="1576594069120" duration="8124000" />
+      <workItem from="1576620457471" duration="2449000" />
+      <workItem from="1576783226639" duration="12016000" />
+      <workItem from="1576935382456" duration="2045000" />
+      <workItem from="1577012857769" duration="5396000" />
+      <workItem from="1577062349570" duration="356000" />
+      <workItem from="1577111314715" duration="750000" />
+      <workItem from="1577112168700" duration="6327000" />
+      <workItem from="1577124045243" duration="1643000" />
+      <workItem from="1577126201295" duration="27000" />
+      <workItem from="1577134802157" duration="2690000" />
+      <workItem from="1577139013392" duration="5238000" />
+      <workItem from="1577149265430" duration="337000" />
+      <workItem from="1577203514278" duration="13905000" />
+    </task>
+    <servers />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
