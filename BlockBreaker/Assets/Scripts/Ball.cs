@@ -35,7 +35,7 @@ public class Ball : MonoBehaviour
     {
         if (_hasStarted) return;
         StickBallToPaddle();
-        LaunchTheBall();
+        //LaunchTheBall();
     }
 
     private void LaunchTheBall()
@@ -55,6 +55,14 @@ public class Ball : MonoBehaviour
                 GetComponent<Rigidbody2D>().velocity = new Vector2(xSpeed, ySpeed);
             }
         }
+    }
+
+    public void LaunchBallButton(){
+        
+
+        GetComponent<Rigidbody2D>().velocity = new Vector2(xSpeed, ySpeed);
+        _hasStarted = true;
+        
     }
 
     private void StickBallToPaddle()
