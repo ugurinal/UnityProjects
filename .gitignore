@@ -5,6 +5,7 @@
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
+SpaceTraveler/
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
@@ -62,4 +63,3 @@ sysinfo.txt
 crashlytics-build.properties
 
 
-SpaceTraveler/
