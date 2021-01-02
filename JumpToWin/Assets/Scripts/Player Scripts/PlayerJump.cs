@@ -121,4 +121,9 @@ public class PlayerJump : MonoBehaviour
             GameManager.instance.LoadEndScreen();
         }
     }
+
+    public void SetPowerIndZero()
+    {
+        powerIndicator.fillAmount = 0f;
+    }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject endScreen;
+
+    [Space(20)]
+    [SerializeField] private GameObject jumpButton;
 
     private int score = 0;
     private int highScore = 0;
@@ -52,6 +56,11 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", score);
             highScore = score;
         }
+
+        Destroy(jumpButton);
+        scoreText.gameObject.SetActive(false);
+
+        PlayerJump.instance.SetPowerIndZero();
 
         endScreen.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Score: " + score;
         endScreen.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "High Score: " + highScore;
