@@ -948,7 +948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 920895627}
   endScreen: {fileID: 290746946}
-  jumpButton: {fileID: 682134134}
+  jumpButton: {fileID: 682134132}
 --- !u!4 &766371174
 Transform:
   m_ObjectHideFlags: 0
