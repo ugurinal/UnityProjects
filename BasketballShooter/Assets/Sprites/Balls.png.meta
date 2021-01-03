@@ -1,0 +1,578 @@
+fileFormatVersion: 2
+guid: 73b609d97c45708418fd2ce0ae985f85
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8219566699378199167
+    second: Balls_0
+  - first:
+      213: -8299087723631062824
+    second: Balls_1
+  - first:
+      213: 5261312769792952452
+    second: Balls_2
+  - first:
+      213: -6601648269171303701
+    second: Balls_3
+  - first:
+      213: 6101797514081362905
+    second: Balls_4
+  - first:
+      213: 4971810906184798426
+    second: Balls_5
+  - first:
+      213: 7032371742624826510
+    second: Balls_6
+  - first:
+      213: -69259100975524709
+    second: Balls_7
+  - first:
+      213: -6311643021152037724
+    second: Balls_8
+  - first:
+      213: -1004655635878761853
+    second: Balls_9
+  - first:
+      213: 14659477384559153
+    second: Balls_10
+  - first:
+      213: -2472643997889122804
+    second: Balls_11
+  - first:
+      213: -3660715104503735389
+    second: Balls_12
+  - first:
+      213: -6758901517264320821
+    second: Balls_13
+  - first:
+      213: -344076186009163140
+    second: Balls_14
+  - first:
+      213: 760985983660599288
+    second: Balls_15
+  - first:
+      213: -8475783795837554403
+    second: Balls_16
+  - first:
+      213: -8869981706895893345
+    second: Balls_17
+  - first:
+      213: 5522833988995058660
+    second: Balls_18
+  - first:
+      213: -7730117123525898169
+    second: Balls_19
+  - first:
+      213: 920348151095340659
+    second: Balls_20
+  - first:
+      213: -586784813628935781
+    second: Balls_21
+  - first:
+      213: 2020769674025785483
+    second: Balls_22
+  - first:
+      213: -619437036100362278
+    second: Balls_23
+  - first:
+      213: 6640238816880938032
+    second: Balls_24
+  - first:
+      213: -482341860813265890
+    second: Balls_25
+  - first:
+      213: -3880745208638439648
+    second: Balls_26
+  - first:
+      213: 2168149574044938164
+    second: Balls_27
+  - first:
+      213: -6651073677356902802
+    second: Balls_28
+  - first:
+      213: -3167812311464124953
+    second: Balls_29
+  - first:
+      213: 2121276675444479027
+    second: Balls_30
+  - first:
+      213: 6690020792908687400
+    second: Balls_31
+  - first:
+      213: -3033650913059310097
+    second: Balls_32
+  - first:
+      213: 7030025233678496257
+    second: Balls_33
+  - first:
+      213: 1739208095778265701
+    second: Balls_34
+  - first:
+      213: 7104357451421214511
+    second: Balls_35
+  - first:
+      213: 759749962068313216
+    second: Balls_36
+  - first:
+      213: -3570219268431719230
+    second: Balls_37
+  - first:
+      213: -7199817543183521107
+    second: Balls_38
+  - first:
+      213: -4411403025393325656
+    second: Balls_39
+  - first:
+      213: 1964285919616351402
+    second: Balls_40
+  - first:
+      213: 6289736147256424481
+    second: Balls_41
+  - first:
+      213: 8700119987156969019
+    second: Balls_42
+  - first:
+      213: -7645585783433233665
+    second: Balls_43
+  - first:
+      213: -8386135011358633586
+    second: Balls_44
+  - first:
+      213: 2112723342389257131
+    second: Balls_45
+  - first:
+      213: -2889045288219059811
+    second: Balls_46
+  - first:
+      213: -9143407333242025228
+    second: Balls_47
+  - first:
+      213: -2231042389828358800
+    second: Balls_48
+  - first:
+      213: 4134550331428792514
+    second: Balls_49
+  - first:
+      213: -1402420522270751974
+    second: Balls_50
+  - first:
+      213: -2304372027344351849
+    second: Balls_51
+  - first:
+      213: 8304203407143751822
+    second: Balls_52
+  - first:
+      213: 8414923236036981670
+    second: Balls_53
+  - first:
+      213: 5802696120044078696
+    second: Balls_54
+  - first:
+      213: -2461874140787955734
+    second: Balls_55
+  - first:
+      213: -6850151865009073101
+    second: Balls_56
+  - first:
+      213: -4570176041868273072
+    second: Balls_57
+  - first:
+      213: -377854484068944166
+    second: Balls_58
+  - first:
+      213: -3206408445360604254
+    second: Balls_59
+  - first:
+      213: -4370795701071925878
+    second: Balls_60
+  - first:
+      213: 2286337726811174697
+    second: Balls_61
+  - first:
+      213: -6453096115021413640
+    second: Balls_62
+  - first:
+      213: 3521392190424757460
+    second: Balls_63
+  - first:
+      213: -4941415576562282002
+    second: Balls_64
+  - first:
+      213: -7510025686398785382
+    second: Balls_65
+  - first:
+      213: 3214886846822630523
+    second: Balls_66
+  - first:
+      213: -6726511066441894471
+    second: Balls_67
+  - first:
+      213: 524552941256276258
+    second: Balls_68
+  - first:
+      213: -4269102851506184501
+    second: Balls_69
+  - first:
+      213: 8186437858962365685
+    second: Balls_70
+  - first:
+      213: 6037824435929396130
+    second: Balls_71
+  - first:
+      213: -3775540317857317167
+    second: Balls_72
+  - first:
+      213: -3275394835917717941
+    second: Balls_73
+  - first:
+      213: -3173895820062196146
+    second: Balls_74
+  - first:
+      213: -4017716199729648649
+    second: Balls_75
+  - first:
+      213: -2111646849264427796
+    second: Balls_76
+  - first:
+      213: 4202650954136164245
+    second: Balls_77
+  - first:
+      213: 7770975033599496765
+    second: Balls_78
+  - first:
+      213: 6077918928172244556
+    second: Balls_79
+  - first:
+      213: -1271417154851335494
+    second: Balls_80
+  - first:
+      213: -5669588729814877537
+    second: Balls_81
+  - first:
+      213: 2117731096374080498
+    second: Balls_82
+  - first:
+      213: 6682249051202726815
+    second: Balls_83
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Balls_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 200
+        width: 181
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7a411c2d54c11270800000000000000
+      internalID: 8219566699378199167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balls_1
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 201
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d05a219fa7b3dc80800000000000000
+      internalID: -8299087723631062824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balls_2
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 201
+        width: 183
+        height: 183
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4884cb7a610f30940800000000000000
+      internalID: 5261312769792952452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balls_3
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 201
+        width: 181
+        height: 183
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bead8ff40eb3264a0800000000000000
+      internalID: -6601648269171303701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balls_4
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 200
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d36e26a280fda450800000000000000
+      internalID: 6101797514081362905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balls_5
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 9
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad0de896dab6ff440800000000000000
+      internalID: 4971810906184798426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balls_6
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 9
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e84c5af37d0089160800000000000000
+      internalID: 7032371742624826510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balls_7
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 11
+        width: 178
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9414e0f631f90ff0800000000000000
+      internalID: -69259100975524709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balls_8
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 11
+        width: 179
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a4d82fdc1a8868a0800000000000000
+      internalID: -6311643021152037724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Balls_9
+      rect:
+        serializedVersion: 2
+        x: 765
+        y: 11
+        width: 181
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38a2ad5a50fbe02f0800000000000000
+      internalID: -1004655635878761853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
