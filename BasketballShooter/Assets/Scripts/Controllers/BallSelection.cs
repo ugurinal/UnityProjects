@@ -20,6 +20,8 @@ public class BallSelection : MonoBehaviour
     {
         int index = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);
 
+        GameManager.Instance.SelectedBallIndex = index;
+
         Debug.Log("Selected Ball is " + index);
     }
 }
