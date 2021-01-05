@@ -551,6 +551,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363910209}
   m_CullTransparentMesh: 0
+--- !u!1 &386861790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 386861792}
+  - component: {fileID: 386861791}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &386861791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386861790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a197126e0a5b2e343a174c12483c147a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _balls:
+  - {fileID: 1774418866911895590, guid: 0fed682a1bd222e41a467ff2d5a78aaa, type: 3}
+  - {fileID: 442187023701539416, guid: 072f380a8b57b5b45b375c27cf4f71b7, type: 3}
+  - {fileID: 4276339265005287669, guid: 55c0695802ee6c049b0376acfff8112e, type: 3}
+  - {fileID: 6345796878692549503, guid: 16fca32b7d9bd58418d73140f1bb2e8e, type: 3}
+  - {fileID: 4014729999469883659, guid: 6019258cbe08d2041a2bb5c980669233, type: 3}
+  - {fileID: 6013806060545276789, guid: a8be66ac49dd2514fbc4e6c6433703e2, type: 3}
+  - {fileID: 6671498170980121148, guid: 1b0a55a94f60dba4e8481b2c3783474e, type: 3}
+  - {fileID: 5208227801660771501, guid: b13bfc17591e587419fe13eb977448a0, type: 3}
+  - {fileID: 4565366213604782332, guid: b1852b4cc6fa2e644b0d2ba6b18dbaf1, type: 3}
+  - {fileID: 6214309315095571133, guid: 58913ed57f4bee441a768980dc72f4c1, type: 3}
+--- !u!4 &386861792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386861790}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,6 +1101,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003251174}
   m_CullTransparentMesh: 0
+--- !u!1 &1126381500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1126381502}
+  - component: {fileID: 1126381501}
+  m_Layer: 0
+  m_Name: SceneLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1126381501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126381500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ffea9a798fabb4fa19ae33caac1ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1126381502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126381500}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1131269043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,7 +1563,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1309702623}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1126381501}
+        m_MethodName: LoadGamePlay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1309702623
 MonoBehaviour:
   m_ObjectHideFlags: 0
