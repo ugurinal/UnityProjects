@@ -18,7 +18,5 @@ public class BallSpawner : MonoBehaviour
         float ballY = Random.Range(minY, maxY);
 
         ball = Instantiate(GameManager.Instance.Balls[GameManager.Instance.SelectedBallIndex], new Vector3(ballX, ballY, 0), Quaternion.identity);
-
-        ball.GetComponent<Rigidbody2D>().isKinematic = true;
     }
 }
