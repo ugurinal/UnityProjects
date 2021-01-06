@@ -41,9 +41,9 @@ public class ShootScript : MonoBehaviour
 
         projectilesPath = dotParent.transform.Cast<Transform>().ToList().ConvertAll(t => t.gameObject);
 
-        foreach (GameObject child in projectilesPath)
+        for (int i = 0; i < projectilesPath.Count; i++)
         {
-            child.GetComponent<Renderer>().enabled = false;
+            projectilesPath[i].GetComponent<Renderer>().enabled = false;
         }
     }
 
@@ -74,7 +74,7 @@ public class ShootScript : MonoBehaviour
                 CalculatePath();
             }
         }
-        else if (!aiming && !shoot)
+        else if (aiming && !shoot)
         {
             if (InReleaseZone(Input.mousePosition) || InDeadZone(Input.mousePosition))
             {
@@ -88,6 +88,8 @@ public class ShootScript : MonoBehaviour
 
             shoot = true;
             aiming = false;
+
+            Debug.Log("Inside add force");
 
             myBody.AddForce(GetForce(Input.mousePosition));
             HidePath();
