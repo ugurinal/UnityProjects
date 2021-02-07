@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class PuzzlePiece
 {
-    private int _currentRow;
-    private int _currentColumn;
+    public int CurrentRow { get; set; }
+    public int CurrentColumn { get; set; }
+    public int OriginalRow { get; set; }
+    public int OriginalColumn { get; set; }
 
-    private int _originalRow;
-    private int _originalColumn;
-
-    public int CurrentRow { get => _currentRow; }
-    public int CurrentColumn { get => _currentColumn; }
-    public int OriginalRow { get => _originalRow; }
-    public int OriginalColumn { get => _originalColumn; }
-
-    private GameObject _gameObject;
-    public GameObject GameObject { get => _gameObject; }
+    public GameObject GameObject { get; set; }
 }

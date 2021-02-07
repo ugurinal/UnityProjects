@@ -10,6 +10,7 @@ public static class GameVariables
 
     public static int MaxRows { get => _maxRows; }
     public static int MaxColumns { get => _maxColumns; }
+    public static int MaxSize { get => _maxSize; }
 }// GameVariables
 
 public enum GameState
