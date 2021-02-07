@@ -8,7 +8,13 @@ public class SelectPuzzleController : MonoBehaviour
 {
     public void SelectPuzzle()
     {
-        string[] name = EventSystem.current.currentSelectedGameObject.name.Split(' ');
+        string[] name = EventSystem.current.currentSelectedGameObject.name.Split();
+
+        GameManager instance = GameManager.Instance;
+        if (instance != null)
+        {
+            instance.SelectPuzzleIndex(int.Parse(name[1]));
+        }
     }
 
     public void GoBack()

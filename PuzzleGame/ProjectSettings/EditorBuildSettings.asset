@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: a324e171af166114392df25f37940b07
+  - enabled: 1
+    path: Assets/Scenes/SelectPuzzle.unity
+    guid: ea3ff3e51857e91428ac5a1e40e20809
+  - enabled: 1
+    path: Assets/Scenes/GamePlay.unity
+    guid: 063200dce6134de419057a2bd27107ae
   m_configObjects: {}
