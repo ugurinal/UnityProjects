@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     private int _selectedPuzzleIndex;
 
+    private GameState _gameState;
+
     private void Awake()
     {
         MakeSingleton();
@@ -59,7 +61,7 @@ public class GameManager : MonoBehaviour
             {
                 if (_puzzlePieces[row * GameVariables.MaxColumns + column].activeInHierarchy)
                 {
-                    _puzzlePieces[row * GameVariables.MaxColumns + column].transform.position = GetScreenPointFromViewPort(row, column) + new Vector3(0.5f, -0.5f, 0f);
+                    _puzzlePieces[row * GameVariables.MaxColumns + column].transform.position = GetScreenPointFromViewPort(row, column);
 
                     matrix[row, column] = new PuzzlePiece();
                     matrix[row, column].GameObject = _puzzlePieces[row * GameVariables.MaxColumns + column].gameObject;
@@ -72,11 +74,50 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        Shuffle();
+        _gameState = GameState.Playing;
+    }
+
+    private void Shuffle()
+    {
+        for (int row = 0; row < GameVariables.MaxRows; row++)
+        {
+            for (int column = 0; column < GameVariables.MaxColumns; column++)
+            {
+                if (matrix[row, column] == null)
+                    continue;
+
+                int randomRow = Random.Range(0, GameVariables.MaxRows);
+                int randomColumn = Random.Range(0, GameVariables.MaxColumns);
+
+                SwapElements(row, column, randomRow, randomColumn);
+            }
+        }
+    }
+
+    private void SwapElements(int row, int column, int randomRow, int randomColumn)
+    {
+        PuzzlePiece temp = matrix[row, column];
+
+        matrix[row, column] = matrix[randomRow, randomColumn];
+        matrix[randomRow, randomColumn] = temp;
+
+        if (matrix[row, column] != null)
+        {
+            matrix[row, column].GameObject.transform.position = GetScreenPointFromViewPort(row, column);
+
+            matrix[row, column].CurrentRow = row;
+            matrix[row, column].CurrentColumn = column;
+        }
+
+        matrix[randomRow, randomColumn].GameObject.transform.position = GetScreenPointFromViewPort(randomRow, randomColumn);
+        matrix[randomRow, randomColumn].CurrentRow = randomRow;
+        matrix[randomRow, randomColumn].CurrentColumn = randomColumn;
     }
 
     private Vector3 GetScreenPointFromViewPort(int row, int column)
     {
-        Vector3 point = Camera.main.ViewportToWorldPoint(new Vector3(0.2f * row, 1 - 0.2f * column, 0));
+        Vector3 point = Camera.main.ViewportToWorldPoint(new Vector3(0.1913f * row, 1 - 0.1913f * column, 0)) + new Vector3(1f, -0.5f, 0f);
         point.z = 0;
         return point;
     }
