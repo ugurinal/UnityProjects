@@ -6,32 +6,19 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
+
     public static GameManager Instance { get => _instance; }
 
     private GameObject[] _puzzlePieces;
-    private Sprite[] _puzzleImages;
-
+    private Sprite[] _puzzleSprites;
     private PuzzlePiece[,] matrix = new PuzzlePiece[GameVariables.MaxRows, GameVariables.MaxColumns];
 
-    private Vector3 _screenPosToAnimate;
-    private PuzzlePiece _pieceToAnimate;
-
-    private int _toAnimateRow;
-    private int _toAnimateColumn;
-
-    private float _animationSpeed;
-    private int _puzzleIndex;
-    private GameState _gameState;
+    private int _selectedPuzzleIndex;
 
     private void Awake()
     {
         MakeSingleton();
-    }
-
-    private void Start()
-    {
-        _puzzleIndex = -1;
-        SceneManager.sceneLoaded += OnLevelLoad;
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
     }
 
     private void MakeSingleton()
@@ -47,16 +34,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SelectPuzzleIndex(int puzzleIndex)
+    private void Start()
     {
-        _puzzleIndex = puzzleIndex;
+        _selectedPuzzleIndex = -1;
     }
 
-    private void GameStarted()
+    private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        int index = Random.Range(0, GameVariables.MaxSize);
+        if (scene.name == "GamePlay" && _selectedPuzzleIndex > 0)
+        {
+            LoadPuzzleSprites();
+            StartGame();
+        }
+    }
 
-        _puzzlePieces[index].SetActive(false);
+    private void StartGame()
+    {
+        int indexToHide = Random.Range(0, GameVariables.MaxSize);
+        _puzzlePieces[indexToHide].SetActive(false);
 
         for (int row = 0; row < GameVariables.MaxRows; row++)
         {
@@ -64,52 +59,41 @@ public class GameManager : MonoBehaviour
             {
                 if (_puzzlePieces[row * GameVariables.MaxColumns + column].activeInHierarchy)
                 {
-                    Vector3 point = GetScreenCoordinatesFromViewPort(row, column);
-                    _puzzlePieces[row * GameVariables.MaxColumns + column].transform.position = point;
+                    _puzzlePieces[row * GameVariables.MaxColumns + column].transform.position = GetScreenPointFromViewPort(row, column);
 
                     matrix[row, column] = new PuzzlePiece();
-                    matrix[row, column].GameObject = _puzzlePieces[row * GameVariables.MaxColumns + column];
-
+                    matrix[row, column].GameObject = _puzzlePieces[row * GameVariables.MaxColumns + column].gameObject;
                     matrix[row, column].OriginalRow = row;
                     matrix[row, column].OriginalColumn = column;
                 }
                 else
                 {
-                    matrix[row, column] = null;
+                    // Do Nothing
                 }
             }
         }
     }
 
-    private Vector3 GetScreenCoordinatesFromViewPort(int row, int column)
+    private Vector3 GetScreenPointFromViewPort(int row, int column)
     {
-        Vector3 point = Camera.main.ViewportToWorldPoint(new Vector3(0.225f * row, 1 - 0.223f * column, 0));
+        Vector3 point = Camera.main.ViewportToWorldPoint(new Vector3(0.21f * row, 1 - 0.21f * column, 0));
         point.z = 0;
-
         return point;
     }
 
-    private void OnLevelLoad(Scene scene, LoadSceneMode sceneMode)
+    private void LoadPuzzleSprites()
     {
-        if (SceneManager.GetActiveScene().name == "GamePlay")
-        {
-            if (_puzzleIndex > 0)
-            {
-                LoadPuzzle();
-                GameStarted();
-            }
-        }
-    }
-
-    private void LoadPuzzle()
-    {
-        _puzzleImages = Resources.LoadAll<Sprite>("Sprites/Puzzle " + _puzzleIndex);
-
+        _puzzleSprites = Resources.LoadAll<Sprite>("Sprites/Puzzle " + _selectedPuzzleIndex);
         _puzzlePieces = GameObject.Find("PuzzleHolder").GetComponent<PuzzleHolder>().PuzzlePiece;
 
         for (int i = 0; i < _puzzlePieces.Length; i++)
         {
-            _puzzlePieces[i].GetComponent<SpriteRenderer>().sprite = _puzzleImages[i];
+            _puzzlePieces[i].GetComponent<SpriteRenderer>().sprite = _puzzleSprites[i];
         }
+    }
+
+    public void SelectPuzzle(int index)
+    {
+        _selectedPuzzleIndex = index;
     }
 }

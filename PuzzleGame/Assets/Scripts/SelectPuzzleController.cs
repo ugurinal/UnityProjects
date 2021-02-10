@@ -13,7 +13,7 @@ public class SelectPuzzleController : MonoBehaviour
         GameManager instance = GameManager.Instance;
         if (instance != null)
         {
-            instance.SelectPuzzleIndex(int.Parse(name[1]));
+            instance.SelectPuzzle(int.Parse(name[1]));
             SceneManager.LoadScene("GamePlay");
         }
     }
