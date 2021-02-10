@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
             {
                 if (_puzzlePieces[row * GameVariables.MaxColumns + column].activeInHierarchy)
                 {
-                    _puzzlePieces[row * GameVariables.MaxColumns + column].transform.position = GetScreenPointFromViewPort(row, column);
+                    _puzzlePieces[row * GameVariables.MaxColumns + column].transform.position = GetScreenPointFromViewPort(row, column) + new Vector3(0.5f, -0.5f, 0f);
 
                     matrix[row, column] = new PuzzlePiece();
                     matrix[row, column].GameObject = _puzzlePieces[row * GameVariables.MaxColumns + column].gameObject;
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    // Do Nothing
+                    matrix[row, column] = null;
                 }
             }
         }
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     private Vector3 GetScreenPointFromViewPort(int row, int column)
     {
-        Vector3 point = Camera.main.ViewportToWorldPoint(new Vector3(0.21f * row, 1 - 0.21f * column, 0));
+        Vector3 point = Camera.main.ViewportToWorldPoint(new Vector3(0.2f * row, 1 - 0.2f * column, 0));
         point.z = 0;
         return point;
     }
