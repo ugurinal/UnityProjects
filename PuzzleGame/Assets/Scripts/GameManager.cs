@@ -55,7 +55,34 @@ public class GameManager : MonoBehaviour
 
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.name);
+                string[] objName = hit.collider.gameObject.name.Split('-');
+
+                int rowPart = int.Parse(objName[0]);
+                int columnPart = int.Parse(objName[1]);
+
+                int rowFound = -1;
+                int columnFound = -1;
+
+                for (int row = 0; row < GameVariables.MaxRows; row++)
+                {
+                    if (rowFound != -1)
+                        break;
+
+                    for (int column = 0; column < GameVariables.MaxColumns; column++)
+                    {
+                        if (rowFound != -1)
+                            break;
+
+                        if (matrix[row, column] == null)
+                            continue;
+
+                        if (matrix[row, column].OriginalRow == rowPart && matrix[row, column].OriginalColumn == columnPart)
+                        {
+                            rowFound = row;
+                            columnFound = column;
+                        }
+                    }
+                }
             }
         }
     }
