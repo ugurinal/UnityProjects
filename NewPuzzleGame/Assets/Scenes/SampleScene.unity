@@ -1641,8 +1641,8 @@ MonoBehaviour:
   - {fileID: 205391867}
   - {fileID: 1217671476}
   - {fileID: 1524322312}
-  - {fileID: 107782325}
-  _emptySpace: {fileID: 0}
+  - {fileID: 0}
+  _emptySpace: {fileID: 107782325}
 --- !u!4 &911001684
 Transform:
   m_ObjectHideFlags: 0

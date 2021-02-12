@@ -52,6 +52,5 @@ public class GamePlay : MonoBehaviour
             _elements[i] = _elements[random];
             _elements[random] = tile;
         }
-        Debug.Log("Suffle Done!");
     }
 }
