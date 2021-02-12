@@ -39,9 +39,9 @@ public class GamePlay : MonoBehaviour
 
     private void Shuffle()
     {
-        for (int i = 0; i <= 14; i++)
+        for (int i = 0; i < _elements.Length - 1; i++)
         {
-            int random = Random.Range(0, 14);
+            int random = Random.Range(0, _elements.Length - 2);
 
             Vector2 temp = _elements[i].GetComponent<Tile>().TargetPos;
 
