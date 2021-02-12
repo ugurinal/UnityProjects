@@ -6,20 +6,28 @@ public class Tile : MonoBehaviour
 {
     public Vector2 TargetPos { get; set; }
 
-    private Vector2 originalPos;
+    private Vector2 _originalPos;
 
     private float _lerpSpeed = 5.0f;
 
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer _spriteRenderer;
+
+    private bool IsInRightSpot = false;
+
+    private GamePlay _gamePlay;
+
+    private void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        TargetPos = transform.position;
+        _originalPos = transform.position;
+    }
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        TargetPos = transform.position;
-        originalPos = transform.position;
+        _gamePlay = GamePlay.Instance;
     }
 
-    // Update is called once per frame
     private void Update()
     {
         transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * _lerpSpeed);
@@ -28,9 +36,17 @@ public class Tile : MonoBehaviour
 
     private void CheckTile()
     {
-        if (originalPos == TargetPos)
-            spriteRenderer.color = Color.green;
-        else
-            spriteRenderer.color = Color.white;
+        if (_originalPos == TargetPos && !IsInRightSpot)
+        {
+            _spriteRenderer.color = Color.green;
+            IsInRightSpot = true;
+            _gamePlay.IncCorrectTile(1);
+        }
+        else if (_originalPos != TargetPos && IsInRightSpot)
+        {
+            _spriteRenderer.color = Color.white;
+            IsInRightSpot = false;
+            _gamePlay.IncCorrectTile(-1);
+        }
     }
 }
