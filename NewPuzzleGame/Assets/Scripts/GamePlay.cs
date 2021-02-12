@@ -5,11 +5,6 @@ public class GamePlay : MonoBehaviour
     [SerializeField] private GameObject[] _elements;
     [SerializeField] private GameObject _emptySpace;
 
-    private void Start()
-    {
-        Shuffle();
-    }
-
     private void Update()
     {
         CheckInput();
@@ -30,27 +25,10 @@ public class GamePlay : MonoBehaviour
 
                     Tile hitTile = hit.transform.GetComponent<Tile>();
 
-                    _emptySpace.GetComponent<Tile>().TargetPos = hitTile.TargetPos;
+                    _emptySpace.transform.position = hitTile.TargetPos;
                     hitTile.TargetPos = lastEmptySpace;
                 }
             }
-        }
-    }
-
-    private void Shuffle()
-    {
-        for (int i = 0; i < _elements.Length - 1; i++)
-        {
-            int random = Random.Range(0, _elements.Length - 2);
-
-            Vector2 temp = _elements[i].GetComponent<Tile>().TargetPos;
-
-            _elements[i].GetComponent<Tile>().TargetPos = (_elements[random].GetComponent<Tile>().TargetPos);
-            _elements[random].GetComponent<Tile>().TargetPos = (temp);
-
-            GameObject tile = _elements[i];
-            _elements[i] = _elements[random];
-            _elements[random] = tile;
         }
     }
 }
