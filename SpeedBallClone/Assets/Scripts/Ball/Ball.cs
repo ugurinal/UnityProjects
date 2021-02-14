@@ -13,6 +13,11 @@ namespace SpeedBallClone.Player
 
         private void Update()
         {
+            Movement();
+        }
+
+        private void Movement()
+        {
             if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
             {
                 if (Input.GetKeyDown(KeyCode.A))
@@ -49,6 +54,14 @@ namespace SpeedBallClone.Player
                         GetComponent<Rigidbody>().MovePosition(new Vector3(0.4f, transform.position.y, transform.position.z));
                     }
                 }
+            }
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.transform.CompareTag("Obstacle"))
+            {
+                Debug.Log("GameOver!");
             }
         }
     }
