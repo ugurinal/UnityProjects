@@ -64,5 +64,13 @@ namespace SpeedBallClone.Player
                 Debug.Log("GameOver!");
             }
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.transform.CompareTag("Boost"))
+            {
+                GetComponent<Rigidbody>().AddForce(new Vector3(0f, 300f, 0f));
+            }
+        }
     }
 }
