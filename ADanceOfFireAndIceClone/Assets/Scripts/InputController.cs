@@ -11,15 +11,11 @@ public class InputController : MonoBehaviour
 
     private bool _isFire = false;
 
-    // Start is called before the first frame update
     private void Start()
     {
         _isFire = Random.value >= 0.5;
-
-        Debug.Log(_isFire);
     }
 
-    // Update is called once per frame
     private void Update()
     {
         CheckInput();
