@@ -33,6 +33,14 @@ public class InputController : MonoBehaviour
         {
             _ice.transform.RotateAround(_fire.transform.position, Vector3.back, _rotationSpeed * Time.deltaTime);
         }
+
+        // when above rotate ends, the z position of fire and ice becomes 91
+        //to solve this we make it -1 just for now
+        if (_fire.transform.position.z != -1 || _ice.transform.position.z != -1)
+        {
+            _fire.transform.position = new Vector3(_fire.transform.position.x, _fire.transform.position.y, -1f);
+            _ice.transform.position = new Vector3(_ice.transform.position.x, _ice.transform.position.y, -1f);
+        }
     }
 
     private void CheckInput()
@@ -62,8 +70,6 @@ public class InputController : MonoBehaviour
                     _isFire = !_isFire;
                 }
             }
-
-            //_isFire = !_isFire;
         }
     }
 }   // Input Controller
