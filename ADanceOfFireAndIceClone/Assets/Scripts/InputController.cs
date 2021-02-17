@@ -13,12 +13,21 @@ public class InputController : MonoBehaviour
 
     private bool _isFire = false;
 
+    private bool _isEarly = false;
+
+    private bool _isOnTrigger = false;
+
     private int _currentBlock = 0;
+
+    //private int _earlyCounter = 0;
+    //private int _lateCounter = 0;
 
     private void Start()
     {
         _isFire = false;
-        //_isFire = Random.value >= 0.5;
+        _isEarly = true;
+
+        _isOnTrigger = false;
     }
 
     private void Update()
@@ -33,43 +42,72 @@ public class InputController : MonoBehaviour
         {
             _ice.transform.RotateAround(_fire.transform.position, Vector3.back, _rotationSpeed * Time.deltaTime);
         }
-
-        // when above rotate ends, the z position of fire and ice becomes 91
-        //to solve this we make it -1 just for now
-        if (_fire.transform.position.z != -1 || _ice.transform.position.z != -1)
-        {
-            _fire.transform.position = new Vector3(_fire.transform.position.x, _fire.transform.position.y, -1f);
-            _ice.transform.position = new Vector3(_ice.transform.position.x, _ice.transform.position.y, -1f);
-        }
     }
 
     private void CheckInput()
     {
-        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (_isOnTrigger && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
         {
             if (_isFire)
             {
-                Debug.Log("Fire distance to block : " + Vector2.Distance(_fire.transform.position, _path[_currentBlock].transform.position));
-                if (Vector2.Distance(_fire.transform.position, _path[_currentBlock].transform.position) < 0.3f)
-                {
-                    Debug.Log("FIRE!");
-                    _fire.transform.position = _path[_currentBlock].transform.position;
-                    _currentBlock++;
-                    _isFire = !_isFire;
-                }
+                Test(_fire);
             }
             else
             {
-                Debug.Log("Ice distance to block : " + Vector2.Distance(_ice.transform.position, _path[_currentBlock].transform.position));
-
-                if (Vector2.Distance(_ice.transform.position, _path[_currentBlock].transform.position) < 0.3f)
+                Test(_ice);
+            }
+        }
+        else
+        {
+            if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
+            {
+                if (_isEarly)
                 {
-                    Debug.Log("ICE!");
-                    _ice.transform.position = _path[_currentBlock].transform.position;
-                    _currentBlock++;
-                    _isFire = !_isFire;
+                    Debug.Log("EARLY !");
+                }
+                else
+                {
+                    Debug.Log("LATE !");
                 }
             }
+        }
+    }
+
+    private void Test(GameObject rotatingObj)
+    {
+        _isFire = !_isFire;
+
+        rotatingObj.transform.position = _path[_currentBlock].transform.position;
+        rotatingObj.transform.position = new Vector3(rotatingObj.transform.position.x, rotatingObj.transform.position.y, -1f);
+
+        Debug.Log(_currentBlock);
+
+        if (_currentBlock < _path.Length - 1)
+            _currentBlock++;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == _path[_currentBlock])
+        {
+            _isOnTrigger = true;
+            _isEarly = false;
+        }
+        else if (collision.gameObject == _path[_currentBlock - 1] || collision.gameObject == _path[_currentBlock - 2] || collision.gameObject == _path[_currentBlock - 3])
+        {
+            _isEarly = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject == _path[_currentBlock])
+        {
+            _isOnTrigger = false;
+        }
+        else if (collision.gameObject == _path[_currentBlock - 2])
+        {
+            _isEarly = true;
         }
     }
 }   // Input Controller
