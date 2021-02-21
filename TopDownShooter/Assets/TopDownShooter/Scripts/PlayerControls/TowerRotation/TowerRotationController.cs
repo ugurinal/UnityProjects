@@ -13,7 +13,7 @@ namespace TankShooter.PlayerControls
 
         private void Update()
         {
-            _towerTransform.Rotate(0f, _rotationInputData.MouseX * _towerRotationSettings.TowerRotationSpeed, 0f, Space.Self);
+            _towerTransform.Rotate(0f, _rotationInputData.Horizontal * _towerRotationSettings.TowerRotationSpeed, 0f, Space.Self);
         }
     }
 }

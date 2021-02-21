@@ -15,3 +15,15 @@ MonoBehaviour:
   Horizontal: 0
   Vertical: 0
   MouseX: 0
+  MouseY: 0
+  _mouseAxisActive: 0
+  _axisActive: 0
+  _horizontalAxisName: 
+  _verticalAxisName: 
+  _keyBaseHorizontalActive: 0
+  PositiveHorizontalKeyCode: 0
+  NegativeHorizontalKeyCode: 0
+  _keyBaseVerticalActive: 0
+  PositiveVerticalKeyCode: 0
+  NegativeVerticalKeyCode: 0
+  _increaseAmount: 0
