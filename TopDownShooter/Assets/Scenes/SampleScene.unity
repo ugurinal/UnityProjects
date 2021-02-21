@@ -164,8 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a222e45f37e94504f8152ec89e6ebc48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementInput: {fileID: 11400000, guid: f7ea9c0c9e70a3f41bb37bff8ed364d0, type: 2}
-  _rotationInput: {fileID: 11400000, guid: dbb7689ab64f0dd4685180581d7070cd, type: 2}
+  _inputDataArray:
+  - {fileID: 11400000, guid: f7ea9c0c9e70a3f41bb37bff8ed364d0, type: 2}
+  - {fileID: 11400000, guid: dbb7689ab64f0dd4685180581d7070cd, type: 2}
 --- !u!1 &175267070
 GameObject:
   m_ObjectHideFlags: 0
