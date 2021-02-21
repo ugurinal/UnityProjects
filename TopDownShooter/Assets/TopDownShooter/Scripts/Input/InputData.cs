@@ -9,5 +9,6 @@ namespace TankShooter.PlayerInput
     {
         public float Horizontal;
         public float Vertical;
+        public float MouseX;
     }
 }
