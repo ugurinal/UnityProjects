@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd9f5b5bab2bce4daa8f03ef50a1518, type: 3}
   m_Name: CameraSettings_LocalPlayer
   m_EditorClassIdentifier: 
-  _rotationLerpSpeed: 1
-  _positionOffset: {x: 0, y: 2.2, z: -5}
-  _positionLerpSpeed: 5
+  _rotationLerpSpeed: 30
+  _positionOffset: {x: 0, y: 2, z: -5}
+  _positionLerpSpeed: 30

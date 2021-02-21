@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Horizontal: 0
   Vertical: 0
-  MouseX: 0
-  MouseY: 0
-  _mouseAxisActive: 0
-  _axisActive: 0
-  _horizontalAxisName: 
-  _verticalAxisName: 
+  _mouseRotationActive: 1
+  _mouseHorizontalAxisName: Mouse X
+  _mouseVerticalAxisName: Mouse Y
+  _movementAxisActive: 0
+  _horizontalAxisName: Horizontal
+  _verticalAxisName: Vertical
   _keyBaseHorizontalActive: 0
-  PositiveHorizontalKeyCode: 0
-  NegativeHorizontalKeyCode: 0
+  PositiveHorizontalKeyCode: 113
+  NegativeHorizontalKeyCode: 101
   _keyBaseVerticalActive: 0
   PositiveVerticalKeyCode: 0
   NegativeVerticalKeyCode: 0
-  _increaseAmount: 0
+  _increaseAmount: 0.01
