@@ -17,15 +17,13 @@ namespace TankShooter.Camera
         private void CameraRotationFollow()
         {
             _cameraTransform.rotation = Quaternion.Lerp(_cameraTransform.rotation,
-                                                        Quaternion.LookRotation(_targetTransform.position - _cameraTransform.position),
+                                                        Quaternion.LookRotation(_targetTransform.forward),
                                                         Time.deltaTime * _cameraSettings.RotationLerpSpeed);
         }
 
         private void CameraPositionFollow()
         {
-            _cameraTransform.position = Vector3.Lerp(_cameraTransform.position,
-                                                    _targetTransform.position + _cameraSettings.PositionOffset,
-                                                    Time.deltaTime * _cameraSettings.PositionLerpSpeed);
+            _cameraTransform.localPosition = _cameraSettings.PositionOffset;
         }
     }
 }
