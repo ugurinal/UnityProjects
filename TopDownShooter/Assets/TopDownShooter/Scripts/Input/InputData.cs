@@ -14,6 +14,8 @@ namespace TankShooter.PlayerInput
         [Header("Tower Rotation Axis Base Control")]
         [Space(10f)]
         [SerializeField] private bool _mouseRotationActive;
+        [SerializeField] private string _mouseHorizontalAxisName;
+        [SerializeField] private string _mouseVerticalAxisName;
 
         [Header("Movement Axis Base Control")]
         [Space(10f)]
@@ -41,8 +43,8 @@ namespace TankShooter.PlayerInput
             {
                 if (_mouseRotationActive)
                 {
-                    Horizontal = Input.GetAxis("Mouse X");
-                    Vertical = Input.GetAxis("Mouse Y");
+                    Horizontal = Input.GetAxis(_mouseHorizontalAxisName);
+                    Vertical = Input.GetAxis(_mouseVerticalAxisName);
                 }
                 else
                 {
