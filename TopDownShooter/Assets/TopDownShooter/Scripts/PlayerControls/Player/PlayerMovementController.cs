@@ -1,4 +1,4 @@
-﻿using TankShooter.PlayerInput;
+using TankShooter.PlayerInput;
 using UnityEngine;
 
 namespace TankShooter.PlayerControls
@@ -7,6 +7,8 @@ namespace TankShooter.PlayerControls
     {
         [SerializeField] private InputData _inputData;
         [SerializeField] private PlayerMovementSettings _playerMovementSettings;
+
+        [SerializeField] private Transform _tankBody;
 
         [SerializeField] private Rigidbody _rigidbody;
 
@@ -18,7 +20,8 @@ namespace TankShooter.PlayerControls
         private void PlayerMovement()
         {
             _rigidbody.MovePosition(_rigidbody.position + (_rigidbody.transform.forward * _inputData.Vertical * _playerMovementSettings.VerticalSpeed));
-            _rigidbody.MovePosition(_rigidbody.position + (_rigidbody.transform.right * _inputData.Horizontal * _playerMovementSettings.HorizontalSpeed));
+
+            _tankBody.Rotate(0, _inputData.Horizontal * _playerMovementSettings.HorizontalSpeed, 0);
         }
     }
 }
