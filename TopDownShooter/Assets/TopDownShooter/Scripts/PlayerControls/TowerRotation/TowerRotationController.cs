@@ -7,7 +7,6 @@ namespace TankShooter.PlayerControls
     {
         [Header("Tower Transform")]
         [SerializeField] private Transform _towerTransform;
-
         [SerializeField] private InputData _rotationInputData;
         [SerializeField] private TowerRotationSettings _towerRotationSettings;
 
