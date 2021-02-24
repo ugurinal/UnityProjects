@@ -12,6 +12,8 @@ namespace TankShooter.PlayerControls
 
         [SerializeField] private Rigidbody _rigidbody;
 
+        //[SerializeField] private Transform _mainCamera;
+
         private void Update()
         {
             PlayerMovement();
@@ -20,6 +22,8 @@ namespace TankShooter.PlayerControls
         private void PlayerMovement()
         {
             _rigidbody.MovePosition(_rigidbody.position + (_rigidbody.transform.forward * _inputData.Vertical * _playerMovementSettings.VerticalSpeed));
+
+            //_rigidbody.MovePosition(_rigidbody.position + (_mainCamera.transform.forward * _inputData.Vertical * _playerMovementSettings.VerticalSpeed));
 
             _tankBody.Rotate(0, _inputData.Horizontal * _playerMovementSettings.HorizontalSpeed, 0);
         }

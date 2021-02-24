@@ -389,6 +389,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1681622253 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 694060505, guid: 47bc6814553bc7942a1027e71d77f43f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8811528815798853568}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8811528815798853568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -409,6 +415,11 @@ PrefabInstance:
       propertyPath: _rigidbody
       value: 
       objectReference: {fileID: 675247879}
+    - target: {fileID: 3993579184112358345, guid: 47bc6814553bc7942a1027e71d77f43f,
+        type: 3}
+      propertyPath: _mainCamera
+      value: 
+      objectReference: {fileID: 1681622253}
     - target: {fileID: 5558811786617152676, guid: 47bc6814553bc7942a1027e71d77f43f,
         type: 3}
       propertyPath: _rigidbody
