@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using SpaceTraveler.DamageSystem;
+using SpaceTraveler.LevelSystem;
 
 namespace SpaceTraveler.Enemy
 {
@@ -24,40 +25,40 @@ namespace SpaceTraveler.Enemy
         // enemy properties
         [Header("Enemy Properties")]
         [SerializeField] private EnemyProperties _enemyProperties;
-        private float curHealth = 0f;
-        private float shotTimeCounter = 0f;            // this gets random value within the range of mintime and max time
-        private bool isAlive = true;                                    // state of enemy, true by default
+        private float _curHealth = 0f;
+        private float _shotTimeCounter = 0f;            // this gets random value within the range of mintime and max time
+        private bool _isAlive = true;                                    // state of enemy, true by default
 
-        private Animator animator = null;                               // animator component of gameobject that this script is attached to
+        private Animator _animator = null;                               // animator component of gameobject that this script is attached to
 
-        private LevelController levelController = null;                 // we need this script in order the decrease the number of enemies in the scene
-        private float powerUpChance = 0;                                // this will be assigned from level controller
-                                                                        // power up chance is unique in every level
-                                                                        // power up chance is based on level not enemy
+        private LevelController _levelController = null;                 // we need this script in order the decrease the number of enemies in the scene
+        private float _powerUpChance = 0;                                // this will be assigned from level controller
+                                                                         // power up chance is unique in every level
+                                                                         // power up chance is based on level not enemy
 
         #endregion FIELDS
 
         private void Start()
         {
-            curHealth = _enemyProperties.MaxHealth;
+            _curHealth = _enemyProperties.MaxHealth;
 
-            animator = GetComponent<Animator>();
-            levelController = LevelController.instance;
-            powerUpChance = levelController.powerUpChance;
+            _animator = GetComponent<Animator>();
+            _levelController = LevelController.Instance;
+            _powerUpChance = _levelController.PowerUpChance;
 
-            shotTimeCounter = Random.Range(_enemyProperties.MinTimeBetweenShots, _enemyProperties.MaxTimeBetweenShots);
+            _shotTimeCounter = Random.Range(_enemyProperties.MinTimeBetweenShots, _enemyProperties.MaxTimeBetweenShots);
         }
 
         private void Update()
         {
-            if (!isAlive) return;
+            if (!_isAlive) return;
 
-            shotTimeCounter -= Time.deltaTime;
+            _shotTimeCounter -= Time.deltaTime;
 
-            if (shotTimeCounter <= 0f)
+            if (_shotTimeCounter <= 0f)
             {
                 Shoot();
-                shotTimeCounter = Random.Range(_enemyProperties.MinTimeBetweenShots, _enemyProperties.MaxTimeBetweenShots);
+                _shotTimeCounter = Random.Range(_enemyProperties.MinTimeBetweenShots, _enemyProperties.MaxTimeBetweenShots);
             }
         }
 
@@ -69,11 +70,11 @@ namespace SpaceTraveler.Enemy
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!isAlive) return;
+            if (!_isAlive) return;
 
             if (other.CompareTag("Player"))
             {
-                levelController.DecreasePlayerLife();
+                _levelController.DecreasePlayerLife();
                 KillThisEnemy();
 
                 return;
@@ -91,12 +92,12 @@ namespace SpaceTraveler.Enemy
             {
                 DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
 
-                curHealth -= damageDealer.Damage;
+                _curHealth -= damageDealer.Damage;
 
                 other.GetComponent<Animator>().enabled = true;
                 other.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 
-                if (curHealth <= 0)
+                if (_curHealth <= 0)
                 {
                     KillThisEnemy();
                 }
@@ -107,12 +108,12 @@ namespace SpaceTraveler.Enemy
 
         private void KillThisEnemy()
         {
-            isAlive = false;
-            levelController.DestroyEnemy(_enemyProperties.ScoreToAdd, _enemyProperties.CoinToEarn);
+            _isAlive = false;
+            _levelController.DestroyEnemy(_enemyProperties.ScoreToAdd, _enemyProperties.CoinToEarn);
             SpawnPowerUP();
 
-            animator.enabled = true;    // // this will destroy this (enemy) game object when animation ends
-                                        // so no need do destroy in here
+            _animator.enabled = true;    // // this will destroy this (enemy) game object when animation ends
+                                         // so no need do destroy in here
             Destroy(gameObject.GetComponent<PolygonCollider2D>());  // destroy collider just in case
         }
 
@@ -121,7 +122,7 @@ namespace SpaceTraveler.Enemy
         {
             float chance = Random.Range(0f, 100f);
 
-            if (chance <= powerUpChance)
+            if (chance <= _powerUpChance)
             {
                 int whichPowerUp = (int)Random.Range(0f, 5f);
 

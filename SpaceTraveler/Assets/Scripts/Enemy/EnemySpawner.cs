@@ -5,68 +5,72 @@ using UnityEngine;
 
 namespace SpaceTraveler.Enemy
 {
+    #region DESCRIPTION
+
+    /// <summary>
+    /// This is the main class that takes care of spawning enemies
+    /// This script also prints wave name to the screen
+    /// </summary>
+
+    #endregion DESCRIPTION
+
     public class EnemySpawner : MonoBehaviour
     {
-        #region DESCRIPTION
-
-        //  *********************************************************************************************
-        //  * This is the main class that takes care of spawning enemies                                *
-        //  * This script also prints wave name to the screen                                           *
-        //  *********************************************************************************************
-
-        #endregion DESCRIPTION
-
         #region FIELDS
 
-        public static EnemySpawner instance = null;
+        public static EnemySpawner Instance = null;
 
         [Header("Waves")]
-        [SerializeField] private List<WaveConfig> waveConfigs = null;
+        [SerializeField] private List<WaveConfig> _waveConfigs = null;
 
         [Header("Wave Name")]
         [Space(20)]
-        [SerializeField] private TextMeshProUGUI wave = null;
+        [SerializeField] private TextMeshProUGUI _waveTMP = null;
 
-        private LevelController levelController = null;
+        private LevelController _levelController = null;
 
         #endregion FIELDS
 
         private void Awake()
         {
-            SetInstance();
+            MakeSingleton();
         }
 
         private void Start()
         {
-            levelController = LevelController.instance;
+            _levelController = LevelController.instance;
             UpdateEnemySize();
         }
 
-        private void SetInstance()
+        private void MakeSingleton()
         {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else if (instance != this)
+            if (Instance != null && Instance != this)
             {
                 Destroy(gameObject);
             }
+            else
+            {
+                Instance = this;
+            }
         }
 
-        // this function update the enemy size in level controller
+        /// <summary>
+        /// this function update the enemy size in level controller
+        /// </summary>
         private void UpdateEnemySize()
         {
             int enemySize = 0;
-            foreach (var waves in waveConfigs)
+            foreach (var waves in _waveConfigs)
             {
                 enemySize += waves.NumberOfEnemies;
             }
 
-            levelController.SetEnemySize(enemySize);
+            _levelController.SetEnemySize(enemySize);
         }
 
-        // starts enemy spawn
+        /// <summary>
+        /// starts spawning enemies
+        /// </summary>
         public void StartEnemySpawn()
         {
             StartCoroutine(SpawnAllWaves());
@@ -75,9 +79,9 @@ namespace SpaceTraveler.Enemy
         private IEnumerator SpawnAllWaves()
         {
             int i = 1;
-            foreach (var waves in waveConfigs)
+            foreach (var waves in _waveConfigs)
             {
-                StartCoroutine(PrintWaveName(i, waveConfigs.Count));    // print wave name
+                StartCoroutine(PrintWaveName(i, _waveConfigs.Count));    // print wave name
                 StartCoroutine(SpawnEnemiesInWaves(waves));             // start spawning
 
                 yield return new WaitForSeconds(waves.TimeBetweenWaves);
@@ -89,7 +93,7 @@ namespace SpaceTraveler.Enemy
         {
             for (int i = 0; i < wave.NumberOfEnemies; i++)
             {
-                var enemy = Instantiate(wave.EnemyPrefab, wave.GetWaypoints()[0].transform.position, Quaternion.identity);
+                GameObject enemy = Instantiate(wave.EnemyPrefab, wave.GetWaypoints()[0].transform.position, Quaternion.identity);
                 enemy.GetComponent<EnemyPathing>().SetWaveConfig(wave);
                 yield return new WaitForSeconds(wave.TimeBetweenSpawns);
             }
@@ -99,10 +103,10 @@ namespace SpaceTraveler.Enemy
         {
             for (int i = 0; i < 3; i++)
             {
-                wave.text = "Wave " + currenWave + "/" + maxWave;
-                wave.gameObject.SetActive(true);
+                _waveTMP.text = "Wave " + currenWave + "/" + maxWave;
+                _waveTMP.gameObject.SetActive(true);
                 yield return new WaitForSeconds(0.4f);
-                wave.gameObject.SetActive(false);
+                _waveTMP.gameObject.SetActive(false);
                 yield return new WaitForSeconds(0.4f);
             }
         }

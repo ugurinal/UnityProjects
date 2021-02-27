@@ -564,12 +564,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4423171914949034491, guid: c17fd05a1eeba534da86ceffd99551a6,
         type: 3}
-      propertyPath: SFXSlider
+      propertyPath: _SFXSlider
       value: 
       objectReference: {fileID: 2018090487}
     - target: {fileID: 4423171914949034491, guid: c17fd05a1eeba534da86ceffd99551a6,
         type: 3}
-      propertyPath: musicSlider
+      propertyPath: _musicSlider
       value: 
       objectReference: {fileID: 754883129}
     m_RemovedComponents: []
@@ -1601,32 +1601,32 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 952499957724663296, guid: dee8d360e1ae4cb48b5f61ade06e3a30,
         type: 3}
-      propertyPath: winGUI
+      propertyPath: _winGUI
       value: 
       objectReference: {fileID: 1687133082}
     - target: {fileID: 952499957724663296, guid: dee8d360e1ae4cb48b5f61ade06e3a30,
         type: 3}
-      propertyPath: loseGUI
+      propertyPath: _loseGUI
       value: 
       objectReference: {fileID: 1956499185}
     - target: {fileID: 952499957724663296, guid: dee8d360e1ae4cb48b5f61ade06e3a30,
         type: 3}
-      propertyPath: timeText
+      propertyPath: _timeText
       value: 
       objectReference: {fileID: 7020734083626365895}
     - target: {fileID: 952499957724663296, guid: dee8d360e1ae4cb48b5f61ade06e3a30,
         type: 3}
-      propertyPath: scoreArea
+      propertyPath: _scoreArea
       value: 
       objectReference: {fileID: 760917035}
     - target: {fileID: 952499957724663296, guid: dee8d360e1ae4cb48b5f61ade06e3a30,
         type: 3}
-      propertyPath: popUpPanel
+      propertyPath: _popUpPanel
       value: 
       objectReference: {fileID: 514022934}
     - target: {fileID: 952499957724663296, guid: dee8d360e1ae4cb48b5f61ade06e3a30,
         type: 3}
-      propertyPath: pauseButton
+      propertyPath: _pauseButton
       value: 
       objectReference: {fileID: 202152588076334021}
     - target: {fileID: 952499957724663298, guid: dee8d360e1ae4cb48b5f61ade06e3a30,
@@ -2052,9 +2052,31 @@ PrefabInstance:
       objectReference: {fileID: 1387032674}
     - target: {fileID: 4147236459331238250, guid: 8f512c64f50a2fc49a814d97821c47a2,
         type: 3}
+      propertyPath: _waveTMP
+      value: 
+      objectReference: {fileID: 1387032674}
+    - target: {fileID: 4147236459331238250, guid: 8f512c64f50a2fc49a814d97821c47a2,
+        type: 3}
       propertyPath: levelController
       value: 
       objectReference: {fileID: 1042050172}
+    - target: {fileID: 4147236459331238250, guid: 8f512c64f50a2fc49a814d97821c47a2,
+        type: 3}
+      propertyPath: _waveConfigs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4147236459331238250, guid: 8f512c64f50a2fc49a814d97821c47a2,
+        type: 3}
+      propertyPath: _waveConfigs.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3555f5f0158c65349abc01ae09197fd8,
+        type: 2}
+    - target: {fileID: 4147236459331238250, guid: 8f512c64f50a2fc49a814d97821c47a2,
+        type: 3}
+      propertyPath: _waveConfigs.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: e20bffb35de0c7d459bdbaea77da835a,
+        type: 2}
     - target: {fileID: 4147236459331238251, guid: 8f512c64f50a2fc49a814d97821c47a2,
         type: 3}
       propertyPath: m_RootOrder

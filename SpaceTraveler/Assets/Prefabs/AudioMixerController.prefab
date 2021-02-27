@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd50e6fa07fd039418ebe3016e4d2f75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: 387528b1c2d40d6489e99c568f3e4706, type: 2}
-  musicSlider: {fileID: 0}
-  SFXSlider: {fileID: 0}
+  _audioMixer: {fileID: 24100000, guid: 387528b1c2d40d6489e99c568f3e4706, type: 2}
+  _musicSlider: {fileID: 0}
+  _SFXSlider: {fileID: 0}
