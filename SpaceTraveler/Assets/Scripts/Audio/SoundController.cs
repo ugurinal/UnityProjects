@@ -4,7 +4,7 @@ namespace SpaceTraveler.AudioSystem
 {
     public class SoundController : MonoBehaviour
     {
-        public static SoundController instance;
+        public static SoundController Instance;
 
         public AudioSource musicPlayer;
         public AudioSource sfxPlayer;
@@ -20,13 +20,13 @@ namespace SpaceTraveler.AudioSystem
 
         private void MakeSingleton()
         {
-            if (instance != null && instance != this)
+            if (Instance != null && Instance != this)
             {
                 Destroy(gameObject);
             }
             else
             {
-                instance = this;
+                Instance = this;
             }
 
             DontDestroyOnLoad(gameObject);

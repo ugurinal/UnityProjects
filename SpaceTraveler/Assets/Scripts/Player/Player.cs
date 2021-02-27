@@ -133,9 +133,9 @@ public class Player : MonoBehaviour
     private void SetOtherInstances()
     {
         gameManager = GameManager.instance;
-        enemySpawner = EnemySpawner.instance;
+        enemySpawner = EnemySpawner.Instance;
         levelController = LevelController.instance;
-        soundController = SoundController.instance;
+        soundController = SoundController.Instance;
     }
 
     private void Fire()
