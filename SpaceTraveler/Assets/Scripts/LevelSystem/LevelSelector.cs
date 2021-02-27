@@ -51,6 +51,7 @@ namespace SpaceTraveler.LevelSystem
                     _levelButtons[levelIndex].transform.GetChild(2).gameObject.SetActive(true);
                     _levelButtons[levelIndex].transform.GetChild(3).gameObject.SetActive(true);
                     _levelButtons[levelIndex].transform.GetChild(4).gameObject.SetActive(true);
+
                     _levelButtons[levelIndex].transform.GetChild(5).gameObject.SetActive(false);
                     _levelButtons[levelIndex].transform.GetChild(6).gameObject.SetActive(false);
                     _levelButtons[levelIndex].transform.GetChild(7).gameObject.SetActive(false);
