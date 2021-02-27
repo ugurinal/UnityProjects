@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da61d5e689e708644bde57d7e6d73727, type: 3}
+  m_Name: PowerUpShop
+  m_EditorClassIdentifier: 
+  shopItems:
+  - name: OneShotPowerUp
+    price: 1
+    isDiamond: 1
+    shipPrefab: {fileID: 0}
+  - name: TwoShotPowerUp
+    price: 2
+    isDiamond: 1
+    shipPrefab: {fileID: 0}
+  - name: LifePowerUp
+    price: 5
+    isDiamond: 1
+    shipPrefab: {fileID: 0}

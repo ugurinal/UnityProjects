@@ -5,7 +5,7 @@
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
-SpaceTraveler/
+#SpaceTraveler/
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
@@ -65,3 +65,5 @@ crashlytics-build.properties
 
 
 Gameplay Mechanics/Assets/Course Library/
+
+*.keystore

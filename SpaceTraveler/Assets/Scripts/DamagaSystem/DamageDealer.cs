@@ -1,0 +1,54 @@
+﻿using UnityEngine;
+
+namespace SpaceTraveler.DamageSystem
+{
+    public class DamageDealer : MonoBehaviour
+    {
+        #region DESCRIPTION
+
+        //  *********************************************************************************************
+        //  * This is the main class for dealing damage to enemies or player                            *
+        //  * This script is attached to gameobjects that should deal damage like enemy projectile,     *
+        //  * player projectile, enemy itself and player itself                                         *
+        //  *********************************************************************************************
+
+        #endregion DESCRIPTION
+
+        #region FIELDS
+
+        [Header("Damage Properties")]
+        [SerializeField] private float damage = 100;
+
+        public float Damage { get => damage; }
+
+        #endregion FIELDS
+
+        private void Start()
+        {
+            // Below function checks if this script attached to a player projectile or not,
+            // if it is, it adjusts the damage by player ship
+            // because every player ship has its own damage multiplier
+
+            if (tag == "PlayerProjectile")
+            {
+                damage *= Player.instance.GetDamage();
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            // if laser hit shield, deactivate it
+            // enemy can trigger this function too
+
+            if (other.tag == "Shield")
+            {
+                other.gameObject.SetActive(false);
+            }
+        }
+
+        public void Hit()
+        {
+            Destroy(gameObject);    // this function is called from others scripts ontrigger functions
+        }
+    }
+}
