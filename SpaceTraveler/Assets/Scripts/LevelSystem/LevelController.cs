@@ -113,6 +113,9 @@ public class LevelController : MonoBehaviour
 
     public void ShowLoseGUI()
     {
+        if (winGUI.activeSelf)
+            return;
+
         popUpPanel.SetActive(true);
         loseGUI.SetActive(true);
         SetPlayerPrefs();
@@ -126,6 +129,9 @@ public class LevelController : MonoBehaviour
 
     public void ShowWinGUI()
     {
+        if (loseGUI.activeSelf)
+            return;
+
         popUpPanel.SetActive(true);
 
         winGUI.SetActive(true);
