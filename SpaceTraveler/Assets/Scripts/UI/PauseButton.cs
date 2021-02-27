@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PauseButton : MonoBehaviour
 {
-    [Header("Canvas")]
-    [SerializeField] private GameObject canvas = null;
+    //[Header("Canvas")]
+    //[SerializeField] private GameObject canvas = null;
 
     [Header("Main PopUp")]
     [SerializeField] private GameObject mainPopUp = null;
@@ -20,7 +20,7 @@ public class PauseButton : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = GameManager.Instance;
         gameManager.IsPaused = false;
 
         pauseButon = GetComponent<Button>();

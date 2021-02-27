@@ -1,97 +1,96 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelector : MonoBehaviour
+namespace SpaceTraveler.LevelSystem
 {
-    [Header("Level Buttons")]
-    public Button[] levelButtons;
-
-    private GameManager gameManager = null;
-
-    private void Start()
+    public class LevelSelector : MonoBehaviour
     {
-        gameManager = GameManager.instance;
-        SetLevelButtons();
-    }
+        [Header("Level Buttons")]
+        [SerializeField] private Button[] _levelButtons;
 
-    private void SetLevelButtons()
-    {
-        int levelReached = gameManager.LevelReached;
+        private GameManager _gameManager = null;
 
-        for (int i = 0; i < levelButtons.Length; i++)
+        private void Start()
         {
-            if (i + 1 > levelReached)
-            {
-                levelButtons[i].GetComponent<Button>().interactable = false;
-            }
-            else
-            {
-                levelButtons[i].transform.GetChild(0).gameObject.SetActive(true);   // level text
-                levelButtons[i].transform.GetChild(1).gameObject.SetActive(false);  // lock image
+            _gameManager = GameManager.Instance;
+            SetLevelButtons();
+        }
 
-                SetStars(levelButtons[i]);
+        private void SetLevelButtons()
+        {
+            int levelReached = _gameManager.LevelReached;
 
-                if (i == levelReached - 1)
+            for (int i = 0; i < _levelButtons.Length; i++)
+            {
+                if (i + 1 > levelReached)
                 {
-                    levelButtons[i].transform.GetChild(8).gameObject.SetActive(true);
+                    _levelButtons[i].GetComponent<Button>().interactable = false;
+                }
+                else
+                {
+                    _levelButtons[i].transform.GetChild(0).gameObject.SetActive(true);   // level text
+                    _levelButtons[i].transform.GetChild(1).gameObject.SetActive(false);  // lock image
+
+                    SetStars(i);
+
+                    if (i == levelReached - 1)
+                    {
+                        _levelButtons[i].transform.GetChild(8).gameObject.SetActive(true);
+                    }
                 }
             }
         }
-    }
 
-    private void SetStars(Button levelButton)
-    {
-        string[] levelName = levelButton.name.Split('-');
-        int currentLevel = int.Parse(levelName[0]) * int.Parse(levelName[1]);
-
-        int starCount = gameManager.LevelStars[currentLevel - 1];
-
-        switch (starCount)
+        private void SetStars(int levelIndex)
         {
-            case 0:
-                levelButton.transform.GetChild(2).gameObject.SetActive(true);
-                levelButton.transform.GetChild(3).gameObject.SetActive(true);
-                levelButton.transform.GetChild(4).gameObject.SetActive(true);
+            int starCount = _gameManager.LevelStars[levelIndex];
 
-                levelButton.transform.GetChild(5).gameObject.SetActive(false);
-                levelButton.transform.GetChild(6).gameObject.SetActive(false);
-                levelButton.transform.GetChild(7).gameObject.SetActive(false);
-                break;
+            switch (starCount)
+            {
+                case 0:
+                    _levelButtons[levelIndex].transform.GetChild(2).gameObject.SetActive(true);
+                    _levelButtons[levelIndex].transform.GetChild(3).gameObject.SetActive(true);
+                    _levelButtons[levelIndex].transform.GetChild(4).gameObject.SetActive(true);
+                    _levelButtons[levelIndex].transform.GetChild(5).gameObject.SetActive(false);
+                    _levelButtons[levelIndex].transform.GetChild(6).gameObject.SetActive(false);
+                    _levelButtons[levelIndex].transform.GetChild(7).gameObject.SetActive(false);
+                    break;
 
-            case 1:
-                levelButton.transform.GetChild(2).gameObject.SetActive(false);
-                levelButton.transform.GetChild(3).gameObject.SetActive(true);
-                levelButton.transform.GetChild(4).gameObject.SetActive(true);
+                case 1:
+                    _levelButtons[levelIndex].transform.GetChild(2).gameObject.SetActive(false);
+                    _levelButtons[levelIndex].transform.GetChild(3).gameObject.SetActive(true);
+                    _levelButtons[levelIndex].transform.GetChild(4).gameObject.SetActive(true);
 
-                levelButton.transform.GetChild(5).gameObject.SetActive(true);
-                levelButton.transform.GetChild(6).gameObject.SetActive(false);
-                levelButton.transform.GetChild(7).gameObject.SetActive(false);
-                break;
+                    _levelButtons[levelIndex].transform.GetChild(5).gameObject.SetActive(true);
+                    _levelButtons[levelIndex].transform.GetChild(6).gameObject.SetActive(false);
+                    _levelButtons[levelIndex].transform.GetChild(7).gameObject.SetActive(false);
+                    break;
 
-            case 2:
-                levelButton.transform.GetChild(2).gameObject.SetActive(false);
-                levelButton.transform.GetChild(3).gameObject.SetActive(false);
-                levelButton.transform.GetChild(4).gameObject.SetActive(true);
+                case 2:
+                    _levelButtons[levelIndex].transform.GetChild(2).gameObject.SetActive(false);
+                    _levelButtons[levelIndex].transform.GetChild(3).gameObject.SetActive(false);
+                    _levelButtons[levelIndex].transform.GetChild(4).gameObject.SetActive(true);
 
-                levelButton.transform.GetChild(5).gameObject.SetActive(true);
-                levelButton.transform.GetChild(6).gameObject.SetActive(true);
-                levelButton.transform.GetChild(7).gameObject.SetActive(false);
+                    _levelButtons[levelIndex].transform.GetChild(5).gameObject.SetActive(true);
+                    _levelButtons[levelIndex].transform.GetChild(6).gameObject.SetActive(true);
+                    _levelButtons[levelIndex].transform.GetChild(7).gameObject.SetActive(false);
 
-                break;
+                    break;
 
-            case 3:
-                levelButton.transform.GetChild(2).gameObject.SetActive(false);
-                levelButton.transform.GetChild(3).gameObject.SetActive(false);
-                levelButton.transform.GetChild(4).gameObject.SetActive(false);
+                case 3:
+                    _levelButtons[levelIndex].transform.GetChild(2).gameObject.SetActive(false);
+                    _levelButtons[levelIndex].transform.GetChild(3).gameObject.SetActive(false);
+                    _levelButtons[levelIndex].transform.GetChild(4).gameObject.SetActive(false);
 
-                levelButton.transform.GetChild(5).gameObject.SetActive(true);
-                levelButton.transform.GetChild(6).gameObject.SetActive(true);
-                levelButton.transform.GetChild(7).gameObject.SetActive(true);
-                break;
+                    _levelButtons[levelIndex].transform.GetChild(5).gameObject.SetActive(true);
+                    _levelButtons[levelIndex].transform.GetChild(6).gameObject.SetActive(true);
+                    _levelButtons[levelIndex].transform.GetChild(7).gameObject.SetActive(true);
+                    break;
 
-            default:
-                Debug.Log("Star count in levelbutton handler not initialised!");
-                break;
+                default:
+                    Debug.Log("Star count in levelbutton handler not initialised!");
+                    break;
+            }
         }
     }
 }

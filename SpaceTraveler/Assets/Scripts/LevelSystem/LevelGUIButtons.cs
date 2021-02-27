@@ -1,180 +1,179 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class LevelGUIButtons : MonoBehaviour
+namespace SpaceTraveler.LevelSystem
 {
-    [Header("Power Up Shop")]
-    [SerializeField] private ShopItems powerUps = null;
-
-    [Header("Pop Up Panel")]
-    [SerializeField] private GameObject popUpPanel = null;
-    [SerializeField] private Button outsideClickButton = null;
-
-    [Header("Level GUI")]
-    [SerializeField] private GameObject levelGUI = null;
-
-    [Header("Close Button")]
-    [SerializeField] private Button closeGUIBtn = null;
-
-    [Header("Power Up Buttons")]
-    [SerializeField] private Button oneShotPowerUpBtn = null;
-    [SerializeField] private Button twoShotPowerUpBtn = null;
-    [SerializeField] private Button lifePowerUpBtn = null;
-
-    private GameManager gameManager = null;
-
-    // Start is called before the first frame update
-    private void Start()
+    public class LevelGUIButtons : MonoBehaviour
     {
-        gameManager = GameManager.instance;
-        SetButtonListeners();
-        UpdateButtons();
-    }
+        [Header("Power Up Shop")]
+        [SerializeField] private ShopItems _powerUps = null;
 
-    private void SetButtonListeners()
-    {
-        closeGUIBtn.onClick.RemoveAllListeners();
-        closeGUIBtn.onClick.AddListener(CloseGUI);
+        [Header("Pop Up Panel")]
+        [SerializeField] private GameObject _popUpPanel = null;
+        [SerializeField] private Button _outsideClickButton = null;
 
-        oneShotPowerUpBtn.onClick.RemoveAllListeners();
-        twoShotPowerUpBtn.onClick.RemoveAllListeners();
-        lifePowerUpBtn.onClick.RemoveAllListeners();
+        [Header("Level GUI")]
+        [SerializeField] private GameObject _levelGUI = null;
 
-        oneShotPowerUpBtn.onClick.AddListener(BuyOneShotPowerUp);
-        twoShotPowerUpBtn.onClick.AddListener(BuyTwoShotPowerUp);
-        lifePowerUpBtn.onClick.AddListener(BuyLifePowerUp);
+        [Header("Close Button")]
+        [SerializeField] private Button _closeGUIBtn = null;
 
-        outsideClickButton.onClick.RemoveAllListeners();
-        outsideClickButton.onClick.AddListener(ClickedOutside);
-    }
+        [Header("Power Up Buttons")]
+        [SerializeField] private Button _oneShotPowerUpBtn = null;
+        [SerializeField] private Button _twoShotPowerUpBtn = null;
+        [SerializeField] private Button _lifePowerUpBtn = null;
 
-    private void ClickedOutside()
-    {
-        levelGUI.SetActive(false);
-        popUpPanel.SetActive(false);
-    }
+        private GameManager _gameManager = null;
 
-    private void UpdateButtons()
-    {
-        oneShotPowerUpBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + powerUps.GetItem(0).GetPrice();
-        twoShotPowerUpBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + powerUps.GetItem(1).GetPrice();
-        lifePowerUpBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + powerUps.GetItem(2).GetPrice();
-
-        if (gameManager.OneShotPU)
+        // Start is called before the first frame update
+        private void Start()
         {
-            oneShotPowerUpBtn.transform.GetChild(3).gameObject.SetActive(true);
+            _gameManager = GameManager.Instance;
+            SetButtonListeners();
+            UpdateButtons();
         }
-        if (gameManager.TwoShotPU)
+
+        private void SetButtonListeners()
         {
-            twoShotPowerUpBtn.transform.GetChild(3).gameObject.SetActive(true);
+            _closeGUIBtn.onClick.RemoveAllListeners();
+            _closeGUIBtn.onClick.AddListener(CloseGUI);
+
+            _oneShotPowerUpBtn.onClick.RemoveAllListeners();
+            _twoShotPowerUpBtn.onClick.RemoveAllListeners();
+            _lifePowerUpBtn.onClick.RemoveAllListeners();
+
+            _oneShotPowerUpBtn.onClick.AddListener(BuyOneShotPowerUp);
+            _twoShotPowerUpBtn.onClick.AddListener(BuyTwoShotPowerUp);
+            _lifePowerUpBtn.onClick.AddListener(BuyLifePowerUp);
+
+            _outsideClickButton.onClick.RemoveAllListeners();
+            _outsideClickButton.onClick.AddListener(ClickedOutside);
         }
-        if (gameManager.LifePU)
+
+        private void ClickedOutside()
         {
-            lifePowerUpBtn.transform.GetChild(3).gameObject.SetActive(true);
+            _levelGUI.SetActive(false);
+            _popUpPanel.SetActive(false);
         }
-    }
 
-    private void CloseGUI()
-    {
-        popUpPanel.SetActive(false);
-        levelGUI.SetActive(false);
-    }
-
-    private void BuyOneShotPowerUp()
-    {
-        int price = powerUps.GetItem(0).GetPrice();
-
-        if (gameManager.OneShotPU)
+        private void UpdateButtons()
         {
-            Debug.Log("1");
-            oneShotPowerUpBtn.transform.GetChild(3).gameObject.SetActive(false);
-            gameManager.OneShotPU = false;
-            gameManager.SaveData();
+            _oneShotPowerUpBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + _powerUps.GetItem(0).GetPrice();
+            _twoShotPowerUpBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + _powerUps.GetItem(1).GetPrice();
+            _lifePowerUpBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + _powerUps.GetItem(2).GetPrice();
 
-            gameManager.IncreaseDiamond(price);
+            if (_gameManager.OneShotPU)
+            {
+                _oneShotPowerUpBtn.transform.GetChild(3).gameObject.SetActive(true);
+            }
+            if (_gameManager.TwoShotPU)
+            {
+                _twoShotPowerUpBtn.transform.GetChild(3).gameObject.SetActive(true);
+            }
+            if (_gameManager.LifePU)
+            {
+                _lifePowerUpBtn.transform.GetChild(3).gameObject.SetActive(true);
+            }
+        }
+
+        private void CloseGUI()
+        {
+            _popUpPanel.SetActive(false);
+            _levelGUI.SetActive(false);
+        }
+
+        private void BuyOneShotPowerUp()
+        {
+            int price = _powerUps.GetItem(0).GetPrice();
+
+            if (_gameManager.OneShotPU)
+            {
+                Debug.Log("1");
+                _oneShotPowerUpBtn.transform.GetChild(3).gameObject.SetActive(false);
+                _gameManager.OneShotPU = false;
+                _gameManager.SaveData();
+
+                _gameManager.IncreaseDiamond(price);
+                MainMenuManager.instance.UpdateCurrency();
+                return;
+            }
+
+            if (!_gameManager.CanEffort(price, true))
+            {
+                Debug.LogError("You don't have enough money to buy this item!");
+                return;
+            }
+
+            _oneShotPowerUpBtn.transform.GetChild(3).gameObject.SetActive(true);
+            _gameManager.OneShotPU = true;
+            _gameManager.SaveData();
+
+            _gameManager.IncreaseDiamond(-price);
             MainMenuManager.instance.UpdateCurrency();
-            return;
+            Debug.Log("Powerup one bought!");
         }
 
-        if (!gameManager.CanEffort(price, true))
+        private void BuyTwoShotPowerUp()
         {
-            Debug.LogError("You don't have enough money to buy this item!");
-            return;
-        }
+            int price = _powerUps.GetItem(1).GetPrice();
 
-        oneShotPowerUpBtn.transform.GetChild(3).gameObject.SetActive(true);
-        gameManager.OneShotPU = true;
-        gameManager.SaveData();
+            if (_gameManager.TwoShotPU)
+            {
+                Debug.Log("2");
+                _twoShotPowerUpBtn.transform.GetChild(3).gameObject.SetActive(false);
+                _gameManager.TwoShotPU = false;
+                _gameManager.SaveData();
 
-        gameManager.IncreaseDiamond(-price);
-        MainMenuManager.instance.UpdateCurrency();
-        Debug.Log("Powerup one bought!");
-    }
+                _gameManager.IncreaseDiamond(price);
+                MainMenuManager.instance.UpdateCurrency();
+                return;
+            }
 
-    private void BuyTwoShotPowerUp()
-    {
-        int price = powerUps.GetItem(1).GetPrice();
+            if (!_gameManager.CanEffort(price, true))
+            {
+                Debug.LogError("You don't have enough money to buy this item!");
+                return;
+            }
 
-        if (gameManager.TwoShotPU)
-        {
-            Debug.Log("2");
-            twoShotPowerUpBtn.transform.GetChild(3).gameObject.SetActive(false);
-            gameManager.TwoShotPU = false;
-            gameManager.SaveData();
+            _twoShotPowerUpBtn.transform.GetChild(3).gameObject.SetActive(true);
+            _gameManager.TwoShotPU = true;
+            _gameManager.SaveData();
 
-            gameManager.IncreaseDiamond(price);
+            _gameManager.IncreaseDiamond(-price);
             MainMenuManager.instance.UpdateCurrency();
-            return;
+            Debug.Log("Powerup two bought!");
         }
 
-        if (!gameManager.CanEffort(price, true))
+        private void BuyLifePowerUp()
         {
-            Debug.LogError("You don't have enough money to buy this item!");
-            return;
-        }
+            int price = _powerUps.GetItem(2).GetPrice();
 
-        twoShotPowerUpBtn.transform.GetChild(3).gameObject.SetActive(true);
-        gameManager.TwoShotPU = true;
-        gameManager.SaveData();
+            if (_gameManager.LifePU)
+            {
+                Debug.Log("3");
+                _lifePowerUpBtn.transform.GetChild(3).gameObject.SetActive(false);
+                _gameManager.LifePU = false;
+                _gameManager.SaveData();
 
-        gameManager.IncreaseDiamond(-price);
-        MainMenuManager.instance.UpdateCurrency();
-        Debug.Log("Powerup two bought!");
-    }
+                _gameManager.IncreaseDiamond(price);
+                MainMenuManager.instance.UpdateCurrency();
+                return;
+            }
 
-    private void BuyLifePowerUp()
-    {
-        int price = powerUps.GetItem(2).GetPrice();
+            if (!_gameManager.CanEffort(price, true))
+            {
+                Debug.LogError("You don't have enough money to buy this item!");
+                return;
+            }
 
-        if (gameManager.LifePU)
-        {
-            Debug.Log("3");
-            lifePowerUpBtn.transform.GetChild(3).gameObject.SetActive(false);
-            gameManager.LifePU = false;
-            gameManager.SaveData();
+            _lifePowerUpBtn.transform.GetChild(3).gameObject.SetActive(true);
+            _gameManager.LifePU = true;
+            _gameManager.SaveData();
 
-            gameManager.IncreaseDiamond(price);
+            _gameManager.IncreaseDiamond(-price);
             MainMenuManager.instance.UpdateCurrency();
-            return;
+            Debug.Log("Powerup life bought!");
         }
-
-        if (!gameManager.CanEffort(price, true))
-        {
-            Debug.LogError("You don't have enough money to buy this item!");
-            return;
-        }
-
-        lifePowerUpBtn.transform.GetChild(3).gameObject.SetActive(true);
-        gameManager.LifePU = true;
-        gameManager.SaveData();
-
-        gameManager.IncreaseDiamond(-price);
-        MainMenuManager.instance.UpdateCurrency();
-        Debug.Log("Powerup life bought!");
     }
 }

@@ -36,7 +36,7 @@ public class WorldChanger : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = GameManager.Instance;
         int levelReached = gameManager.LevelReached;
 
         playerOriginalPos = playerShip.transform.position;

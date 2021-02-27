@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SpaceTraveler.LevelSystem;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -38,7 +39,7 @@ namespace SpaceTraveler.Enemy
 
         private void Start()
         {
-            _levelController = LevelController.instance;
+            _levelController = LevelController.Instance;
             UpdateEnemySize();
         }
 

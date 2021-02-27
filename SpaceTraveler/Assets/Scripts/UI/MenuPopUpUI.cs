@@ -39,7 +39,7 @@ public class MenuPopUpUI : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = GameManager.Instance;
 
         SetButtons();
         SetShopItems();

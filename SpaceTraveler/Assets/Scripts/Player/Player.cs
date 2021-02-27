@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using SpaceTraveler.AudioSystem;
 using SpaceTraveler.DamageSystem;
 using SpaceTraveler.Enemy;
+using SpaceTraveler.LevelSystem;
 
 public class Player : MonoBehaviour
 {
@@ -132,9 +133,9 @@ public class Player : MonoBehaviour
 
     private void SetOtherInstances()
     {
-        gameManager = GameManager.instance;
+        gameManager = GameManager.Instance;
         enemySpawner = EnemySpawner.Instance;
-        levelController = LevelController.instance;
+        levelController = LevelController.Instance;
         soundController = SoundController.Instance;
     }
 

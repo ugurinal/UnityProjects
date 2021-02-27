@@ -23,7 +23,7 @@ public class MainMenuManager : MonoBehaviour
 
         TextMeshProUGUI nicknameTMP = avatarArea.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
 
-        nicknameTMP.text = GameManager.instance.PlayerName;
+        nicknameTMP.text = GameManager.Instance.PlayerName;
 
         for (int i = 0; i < coinTexts.Count; i++)
         {
@@ -34,8 +34,8 @@ public class MainMenuManager : MonoBehaviour
 
     private void SetCoinAndDiamond()
     {
-        coinCounter = GameManager.instance.Coin;
-        diamondCounter = GameManager.instance.Diamond;
+        coinCounter = GameManager.Instance.Coin;
+        diamondCounter = GameManager.Instance.Diamond;
     }
 
     private void SetInstance()

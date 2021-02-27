@@ -16,7 +16,7 @@ public class GoogleAuth : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = GameManager.Instance;
 
         text.text = "STATUS : NULL";
 

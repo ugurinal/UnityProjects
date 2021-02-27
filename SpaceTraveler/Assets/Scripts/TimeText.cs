@@ -10,7 +10,7 @@ public class TimeText : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = GameManager.Instance;
         timeText = GetComponent<TextMeshProUGUI>();
     }
 

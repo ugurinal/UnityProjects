@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     #region FIELDS
 
-    public static GameManager instance;
+    public static GameManager Instance;
     public string PlayerName { get; set; } = null;
     public int Coin { get; set; } = 5000;
     public int Diamond { get; set; } = 10;
@@ -43,13 +43,13 @@ public class GameManager : MonoBehaviour
 
     private void SetSingleton()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
-            if (instance != this)
+            if (Instance != this)
             {
                 Destroy(gameObject);
             }
