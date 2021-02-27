@@ -111,17 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fbb709424a7b24d86fc7f80be6e1b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUps: {fileID: 11400000, guid: e58e8638ef1d24e4c8eda3d6c820d32b, type: 2}
-  maxHealth: 100
-  curHealth: 0
-  scoreToAdd: 100
-  coinToEarn: 50
-  projectile: {fileID: 69777656218909228, guid: 9000072e8ca7c7444a2ad9643898bbd5,
-    type: 3}
-  shotTimeCounter: 0
-  minTimeBetweenShots: 1
-  maxTimeBetweenShots: 5
-  shotSpeed: 3
+  _powerUps: {fileID: 11400000, guid: e58e8638ef1d24e4c8eda3d6c820d32b, type: 2}
+  _enemyProperties: {fileID: 11400000, guid: 020de182faf058a4e8513566233d6a80, type: 2}
 --- !u!95 &1619708846
 Animator:
   serializedVersion: 3
@@ -153,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e775c2fd6f53e324986dbb659496b16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  _damage: 100
 --- !u!60 &3007482617925791290
 PolygonCollider2D:
   m_ObjectHideFlags: 0

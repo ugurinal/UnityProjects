@@ -3,59 +3,49 @@ using SpaceTraveler.DamageSystem;
 
 namespace SpaceTraveler.Enemy
 {
+    #region DESCRIPTION
+
+    /// <summary>
+    /// This is the enemy class that stores enemies properties like health,speed etc
+    /// This script also used for shooting and spawning power ups.
+    /// This script doesn't change the transform (position) of the enemy.
+    /// </summary>
+
+    #endregion DESCRIPTION
+
     public class Enemy : MonoBehaviour
     {
-        #region DESCRIPTION
-
-        //  *********************************************************************************************
-        //  * This is the enemy class that stores enemies properties like health,speed etc              *
-        //  * This script also used for shooting and spawning power ups.                                *
-        //  * This script doesn't change the transform (position) of the enemy.                         *
-        //  *********************************************************************************************
-
-        #endregion DESCRIPTION
-
         #region FIELDS
 
         // power up
-        [Header("Power UPs")]
-        [SerializeField] private PowerUpConfig powerUps = null;    // store power ups informations
+        [Header("Power UP Properties")]
+        [SerializeField] private PowerUpConfig _powerUps = null;    // store power ups informations
 
         // enemy properties
         [Header("Enemy Properties")]
-        [Space(10)]
-        [SerializeField] private float maxHealth = 100f;
-        [SerializeField] private float curHealth = 0f;
-        [SerializeField] private int scoreToAdd = 0;        // when this enemy die how much score will player get
-        [SerializeField] private int coinToEarn = 0;        // when this enemy die how much coin will player earn
-
-        // player pro
-        [Header("Projectile Properties")]
-        [Space(10)]
-        [SerializeField] private GameObject projectile = null;          // projectile prefab that enemy shoots
-        [SerializeField] private float shotTimeCounter = 0f;            // this gets random value within the range of mintime and max time
-        [SerializeField] private float minTimeBetweenShots = 0.2f;      // min time to shoot
-        [SerializeField] private float maxTimeBetweenShots = 4f;        // max time to shoot
-        [SerializeField] private float shotSpeed = 0f;                  // speed of projectile
+        [SerializeField] private EnemyProperties _enemyProperties;
+        private float curHealth = 0f;
+        private float shotTimeCounter = 0f;            // this gets random value within the range of mintime and max time
+        private bool isAlive = true;                                    // state of enemy, true by default
 
         private Animator animator = null;                               // animator component of gameobject that this script is attached to
-        private bool isAlive = true;                                    // state of enemy, true by default
 
         private LevelController levelController = null;                 // we need this script in order the decrease the number of enemies in the scene
         private float powerUpChance = 0;                                // this will be assigned from level controller
                                                                         // power up chance is unique in every level
+                                                                        // power up chance is based on level not enemy
 
         #endregion FIELDS
 
         private void Start()
         {
-            curHealth = maxHealth;
+            curHealth = _enemyProperties.MaxHealth;
 
             animator = GetComponent<Animator>();
             levelController = LevelController.instance;
             powerUpChance = levelController.powerUpChance;
 
-            shotTimeCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+            shotTimeCounter = Random.Range(_enemyProperties.MinTimeBetweenShots, _enemyProperties.MaxTimeBetweenShots);
         }
 
         private void Update()
@@ -67,23 +57,21 @@ namespace SpaceTraveler.Enemy
             if (shotTimeCounter <= 0f)
             {
                 Shoot();
-                shotTimeCounter = Random.Range(minTimeBetweenShots, maxTimeBetweenShots);
+                shotTimeCounter = Random.Range(_enemyProperties.MinTimeBetweenShots, _enemyProperties.MaxTimeBetweenShots);
             }
         }
 
         private void Shoot()
         {
-            GameObject enemyShot = Instantiate(projectile, transform.position, Quaternion.identity);
-            enemyShot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -shotSpeed);   // shot speed in minus because it goes downward
+            GameObject enemyShot = Instantiate(_enemyProperties.Projectile, transform.position, Quaternion.identity);
+            enemyShot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -_enemyProperties.ShotSpeed);   // shot speed in minus because it goes downward
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (!isAlive) return;
 
-            string otherTag = other.tag;
-
-            if (otherTag == "Player")
+            if (other.CompareTag("Player"))
             {
                 levelController.DecreasePlayerLife();
                 KillThisEnemy();
@@ -91,7 +79,7 @@ namespace SpaceTraveler.Enemy
                 return;
             }
 
-            if (otherTag == "Shield")
+            if (other.CompareTag("Shield"))
             {
                 KillThisEnemy();
                 // damage dealer script that is attached to this game object will take care of shield
@@ -99,7 +87,7 @@ namespace SpaceTraveler.Enemy
                 return;
             }
 
-            if (otherTag == "PlayerProjectile")
+            if (other.CompareTag("PlayerProjectile"))
             {
                 DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
 
@@ -120,7 +108,7 @@ namespace SpaceTraveler.Enemy
         private void KillThisEnemy()
         {
             isAlive = false;
-            levelController.DestroyEnemy(scoreToAdd, coinToEarn);
+            levelController.DestroyEnemy(_enemyProperties.ScoreToAdd, _enemyProperties.CoinToEarn);
             SpawnPowerUP();
 
             animator.enabled = true;    // // this will destroy this (enemy) game object when animation ends
@@ -147,7 +135,7 @@ namespace SpaceTraveler.Enemy
                 switch (whichPowerUp)
                 {
                     case 0:
-                        Instantiate(powerUps.shield, transform.position, Quaternion.identity);
+                        Instantiate(_powerUps.shield, transform.position, Quaternion.identity);
                         break;
 
                     case 1:
@@ -156,33 +144,33 @@ namespace SpaceTraveler.Enemy
 
                     case 2:
                         int whichInc = (int)Random.Range(0f, 100);
-                        if (whichInc <= powerUps.shotInc0Chance)
+                        if (whichInc <= _powerUps.shotInc0Chance)
                         {
-                            Instantiate(powerUps.shotInc1, transform.position, Quaternion.identity);
+                            Instantiate(_powerUps.shotInc1, transform.position, Quaternion.identity);
                         }
                         else
                         {
-                            Instantiate(powerUps.shotInc0, transform.position, Quaternion.identity);
+                            Instantiate(_powerUps.shotInc0, transform.position, Quaternion.identity);
                         }
                         break;
 
                     case 3:
                         int whichProjectile = (int)Random.Range(0f, 100);
-                        if (whichProjectile <= powerUps.proj0Chance)
+                        if (whichProjectile <= _powerUps.proj0Chance)
                         {
-                            Instantiate(powerUps.projectile0, transform.position, Quaternion.identity);
+                            Instantiate(_powerUps.projectile0, transform.position, Quaternion.identity);
                         }
-                        else if (whichProjectile <= powerUps.proj1Chance)
+                        else if (whichProjectile <= _powerUps.proj1Chance)
                         {
-                            Instantiate(powerUps.projectile1, transform.position, Quaternion.identity);
+                            Instantiate(_powerUps.projectile1, transform.position, Quaternion.identity);
                         }
-                        else if (whichProjectile <= powerUps.proj2Chance)
+                        else if (whichProjectile <= _powerUps.proj2Chance)
                         {
-                            Instantiate(powerUps.projectile2, transform.position, Quaternion.identity);
+                            Instantiate(_powerUps.projectile2, transform.position, Quaternion.identity);
                         }
                         else
                         {
-                            Instantiate(powerUps.projectile3, transform.position, Quaternion.identity);
+                            Instantiate(_powerUps.projectile3, transform.position, Quaternion.identity);
                         }
                         break;
 
