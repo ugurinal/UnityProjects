@@ -3,38 +3,29 @@ using UnityEngine;
 
 namespace SpaceTraveler.Enemy
 {
-    [CreateAssetMenu(menuName = "Enemy Wave Config")]
+    [CreateAssetMenu(menuName = "SpaceTraveler/Wave/Wave Config")]
     public class WaveConfig : ScriptableObject
     {
-        [SerializeField] private GameObject enemyPrefab = null;
-        [SerializeField] private GameObject pathPrefab = null;
-        [SerializeField] private float timeBetweenSpawns = 0.5f;
-        [SerializeField] private float randomTimeFactor = 0.3f;
-        [SerializeField] private int numberOfEnemies = 7;
-        [SerializeField] private float _enemyMovementSpeed = 2f;
-        [SerializeField] private float timeBetweenWaves = 1f;
-
-        public GameObject EnemyPrefab { get => enemyPrefab; }
+        public GameObject EnemyPrefab = null;
+        public GameObject PathPrefab = null;
+        public float MovementSpeed = 2f;
+        public int NumberOfEnemies = 7;
+        public float RandomTimeFactor = 0.3f;
+        public float TimeBetweenWaves = 1f;
+        public float TimeBetweenSpawns = 0.5f;
 
         public List<Transform> GetWaypoints()
         {
             List<Transform> waypoints = new List<Transform>();
 
-            int childCount = pathPrefab.transform.childCount;
+            int childCount = PathPrefab.transform.childCount;
 
             for (int i = 0; i < childCount; i++)
             {
-                waypoints.Add(pathPrefab.transform.GetChild(i));
+                waypoints.Add(PathPrefab.transform.GetChild(i));
             }
 
             return waypoints;
         }
-
-        public float TimeBetweenSpawns { get => timeBetweenSpawns; }
-        public float RandomTimeFactor { get => randomTimeFactor; }
-        public int NumberOfEnemies { get => numberOfEnemies; }
-        public float MoveSpeed { get => _enemyMovementSpeed; }
-
-        public float TimeBetweenWaves { get => timeBetweenWaves; }
     }
 }
