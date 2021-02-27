@@ -43,12 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692b99194a02dd14eb700b7d6e4de9a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopSO: {fileID: 11400000, guid: fad7b12c2e5b7ab44a6ca3f087d74296, type: 2}
-  popUpPanel: {fileID: 0}
-  winGUI: {fileID: 0}
-  loseGUI: {fileID: 0}
-  scoreArea: {fileID: 0}
-  pauseButton: {fileID: 0}
-  timeText: {fileID: 0}
-  diamondRate: 100
-  powerUpChance: 50
+  _shopItems: {fileID: 11400000, guid: fad7b12c2e5b7ab44a6ca3f087d74296, type: 2}
+  _popUpPanel: {fileID: 0}
+  _winGUI: {fileID: 0}
+  _loseGUI: {fileID: 0}
+  _scoreArea: {fileID: 0}
+  _pauseButton: {fileID: 0}
+  _timeText: {fileID: 0}
+  _diamondRate: 50
+  _powerUpChance: 80
