@@ -6,30 +6,27 @@ namespace SpaceTraveler.AudioSystem
     {
         public static SoundController instance;
 
-        [SerializeField] public AudioSource musicPlayer;
-        [SerializeField] public AudioSource sfxPlayer;
+        public AudioSource musicPlayer;
+        public AudioSource sfxPlayer;
 
-        [SerializeField] public AudioClip[] menuMusics;
-        [SerializeField] public AudioClip[] levelMusics;
-        [SerializeField] public AudioClip[] SFXs;
+        public AudioClip[] menuMusics;
+        public AudioClip[] levelMusics;
+        public AudioClip[] SFXs;
 
         private void Awake()
         {
-            SetSingleton();
+            MakeSingleton();
         }
 
-        private void SetSingleton()
+        private void MakeSingleton()
         {
-            if (instance == null)
+            if (instance != null && instance != this)
             {
-                instance = this;
+                Destroy(gameObject);
             }
             else
             {
-                if (instance != this)
-                {
-                    Destroy(gameObject);
-                }
+                instance = this;
             }
 
             DontDestroyOnLoad(gameObject);
@@ -39,11 +36,6 @@ namespace SpaceTraveler.AudioSystem
         {
             musicPlayer.clip = menuMusics[0];
             musicPlayer.Play();
-        }
-
-        // Update is called once per frame
-        private void Update()
-        {
         }
 
         public void PlayMusic(string name)
@@ -66,6 +58,10 @@ namespace SpaceTraveler.AudioSystem
             musicPlayer.Play();
         }
 
+        /// <summary>
+        /// name is not used since there is only one sfx for now
+        /// </summary>
+        /// <param name="name">Name of the SFX to play</param>
         public void PlaySFX(string name)
         {
             sfxPlayer.Stop();
