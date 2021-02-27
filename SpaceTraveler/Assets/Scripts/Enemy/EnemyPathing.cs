@@ -3,44 +3,47 @@ using UnityEngine;
 
 namespace SpaceTraveler.Enemy
 {
+    #region DESCRIPTION
+
+    /// <summary>
+    /// This is the enemy pathing class that take care of enemy movement
+    /// </summary>
+
+    #endregion DESCRIPTION
+
     public class EnemyPathing : MonoBehaviour
     {
-        #region DESCRIPTION
-
-        //  *********************************************************************************************
-        //  * This is the enemy pathing class that take care of enemy movement                          *
-        //  *********************************************************************************************
-
-        #endregion DESCRIPTION
-
         #region FIELDS
 
-        private WaveConfig waveConfig;      // this variable just used for getting waypoints
-                                            // it will be assigned by enemy spawner script
+        private WaveConfig _waveConfig;      // this variable just used for getting waypoints
+                                             // it will be assigned by enemy spawner script
 
-        private List<Transform> waypoints = new List<Transform>();  // after wave config is assigned
-                                                                    // this will be assigned with data from waveconfig
+        private List<Transform> _waypoints;  // after wave config is assigned
+                                             // this will be assigned with data from waveconfig
 
-        private int waypointIndex = 0;          // where are we
+        private int _waypointIndex = 0;          // where are we
 
-        private float movementByFrame = 0f;     // movement speed by frame. get movement speed from wave config * deltatime
-        private Vector3 targetPos = Vector3.zero;   // target position
+        private float _movementByFrame = 0f;     // movement speed by frame. get movement speed from wave config * deltatime
+        private Vector3 _targetPos = Vector3.zero;   // target position
 
         #endregion FIELDS
 
-        // this function will be called first after awake function
-        // this is called before start from enemy spawner
-        // enemy spawner class will instantiate an enemy and call this function for the enemy.
+        /// <summary>
+        /// this function will be called first after awake function
+        /// this is called before start() from enemy spawner
+        /// enemy spawner class will instantiate an enemy and call this function for the enemy.
+        /// </summary>
+        /// <param name="waveConfig"></param>
         public void SetWaveConfig(WaveConfig waveConfig)
         {
-            this.waveConfig = waveConfig;
+            _waveConfig = waveConfig;
         }
 
         private void Start()
         {
-            waypoints = waveConfig.GetWaypoints();
+            _waypoints = _waveConfig.GetWaypoints();
 
-            transform.position = waypoints[waypointIndex].transform.position;
+            transform.position = _waypoints[_waypointIndex].transform.position;
         }
 
         private void Update()
@@ -50,22 +53,22 @@ namespace SpaceTraveler.Enemy
 
         private void Move()
         {
-            if (waypointIndex < waveConfig.GetWaypoints().Count)
+            if (_waypointIndex < _waveConfig.GetWaypoints().Count)
             {
-                targetPos = waypoints[waypointIndex].transform.position;
-                movementByFrame = waveConfig.MoveSpeed * Time.deltaTime;
+                _targetPos = _waypoints[_waypointIndex].transform.position;
+                _movementByFrame = _waveConfig.MovementSpeed * Time.deltaTime;
 
-                transform.position = Vector2.MoveTowards(transform.position, targetPos, movementByFrame);
+                transform.position = Vector2.MoveTowards(transform.position, _targetPos, _movementByFrame);
 
                 // if its in position go next
-                if (Vector3.Distance(targetPos, transform.position) <= 0.05f)       // 0.1 is good
+                if (Vector3.Distance(_targetPos, transform.position) <= 0.05f)       // 0.1 is good
                 {
-                    waypointIndex++;
+                    _waypointIndex++;
                 }
             }
             else
             {
-                waypointIndex = 0;
+                _waypointIndex = 0;
             }
         }
     }
