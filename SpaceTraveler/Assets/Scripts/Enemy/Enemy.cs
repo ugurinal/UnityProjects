@@ -125,7 +125,7 @@ namespace SpaceTraveler.Enemy
             if (chance <= _powerUpChance)
             {
                 int whichPowerUp = (int)Random.Range(0f, 5f);
-
+                GameObject powerUP;
                 // if powerup == 0 instantiate a shield
                 // if powerup == 1 instantiate an assistant (a minigun that is attached to ship for example)
                 // if powerup == 2 instantiate shot increment
@@ -136,7 +136,8 @@ namespace SpaceTraveler.Enemy
                 switch (whichPowerUp)
                 {
                     case 0:
-                        Instantiate(_powerUps.shield, transform.position, Quaternion.identity);
+                        powerUP = Instantiate(_powerUps.shield, transform.position, Quaternion.identity);
+                        powerUP.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -1f);
                         break;
 
                     case 1:
@@ -147,32 +148,34 @@ namespace SpaceTraveler.Enemy
                         int whichInc = (int)Random.Range(0f, 100);
                         if (whichInc <= _powerUps.shotInc0Chance)
                         {
-                            Instantiate(_powerUps.shotInc1, transform.position, Quaternion.identity);
+                            powerUP = Instantiate(_powerUps.shotInc1, transform.position, Quaternion.identity);
                         }
                         else
                         {
-                            Instantiate(_powerUps.shotInc0, transform.position, Quaternion.identity);
+                            powerUP = Instantiate(_powerUps.shotInc0, transform.position, Quaternion.identity);
                         }
+                        powerUP.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -1f);
                         break;
 
                     case 3:
                         int whichProjectile = (int)Random.Range(0f, 100);
                         if (whichProjectile <= _powerUps.proj0Chance)
                         {
-                            Instantiate(_powerUps.projectile0, transform.position, Quaternion.identity);
+                            powerUP = Instantiate(_powerUps.projectile0, transform.position, Quaternion.identity);
                         }
                         else if (whichProjectile <= _powerUps.proj1Chance)
                         {
-                            Instantiate(_powerUps.projectile1, transform.position, Quaternion.identity);
+                            powerUP = Instantiate(_powerUps.projectile1, transform.position, Quaternion.identity);
                         }
                         else if (whichProjectile <= _powerUps.proj2Chance)
                         {
-                            Instantiate(_powerUps.projectile2, transform.position, Quaternion.identity);
+                            powerUP = Instantiate(_powerUps.projectile2, transform.position, Quaternion.identity);
                         }
                         else
                         {
-                            Instantiate(_powerUps.projectile3, transform.position, Quaternion.identity);
+                            powerUP = Instantiate(_powerUps.projectile3, transform.position, Quaternion.identity);
                         }
+                        powerUP.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -1f);
                         break;
 
                     case 4:

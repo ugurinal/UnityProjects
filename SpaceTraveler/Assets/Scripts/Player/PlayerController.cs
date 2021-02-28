@@ -6,6 +6,7 @@ using SpaceTraveler.AudioSystem;
 using SpaceTraveler.DamageSystem;
 using SpaceTraveler.Enemy;
 using SpaceTraveler.LevelSystem;
+using SpaceTraveler.PowerUPSystem;
 
 namespace SpaceTraveler.Player
 {
@@ -147,7 +148,7 @@ namespace SpaceTraveler.Player
                 }
             }
 
-            yield return new WaitForSeconds(_playerProperties.FireSpeed);
+            yield return new WaitForSeconds(_playerProperties.ShootSpeed);
             _isAttacking = false;
         }
 
@@ -201,12 +202,33 @@ namespace SpaceTraveler.Player
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.tag == "EnemyProjectile")
+            if (other.CompareTag("EnemyProjectile"))
             {
                 DamageDealer damageDealer = other.GetComponent<DamageDealer>();
                 damageDealer.Hit();
 
                 _levelController.DecreasePlayerLife();
+            }
+
+            if (other.CompareTag("+1"))
+            {
+                IncrementShotCounter(1);
+                Destroy(other.gameObject);
+            }
+            else if (other.CompareTag("+2"))
+            {
+                IncrementShotCounter(2);
+                Destroy(other.gameObject);
+            }
+            else if (other.CompareTag("PowerUPProjectiles"))
+            {
+                ChangeProjectile(other.GetComponent<PowerUP>().Projectile[0]);
+                Destroy(other.gameObject);
+            }
+            else if (other.CompareTag("PowerUPShield"))
+            {
+                ShieldOn(true);
+                Destroy(other.gameObject);
             }
 
             /*

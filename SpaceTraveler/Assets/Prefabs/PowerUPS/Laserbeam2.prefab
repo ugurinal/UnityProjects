@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290a835e1d5b7934ea1bc301af0d9889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectiles:
+  Projectile:
   - {fileID: 69777656218909228, guid: 853bc935d6bb868468ec3450a3dab11c, type: 3}
 --- !u!1001 &2133292197718007709
 PrefabInstance:
@@ -146,6 +146,10 @@ PrefabInstance:
     - target: {fileID: 122498, guid: a50c88104ed178a4b9d24490a90dbc3e, type: 3}
       propertyPath: m_Name
       value: PowerUPParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 402308, guid: a50c88104ed178a4b9d24490a90dbc3e, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 402308, guid: a50c88104ed178a4b9d24490a90dbc3e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -160,6 +164,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 402308, guid: a50c88104ed178a4b9d24490a90dbc3e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 402308, guid: a50c88104ed178a4b9d24490a90dbc3e, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -169,14 +177,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 402308, guid: a50c88104ed178a4b9d24490a90dbc3e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 402308, guid: a50c88104ed178a4b9d24490a90dbc3e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 402308, guid: a50c88104ed178a4b9d24490a90dbc3e, type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 402308, guid: a50c88104ed178a4b9d24490a90dbc3e, type: 3}
@@ -192,12 +192,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19839572, guid: a50c88104ed178a4b9d24490a90dbc3e, type: 3}
-      propertyPath: InitialModule.startSize.minScalar
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 19839572, guid: a50c88104ed178a4b9d24490a90dbc3e, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19839572, guid: a50c88104ed178a4b9d24490a90dbc3e, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a50c88104ed178a4b9d24490a90dbc3e, type: 3}
