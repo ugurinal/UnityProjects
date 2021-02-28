@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8211abeb156157b49bc07122ac5a71a8, type: 3}
+  m_Name: PowerUPConfig
+  m_EditorClassIdentifier: 
+  ShieldPU: {fileID: 1787512557301783887, guid: d5490ae2044a8ce44ab191da53e000cf,
+    type: 3}
+  AssistantPU: {fileID: 0}
+  ShotInc0: {fileID: 1787512557301783887, guid: 3b0898e5e1b256244857bbc5348f2b65,
+    type: 3}
+  ShotInc0Chance: 50
+  ShotInc1: {fileID: 1787512557301783887, guid: d87c9b69ccc77c94487429c9e609b399,
+    type: 3}
+  Projectile0: {fileID: 69777656218909228, guid: 621ef1ae09a4d4449a751127af0deae3,
+    type: 3}
+  Proj0Chance: 40
+  Projectile1: {fileID: 69777656218909228, guid: 853bc935d6bb868468ec3450a3dab11c,
+    type: 3}
+  Proj1Chance: 30
+  Projectile2: {fileID: 69777656218909228, guid: f6a58ac18ec5a6f45a0f785e9525d682,
+    type: 3}
+  Proj2Chance: 20
+  Projectile3: {fileID: 69777656218909228, guid: 900d9a1dfc67194408389f5447b41f54,
+    type: 3}
+  DamageMultiplier0: {fileID: 0}
+  DamageMultiplier0Chance: 0
+  DamageMultiplier1: {fileID: 0}

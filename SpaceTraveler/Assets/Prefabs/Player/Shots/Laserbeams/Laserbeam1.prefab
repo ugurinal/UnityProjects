@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3637134714026749717}
   - component: {fileID: 5553746247282385749}
   - component: {fileID: 821409093368545281}
-  - component: {fileID: -3269143916387959695}
+  - component: {fileID: -4976689416845328236}
   m_Layer: 10
-  m_Name: Laserbeam1
+  m_Name: Laserbeam2
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9cf0783e95d2f104c9f2e6233f2a0683, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d26fd757492d2e4184c6046332bf745, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e775c2fd6f53e324986dbb659496b16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 300
---- !u!95 &-3269143916387959695
+  damage: 250
+--- !u!95 &-4976689416845328236
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0

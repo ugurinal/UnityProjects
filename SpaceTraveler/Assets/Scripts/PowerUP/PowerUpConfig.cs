@@ -4,34 +4,35 @@
 public class PowerUpConfig : ScriptableObject
 {
     [Header("Shield")]
-    [SerializeField] public GameObject shield;
+    public GameObject ShieldPU = null;
 
     [Header("Assistant")]
-    [SerializeField] public GameObject assistant;
+    [Space(7)]
+    public GameObject AssistantPU = null;
 
     [Header("Shot Increment")]
-    [SerializeField] public GameObject shotInc0;
-    [SerializeField] public float shotInc0Chance = 50f;
+    [Space(7)]
+    public GameObject ShotInc0 = null;
+    public float ShotInc0Chance = 50f;
 
-    [SerializeField] public GameObject shotInc1;
+    public GameObject ShotInc1 = null;
 
     [Header("Projectiles")]
-    [SerializeField] public GameObject projectile0;
-    [SerializeField] public float proj0Chance = 0f;
+    [Space(7)]
+    public GameObject Projectile0 = null;
+    public float Proj0Chance = 0f;
 
-    [SerializeField] public GameObject projectile1;
-    [SerializeField] public float proj1Chance = 0f;
+    public GameObject Projectile1 = null;
+    public float Proj1Chance = 0f;
 
-    [SerializeField] public GameObject projectile2;
-    [SerializeField] public float proj2Chance = 0f;
+    public GameObject Projectile2 = null;
+    public float Proj2Chance = 0f;
 
-    [SerializeField] public GameObject projectile3;
-
+    public GameObject Projectile3 = null;
 
     [Header("Damage Multiplier")]
-    [SerializeField] public GameObject damageMultiplier0;
-    [SerializeField] public float damageMultiplier0Chance = 0f;
-
-    [SerializeField] public GameObject damageMultiplier1;
-
+    [Space(7)]
+    public GameObject DamageMultiplier0 = null;
+    public float DamageMultiplier0Chance = 0f;
+    public GameObject DamageMultiplier1 = null;
 }
