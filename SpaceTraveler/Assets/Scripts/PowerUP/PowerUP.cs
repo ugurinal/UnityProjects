@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using SpaceTraveler.Player;
 
 public class PowerUP : MonoBehaviour
 {
@@ -18,19 +19,19 @@ public class PowerUP : MonoBehaviour
         {
             if (tag == "+1")
             {
-                other.GetComponent<Player>().IncrementShotCounter(1);
+                other.GetComponent<PlayerController>().IncrementShotCounter(1);
             }
             else if (tag == "+2")
             {
-                other.GetComponent<Player>().IncrementShotCounter(2);
+                other.GetComponent<PlayerController>().IncrementShotCounter(2);
             }
             else if (tag == "PowerUPProjectiles")
             {
-                other.GetComponent<Player>().ChangeProjectile(projectiles[0]);
+                other.GetComponent<PlayerController>().ChangeProjectile(projectiles[0]);
             }
             else if (tag == "PowerUPShield")
             {
-                other.GetComponent<Player>().ShieldOn(true);
+                other.GetComponent<PlayerController>().ShieldOn(true);
             }
         }
         Destroy(gameObject);

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using SpaceTraveler.Player;
 
 namespace SpaceTraveler.DamageSystem
 {
@@ -31,7 +32,7 @@ namespace SpaceTraveler.DamageSystem
 
             if (tag == "PlayerProjectile")
             {
-                _damage *= Player.instance.GetDamage();
+                _damage *= PlayerController.Instance.GetDamage();
             }
         }
 
@@ -43,6 +44,7 @@ namespace SpaceTraveler.DamageSystem
             if (other.tag == "Shield")
             {
                 other.gameObject.SetActive(false);
+                Hit();
             }
         }
 

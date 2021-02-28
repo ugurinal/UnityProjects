@@ -2,12 +2,14 @@
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using SpaceTraveler.Player;
 
 namespace SpaceTraveler.LevelSystem
 {
     public class LevelController : MonoBehaviour
     {
-        public static LevelController Instance = null;
+        private static LevelController _instance = null;
+        public static LevelController Instance { get => _instance; }
 
         [SerializeField] private ShopItems _shopItems = null;
 
@@ -31,7 +33,7 @@ namespace SpaceTraveler.LevelSystem
         private int _enemyLeft = 0;
 
         private GameManager _gameManager = null;
-        private Player _player = null;
+        private PlayerController _player = null;
         private TextMeshProUGUI _scoreTMP = null;
 
         private string sceneName;
@@ -63,18 +65,18 @@ namespace SpaceTraveler.LevelSystem
             // instantiate selected ship
             Instantiate(_shopItems.GetItem(_gameManager.SelectedShip).GetShipPrefab(), new Vector3(0f, -8f - 0f), quaternion.identity);
 
-            _player = Player.instance;
+            _player = PlayerController.Instance;
         }
 
         private void MakeSingleton()
         {
-            if (Instance != null && Instance != this)
+            if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
             }
             else
             {
-                Instance = this;
+                _instance = this;
             }
         }
 
@@ -194,7 +196,7 @@ namespace SpaceTraveler.LevelSystem
                     _gameManager.LevelStars[_currentLevel - 1] = _activeStar;
                 }
             }
-            else if (_enemyLeft < _enemySize / 2)
+            else if (_enemyLeft <= _enemySize / 2)
             {
                 _activeStar = 1;
 
@@ -241,6 +243,8 @@ namespace SpaceTraveler.LevelSystem
 
         public void DecreasePlayerLife()
         {
+            Debug.Log("Decrease Player Life");
+
             _playerLife--;
             if (_playerLife <= 0)
             {

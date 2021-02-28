@@ -19,7 +19,8 @@ namespace SpaceTraveler.Enemy
     {
         #region FIELDS
 
-        public static EnemySpawner Instance = null;
+        private static EnemySpawner _instance = null;
+        public static EnemySpawner Instance { get => _instance; }
 
         [Header("Waves")]
         [SerializeField] private List<WaveConfig> _waveConfigs = null;
@@ -45,13 +46,13 @@ namespace SpaceTraveler.Enemy
 
         private void MakeSingleton()
         {
-            if (Instance != null && Instance != this)
+            if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
             }
             else
             {
-                Instance = this;
+                _instance = this;
             }
         }
 
