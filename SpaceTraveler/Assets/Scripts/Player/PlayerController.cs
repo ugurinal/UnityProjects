@@ -202,8 +202,19 @@ namespace SpaceTraveler.Player
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            Debug.Log(other.name);
+
             if (other.CompareTag("EnemyProjectile"))
             {
+                // if shield is active
+                if (transform.GetChild(1).gameObject.activeSelf)
+                {
+                    Debug.Log("Shield is active");
+                    transform.GetChild(1).gameObject.SetActive(false);
+                    other.GetComponent<DamageDealer>().Hit();
+                    return;
+                }
+
                 DamageDealer damageDealer = other.GetComponent<DamageDealer>();
                 damageDealer.Hit();
 

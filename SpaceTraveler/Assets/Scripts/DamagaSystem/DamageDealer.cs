@@ -30,21 +30,9 @@ namespace SpaceTraveler.DamageSystem
             // if it is, it updates the damage by player ship
             // because every player ship has its own damage multiplier
 
-            if (tag == "PlayerProjectile")
+            if (CompareTag("PlayerProjectile"))
             {
                 _damage *= PlayerController.Instance.GetDamage();
-            }
-        }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            // if laser hit shield, deactivate it
-            // enemy can trigger this function too
-
-            if (other.tag == "Shield")
-            {
-                other.gameObject.SetActive(false);
-                Hit();
             }
         }
 
