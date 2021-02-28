@@ -1,58 +1,61 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
-[System.Serializable]
-public class PlayerData
+namespace SpaceTraveler.SaveAndLoadSystem
 {
-    public int coin;
-    public int diamond;
-
-    public int levelReached;
-    public List<int> highScores;
-    public List<int> levelStars;
-
-    public List<int> purchasedShips;
-    public int selectedShip;
-
-    public bool oneShotPU;
-    public bool twoShotPU;
-    public bool lifePU;
-
-    public PlayerData(GameManager gameManager)
+    [System.Serializable]
+    public class PlayerData
     {
-        coin = gameManager.Coin;
-        diamond = gameManager.Diamond;
-        levelReached = gameManager.LevelReached;
-        purchasedShips = gameManager.PurchasedShips;
-        selectedShip = gameManager.SelectedShip;
-        oneShotPU = gameManager.OneShotPU;
-        twoShotPU = gameManager.TwoShotPU;
-        lifePU = gameManager.LifePU;
-        levelStars = gameManager.LevelStars;
-        highScores = gameManager.HighScores;
-    }
+        public int Coin;
+        public int Diamond;
 
-    public PlayerData()
-    {
-        List<int> highScores = new List<int>();
-        highScores.Add(0);
+        public int LevelReached;
+        public List<int> HighScores;
+        public List<int> LevelStars;
 
-        List<int> levelStars = new List<int>();
-        levelStars.Add(0);
+        public List<int> PurchasedShips;
+        public int SelectedShip;
 
-        List<int> purchasedShips = new List<int>();
-        purchasedShips.Add(0);
+        public bool OneShotPU;
+        public bool TwoShotPU;
+        public bool LifePU;
 
-        coin = 5000;
-        diamond = 10;
-        levelReached = 1;
-        this.highScores = highScores;
-        this.levelStars = levelStars;
-        this.purchasedShips = purchasedShips;
-        selectedShip = 0;
-        oneShotPU = false;
-        twoShotPU = false;
-        lifePU = false;
+        public PlayerData(GameManager gameManager)
+        {
+            Coin = gameManager.Coin;
+            Diamond = gameManager.Diamond;
+            LevelReached = gameManager.LevelReached;
+            PurchasedShips = gameManager.PurchasedShips;
+            SelectedShip = gameManager.SelectedShip;
+            OneShotPU = gameManager.OneShotPU;
+            TwoShotPU = gameManager.TwoShotPU;
+            LifePU = gameManager.LifePU;
+            LevelStars = gameManager.LevelStars;
+            HighScores = gameManager.HighScores;
+        }
+
+        public PlayerData()
+        {
+            //  if there is no data
+            //  this will be initial data
+            List<int> highScores = new List<int>();
+            highScores.Add(0);
+
+            List<int> levelStars = new List<int>();
+            levelStars.Add(0);
+
+            List<int> purchasedShips = new List<int>();
+            purchasedShips.Add(0);
+
+            Coin = 5000;
+            Diamond = 10;
+            LevelReached = 1;
+            HighScores = highScores;
+            LevelStars = levelStars;
+            PurchasedShips = purchasedShips;
+            SelectedShip = 0;
+            OneShotPU = false;
+            TwoShotPU = false;
+            LifePU = false;
+        }
     }
 }

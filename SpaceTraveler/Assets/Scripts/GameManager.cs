@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using SpaceTraveler.SaveAndLoadSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -68,16 +69,16 @@ public class GameManager : MonoBehaviour
         Debug.Log("Loading player data...");
         PlayerData data = SaveLoadManager.LoadPlayer();
 
-        Coin = data.coin;
-        Diamond = data.diamond;
-        LevelReached = data.levelReached;
-        HighScores = data.highScores;
-        LevelStars = data.levelStars;
-        PurchasedShips = data.purchasedShips;
-        SelectedShip = data.selectedShip;
-        OneShotPU = data.oneShotPU;
-        TwoShotPU = data.twoShotPU;
-        LifePU = data.lifePU;
+        Coin = data.Coin;
+        Diamond = data.Diamond;
+        LevelReached = data.LevelReached;
+        HighScores = data.HighScores;
+        LevelStars = data.LevelStars;
+        PurchasedShips = data.PurchasedShips;
+        SelectedShip = data.SelectedShip;
+        OneShotPU = data.OneShotPU;
+        TwoShotPU = data.TwoShotPU;
+        LifePU = data.LifePU;
     }
 
     public void IncreaseCoin(int coin)
