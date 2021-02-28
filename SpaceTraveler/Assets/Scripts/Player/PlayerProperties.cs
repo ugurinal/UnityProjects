@@ -11,6 +11,7 @@ namespace SpaceTraveler.Player
         public float FireSpeed = 0.18f;
 
         [Header("Player Movement")]
+        [Space(7)]
         public Vector3 PlayerInstantiatePos = new Vector3(0f, -8f - 0f);
         public Vector3 PlayerLerpPos = new Vector3(0f, -3.5f, 0f);
 
@@ -20,8 +21,11 @@ namespace SpaceTraveler.Player
         public float XPadding = 0.4f;
 
         [Header("Projectile Properties")]
+        [Space(7)]
         public GameObject ProjectilePrefab = null;
 
+        [Header("Projectile Directions")]
+        [Space(7)]
         public Vector3[] OddLaserPositions = new[] {
         new Vector3(0, 1.5f, 0),
         new Vector3(-0.2f, 1.5f, 0),
