@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "PowerUP Config")]
+[CreateAssetMenu(menuName = "SpaceTraveler/PowerUP/PowerUP Items")]
 public class PowerUpConfig : ScriptableObject
 {
     [Header("Shield")]
