@@ -23,3 +23,8 @@ MonoBehaviour:
     IsDiamond: 0
     ShipPrefab: {fileID: 1905584648494983915, guid: 3aeb162242b8d7c44a28db8953fb1e2d,
       type: 3}
+  - Name: Green Falcon
+    Price: 1000
+    IsDiamond: 0
+    ShipPrefab: {fileID: 1905584648494983915, guid: c39033637a7da6744bf0fba68f635356,
+      type: 3}
