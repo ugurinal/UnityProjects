@@ -397,13 +397,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9299d946250303a41b5e25831efd0672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLife: 5
-  playerDmg: 1.1
-  MovementSpeedHorizontal: 6
-  MovementSpeedVertical: 6
-  MovementSpeedAndroid: 2
-  xPadding: 0.4
-  projectile: {fileID: 69777656218909228, guid: 644ed54f946aaba46a44472d33f8c8ad,
-    type: 3}
-  shotCounter: 1
-  fireSpeed: 0.18
+  _playerProperties: {fileID: 11400000, guid: 0413bf6d2567d18468d1b7ec38252aa8, type: 2}
