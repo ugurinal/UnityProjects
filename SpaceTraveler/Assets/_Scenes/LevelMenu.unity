@@ -6995,26 +6995,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f8a13d55807f240b1273e237ec197a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUpPanel: {fileID: 1769221587}
-  levelGUI: {fileID: 985035917}
-  levelHolder: {fileID: 1881658896}
-  worldOne: {fileID: 1282413631}
-  worldTwo: {fileID: 2134070470}
-  worldOneButton: {fileID: 1767552931}
-  worldTwoButton: {fileID: 1768914424}
-  worldActiveSprites:
+  _popUpPanel: {fileID: 1743014416}
+  _levelGUI: {fileID: 985035917}
+  _levelHolder: {fileID: 1881658896}
+  _worldOne: {fileID: 1282413631}
+  _worldTwo: {fileID: 2134070470}
+  _worldOneButton: {fileID: 1767552931}
+  _worldTwoButton: {fileID: 1768914424}
+  _worldActiveSprites:
   - {fileID: 21300000, guid: 52def2b29449b304d9771fd1b94cbb01, type: 3}
   - {fileID: 21300000, guid: 11db5b10154f8e74ebfdf8ef7ab11b25, type: 3}
   - {fileID: 21300000, guid: 2cc74226be31bcf418161621e8e1eb7f, type: 3}
   - {fileID: 21300000, guid: fc0bc8fdfb6aadd46b73bc044137837a, type: 3}
-  backGround: {fileID: 1881658896}
-  backGroundSprites:
+  _backGround: {fileID: 1881658896}
+  _backGroundSprites:
   - {fileID: 21300000, guid: d019087669d00c247b1b4c1b81377e90, type: 3}
   - {fileID: 21300000, guid: f7bea6c5726eaeb44a69e9b2d78803fc, type: 3}
-  - {fileID: 21300000, guid: 33b07cef106132f4baa3a9335de1154c, type: 3}
-  playerShip: {fileID: 1935446569}
-  playerZSpeed: {x: 0, y: 40, z: 200}
-  warpEffect: {fileID: 2016508549}
+  _playerShip: {fileID: 1935446569}
+  _playerZSpeed: {x: 0, y: 40, z: 90}
+  _warpEffect: {fileID: 2016508549}
 --- !u!1001 &690087607
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17277,7 +17276,7 @@ GameObject:
   - component: {fileID: 1935446572}
   - component: {fileID: 1935446571}
   m_Layer: 5
-  m_Name: Ship
+  m_Name: PlayerShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
