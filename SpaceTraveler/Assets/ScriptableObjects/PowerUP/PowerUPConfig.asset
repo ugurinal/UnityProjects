@@ -20,16 +20,16 @@ MonoBehaviour:
   ShotInc0Chance: 50
   ShotInc1: {fileID: 1787512557301783887, guid: d87c9b69ccc77c94487429c9e609b399,
     type: 3}
-  Projectile0: {fileID: 69777656218909228, guid: 621ef1ae09a4d4449a751127af0deae3,
+  Projectile0: {fileID: 1787512557301783887, guid: 89ffa17a84aa531459cc8d7019b3f4b2,
     type: 3}
   Proj0Chance: 40
-  Projectile1: {fileID: 69777656218909228, guid: 853bc935d6bb868468ec3450a3dab11c,
+  Projectile1: {fileID: 1787512557301783887, guid: f97833905af92bd4aa44bb0fcfe41bc3,
     type: 3}
   Proj1Chance: 30
-  Projectile2: {fileID: 69777656218909228, guid: f6a58ac18ec5a6f45a0f785e9525d682,
+  Projectile2: {fileID: 1787512557301783887, guid: ef003f86a55de474582097e1fa481a10,
     type: 3}
   Proj2Chance: 20
-  Projectile3: {fileID: 69777656218909228, guid: 900d9a1dfc67194408389f5447b41f54,
+  Projectile3: {fileID: 1787512557301783887, guid: 13dffa6b46c7c1e40bd4912034090231,
     type: 3}
   DamageMultiplier0: {fileID: 0}
   DamageMultiplier0Chance: 0

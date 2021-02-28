@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using SpaceTraveler.ShopSystem;
 
 namespace SpaceTraveler.LevelSystem
 {
@@ -59,9 +60,9 @@ namespace SpaceTraveler.LevelSystem
 
         private void UpdateButtons()
         {
-            _oneShotPowerUpBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + _powerUps.GetItem(0).GetPrice();
-            _twoShotPowerUpBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + _powerUps.GetItem(1).GetPrice();
-            _lifePowerUpBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + _powerUps.GetItem(2).GetPrice();
+            _oneShotPowerUpBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + _powerUps._ShopItems[0].Price;
+            _twoShotPowerUpBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + _powerUps._ShopItems[1].Price;
+            _lifePowerUpBtn.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "" + _powerUps._ShopItems[2].Price;
 
             if (_gameManager.OneShotPU)
             {
@@ -85,7 +86,7 @@ namespace SpaceTraveler.LevelSystem
 
         private void BuyOneShotPowerUp()
         {
-            int price = _powerUps.GetItem(0).GetPrice();
+            int price = _powerUps._ShopItems[0].Price;
 
             if (_gameManager.OneShotPU)
             {
@@ -116,7 +117,7 @@ namespace SpaceTraveler.LevelSystem
 
         private void BuyTwoShotPowerUp()
         {
-            int price = _powerUps.GetItem(1).GetPrice();
+            int price = _powerUps._ShopItems[1].Price;
 
             if (_gameManager.TwoShotPU)
             {
@@ -147,7 +148,7 @@ namespace SpaceTraveler.LevelSystem
 
         private void BuyLifePowerUp()
         {
-            int price = _powerUps.GetItem(2).GetPrice();
+            int price = _powerUps._ShopItems[2].Price;
 
             if (_gameManager.LifePU)
             {

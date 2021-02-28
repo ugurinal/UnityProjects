@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using SpaceTraveler.ShopSystem;
 
 public class MenuPopUpUI : MonoBehaviour
 {
@@ -131,15 +132,15 @@ public class MenuPopUpUI : MonoBehaviour
     {
         for (int i = 0; i < shopItems.Length; i++)
         {
-            if (shopSO.GetItem(i).IsDiamond())
+            if (shopSO._ShopItems[i].IsDiamond)
             {
                 shopItems[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
                 shopItems[i].transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
             }
 
             // The code below gets the data from scriptable object and adjust the shop items in the shop like price, name etc
-            shopItems[i].transform.GetChild(2).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = shopSO.GetItem(i).GetPrice().ToString();
-            shopItems[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = shopSO.GetItem(i).GetName();
+            shopItems[i].transform.GetChild(2).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = shopSO._ShopItems[i].Price.ToString();
+            shopItems[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = shopSO._ShopItems[i].Name;
         }
 
         UpdateUseButton();
@@ -147,8 +148,8 @@ public class MenuPopUpUI : MonoBehaviour
 
     public void PurchaseShip(int index)
     {
-        int shipPrice = shopSO.GetItem(index).GetPrice();
-        bool isDiamond = shopSO.GetItem(index).IsDiamond();
+        int shipPrice = shopSO._ShopItems[index].Price;
+        bool isDiamond = shopSO._ShopItems[index].IsDiamond;
 
         // Check if player can effort, if he can then progress else not
         if (!gameManager.CanEffort(shipPrice, isDiamond))

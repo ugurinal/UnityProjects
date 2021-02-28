@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da61d5e689e708644bde57d7e6d73727, type: 3}
-  m_Name: PowerUpShop
+  m_Name: ShopItems
   m_EditorClassIdentifier: 
-  shopItems:
-  - name: OneShotPowerUp
-    price: 1
-    isDiamond: 1
-    shipPrefab: {fileID: 0}
-  - name: TwoShotPowerUp
-    price: 2
-    isDiamond: 1
-    shipPrefab: {fileID: 0}
-  - name: LifePowerUp
-    price: 5
-    isDiamond: 1
-    shipPrefab: {fileID: 0}
+  _ShopItems:
+  - Name: Red Falcon
+    Price: 0
+    IsDiamond: 0
+    ShipPrefab: {fileID: 1905584648494983915, guid: 200f0fc07411d4846936f17afa037ef2,
+      type: 3}
+  - Name: Blue Falcon
+    Price: 2000
+    IsDiamond: 0
+    ShipPrefab: {fileID: 1905584648494983915, guid: 3aeb162242b8d7c44a28db8953fb1e2d,
+      type: 3}

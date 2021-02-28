@@ -1,43 +1,21 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Shop Items")]
-public class ShopItems : ScriptableObject
+namespace SpaceTraveler.ShopSystem
 {
-    [System.Serializable]
-    public class Items
+    [CreateAssetMenu(menuName = "SpaceTraveler/Shop/ShopItems")]
+    public class ShopItems : ScriptableObject
     {
-        [SerializeField] private string name = "";
-        [SerializeField] private int price = 0;
-        [SerializeField] private bool isDiamond = false;
-
-        [SerializeField] private GameObject shipPrefab = null;
-
-        public bool IsDiamond()
+        [System.Serializable]
+        public class Items
         {
-            return isDiamond;
+            public string Name = "";
+            public int Price = 0;
+            public bool IsDiamond = false;
+
+            public GameObject ShipPrefab = null;
         }
 
-        public int GetPrice()
-        {
-            return price;
-        }
-
-        public GameObject GetShipPrefab()
-        {
-            return shipPrefab;
-        }
-
-        public string GetName()
-        {
-            return name;
-        }
-    }
-
-    [SerializeField] public List<Items> shopItems = null;
-
-    public Items GetItem(int index)
-    {
-        return shopItems[index];
+        public List<Items> _ShopItems = null;
     }
 }
