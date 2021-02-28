@@ -9,7 +9,7 @@ namespace SpaceTraveler.ShopSystem
         [System.Serializable]
         public class Items
         {
-            public string Name = "";
+            public string Name = null;
             public int Price = 0;
             public bool IsDiamond = false;
 
