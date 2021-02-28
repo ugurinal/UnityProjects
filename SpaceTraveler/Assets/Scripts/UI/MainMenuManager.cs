@@ -2,65 +2,68 @@
 using TMPro;
 using UnityEngine;
 
-public class MainMenuManager : MonoBehaviour
+namespace SpaceTraveler.UISystem
 {
-    public static MainMenuManager instance = null;
-
-    [SerializeField] private GameObject avatarArea = null;
-
-    [SerializeField] private List<TextMeshProUGUI> coinTexts = null;
-    [SerializeField] private List<TextMeshProUGUI> diaTexts = null;
-
-    private int diamondCounter = 0;
-    private int coinCounter = 0;
-
-    // Start is called before the first frame update
-    private void Start()
+    public class MainMenuManager : MonoBehaviour
     {
-        SetInstance();
+        private static MainMenuManager _instance;
+        public static MainMenuManager Instance { get => _instance; }
 
-        SetCoinAndDiamond();
+        [SerializeField] private GameObject _avatarArea = null;
 
-        TextMeshProUGUI nicknameTMP = avatarArea.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        [SerializeField] private List<TextMeshProUGUI> _coinTexts = null;
+        [SerializeField] private List<TextMeshProUGUI> _diaTexts = null;
 
-        nicknameTMP.text = GameManager.Instance.PlayerName;
+        private int _diamondCounter = 0;
+        private int _coinCounter = 0;
 
-        for (int i = 0; i < coinTexts.Count; i++)
+        private void Awake()
         {
-            coinTexts[i].text = coinCounter.ToString();
-            diaTexts[i].text = diamondCounter.ToString();
+            MakeSingleton();
         }
-    }
 
-    private void SetCoinAndDiamond()
-    {
-        coinCounter = GameManager.Instance.Coin;
-        diamondCounter = GameManager.Instance.Diamond;
-    }
-
-    private void SetInstance()
-    {
-        if (instance == null)
+        private void Start()
         {
-            instance = this;
+            SetCoinAndDiamond();
+
+            TextMeshProUGUI nicknameTMP = _avatarArea.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+
+            nicknameTMP.text = GameManager.Instance.PlayerName;
+
+            for (int i = 0; i < _coinTexts.Count; i++)
+            {
+                _coinTexts[i].text = _coinCounter.ToString();
+                _diaTexts[i].text = _diamondCounter.ToString();
+            }
         }
-        else
+
+        private void MakeSingleton()
         {
-            if (instance != this)
+            if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
             }
+            else
+            {
+                _instance = this;
+            }
         }
-    }
 
-    public void UpdateCurrency()
-    {
-        SetCoinAndDiamond();
-
-        for (int i = 0; i < coinTexts.Count; i++)
+        private void SetCoinAndDiamond()
         {
-            coinTexts[i].text = coinCounter.ToString();
-            diaTexts[i].text = diamondCounter.ToString();
+            _coinCounter = GameManager.Instance.Coin;
+            _diamondCounter = GameManager.Instance.Diamond;
+        }
+
+        public void UpdateCurrency()
+        {
+            SetCoinAndDiamond();
+
+            for (int i = 0; i < _coinTexts.Count; i++)
+            {
+                _coinTexts[i].text = _coinCounter.ToString();
+                _diaTexts[i].text = _diamondCounter.ToString();
+            }
         }
     }
 }

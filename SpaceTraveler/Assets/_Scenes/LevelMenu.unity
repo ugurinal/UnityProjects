@@ -18648,27 +18648,17 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 463897053882727362, guid: 3206e3c3ad452df4fbf2c670753b0360,
         type: 3}
-      propertyPath: avatarArea
+      propertyPath: _avatarArea
       value: 
       objectReference: {fileID: 8811839771878584733}
     - target: {fileID: 463897053882727362, guid: 3206e3c3ad452df4fbf2c670753b0360,
         type: 3}
-      propertyPath: diaTexts.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 463897053882727362, guid: 3206e3c3ad452df4fbf2c670753b0360,
-        type: 3}
-      propertyPath: coinTexts.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 463897053882727362, guid: 3206e3c3ad452df4fbf2c670753b0360,
-        type: 3}
-      propertyPath: diaTexts.Array.data[0]
+      propertyPath: _diaTexts.Array.data[0]
       value: 
       objectReference: {fileID: 8813781043372950166}
     - target: {fileID: 463897053882727362, guid: 3206e3c3ad452df4fbf2c670753b0360,
         type: 3}
-      propertyPath: coinTexts.Array.data[0]
+      propertyPath: _coinTexts.Array.data[0]
       value: 
       objectReference: {fileID: 4046874174114989856}
     - target: {fileID: 463897053882727364, guid: 3206e3c3ad452df4fbf2c670753b0360,

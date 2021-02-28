@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using SpaceTraveler.Player;
 using SpaceTraveler.ShopSystem;
+using SpaceTraveler.UISystem;
 
 namespace SpaceTraveler.LevelSystem
 {

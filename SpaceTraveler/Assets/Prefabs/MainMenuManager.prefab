@@ -43,10 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ec60cb099e6484f904abcf4a3de269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avatarArea: {fileID: 0}
-  coinTexts:
+  _avatarArea: {fileID: 0}
+  _coinTexts:
   - {fileID: 0}
-  - {fileID: 0}
-  diaTexts:
-  - {fileID: 0}
+  _diaTexts:
   - {fileID: 0}

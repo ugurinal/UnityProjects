@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using SpaceTraveler.ShopSystem;
+using SpaceTraveler.UISystem;
 
 namespace SpaceTraveler.LevelSystem
 {
@@ -96,7 +97,7 @@ namespace SpaceTraveler.LevelSystem
                 _gameManager.SaveData();
 
                 _gameManager.IncreaseDiamond(price);
-                MainMenuManager.instance.UpdateCurrency();
+                MainMenuManager.Instance.UpdateCurrency();
                 return;
             }
 
@@ -111,7 +112,7 @@ namespace SpaceTraveler.LevelSystem
             _gameManager.SaveData();
 
             _gameManager.IncreaseDiamond(-price);
-            MainMenuManager.instance.UpdateCurrency();
+            MainMenuManager.Instance.UpdateCurrency();
             Debug.Log("Powerup one bought!");
         }
 
@@ -127,7 +128,7 @@ namespace SpaceTraveler.LevelSystem
                 _gameManager.SaveData();
 
                 _gameManager.IncreaseDiamond(price);
-                MainMenuManager.instance.UpdateCurrency();
+                MainMenuManager.Instance.UpdateCurrency();
                 return;
             }
 
@@ -142,7 +143,7 @@ namespace SpaceTraveler.LevelSystem
             _gameManager.SaveData();
 
             _gameManager.IncreaseDiamond(-price);
-            MainMenuManager.instance.UpdateCurrency();
+            MainMenuManager.Instance.UpdateCurrency();
             Debug.Log("Powerup two bought!");
         }
 
@@ -158,7 +159,7 @@ namespace SpaceTraveler.LevelSystem
                 _gameManager.SaveData();
 
                 _gameManager.IncreaseDiamond(price);
-                MainMenuManager.instance.UpdateCurrency();
+                MainMenuManager.Instance.UpdateCurrency();
                 return;
             }
 
@@ -173,7 +174,7 @@ namespace SpaceTraveler.LevelSystem
             _gameManager.SaveData();
 
             _gameManager.IncreaseDiamond(-price);
-            MainMenuManager.instance.UpdateCurrency();
+            MainMenuManager.Instance.UpdateCurrency();
             Debug.Log("Powerup life bought!");
         }
     }

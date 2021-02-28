@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 362188055}
   - component: {fileID: 362188058}
   - component: {fileID: 362188057}
-  - component: {fileID: 1598933189722278002}
+  - component: {fileID: 362188056}
   m_Layer: 14
   m_Name: Sphere
   m_TagString: Shield
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!58 &1598933189722278002
+--- !u!58 &362188056
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 1535596269}
   - component: {fileID: 1905584648494983908}
   m_Layer: 8
-  m_Name: PlayerBlue
+  m_Name: PlayerGreen
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,8 +274,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3e3794c8a4f4b8d48bf7d5e111236140, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4027e5d3b44db73498f8be4c68846724, type: 3}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -397,4 +397,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9299d946250303a41b5e25831efd0672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerProperties: {fileID: 11400000, guid: 0413bf6d2567d18468d1b7ec38252aa8, type: 2}
+  _playerProperties: {fileID: 11400000, guid: 27608b7cf24438f4084fd6648bbbf89c, type: 2}

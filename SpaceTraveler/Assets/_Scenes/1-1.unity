@@ -1326,46 +1326,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 202152587390747929, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
         type: 3}
-      propertyPath: canvas
-      value: 
-      objectReference: {fileID: 25445049}
-    - target: {fileID: 202152587390747929, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
-        type: 3}
-      propertyPath: pauseGUI
+      propertyPath: _pauseGUI
       value: 
       objectReference: {fileID: 1268286730}
     - target: {fileID: 202152587390747929, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
         type: 3}
-      propertyPath: mainPopUp
+      propertyPath: _mainPopUp
       value: 
       objectReference: {fileID: 514022934}
-    - target: {fileID: 202152587390747929, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
-        type: 3}
-      propertyPath: popUpPanel
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 202152587390747929, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
-        type: 3}
-      propertyPath: outsideClickPanel
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 202152587390747929, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
-        type: 3}
-      propertyPath: outsideClickButton
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 202152587390747929, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
-        type: 3}
-      propertyPath: pauseSprite.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: e5f48cce6cf9e434db4b3550a9ff7ac7,
-        type: 3}
-    - target: {fileID: 202152587390747929, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
-        type: 3}
-      propertyPath: pauseSprite.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 61490220f9ef420409ab6604d2898fc5,
-        type: 3}
     - target: {fileID: 202152587390747932, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
         type: 3}
       propertyPath: m_Name
@@ -1415,16 +1383,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 324
-      objectReference: {fileID: 0}
-    - target: {fileID: 202152587390747933, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 202152587390747933, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 202152587390747933, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
         type: 3}
@@ -1485,17 +1443,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 202152587390747935, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: e5f48cce6cf9e434db4b3550a9ff7ac7,
-        type: 3}
-    - target: {fileID: 202152587390747935, guid: 7690bd1ee56875e48b4d94108ba0a3c5,
-        type: 3}
-      propertyPath: m_PreserveAspect
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7690bd1ee56875e48b4d94108ba0a3c5, type: 3}
