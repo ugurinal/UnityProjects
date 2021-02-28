@@ -8,7 +8,7 @@ namespace SpaceTraveler.Player
         [Header("Player Properties")]
         public int PlayerLife = 0;
         public float PlayerDmg = 0;
-        public float FireSpeed = 0.18f;
+        public float ShootSpeed = 0.18f;
 
         [Header("Player Movement")]
         [Space(7)]
