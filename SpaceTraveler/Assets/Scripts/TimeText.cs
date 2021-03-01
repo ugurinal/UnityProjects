@@ -2,32 +2,34 @@
 using UnityEngine;
 using SpaceTraveler.ManagerSystem;
 
-public class TimeText : MonoBehaviour
+namespace SpaceTraveler.Utilities
 {
-    private GameManager gameManager;
-
-    private TextMeshProUGUI timeText;
-
-    private void Start()
+    public class TimeText : MonoBehaviour
     {
-        gameManager = GameManager.Instance;
-        timeText = GetComponent<TextMeshProUGUI>();
-    }
+        private GameManager _gameManager;
 
-    // Update is called once per frame
-    private void Update()
-    {
-        if (!gameManager.IsPaused)
+        private TextMeshProUGUI _timeText;
+
+        private void Start()
         {
-            timeText.text = TimeFormat(Time.timeSinceLevelLoad);
+            _gameManager = GameManager.Instance;
+            _timeText = GetComponent<TextMeshProUGUI>();
         }
-    }
 
-    public string TimeFormat(float timer)
-    {
-        int minutes = Mathf.FloorToInt(timer / 60F);
-        int seconds = Mathf.FloorToInt(timer - minutes * 60);
-        string niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
-        return niceTime;
+        private void Update()
+        {
+            if (!_gameManager.IsPaused)
+            {
+                _timeText.text = TimeFormat(Time.timeSinceLevelLoad);
+            }
+        }
+
+        public string TimeFormat(float timer)
+        {
+            int minutes = Mathf.FloorToInt(timer / 60F);
+            int seconds = Mathf.FloorToInt(timer - minutes * 60);
+            string niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+            return niceTime;
+        }
     }
 }

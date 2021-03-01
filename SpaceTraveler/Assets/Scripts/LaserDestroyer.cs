@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
-public class LaserDestroyer : MonoBehaviour
+namespace SpaceTraveler.Utilities
 {
-    // if projectile cross the bounds of screen
-    // this function will destroy them
-    private void OnTriggerEnter2D(Collider2D other)
+    public class LaserDestroyer : MonoBehaviour
     {
-        Destroy(other.gameObject);
+        // if projectile cross the bounds of screen
+        // this function will destroy them
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

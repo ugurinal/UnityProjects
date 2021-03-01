@@ -50,11 +50,10 @@ namespace SpaceTraveler.ManagerSystem
             if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
+                return;
             }
-            else
-            {
-                DontDestroyOnLoad(gameObject);
-            }
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
         public void SaveData()

@@ -19,6 +19,11 @@ public class GoogleAuth : MonoBehaviour
     {
         gameManager = GameManager.Instance;
 
+        if (gameManager == null)
+        {
+            Debug.Log("Game manager not initialized!");
+        }
+
         text.text = "STATUS : NULL";
 
         if (platform == null)
