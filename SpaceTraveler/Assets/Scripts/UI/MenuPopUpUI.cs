@@ -182,6 +182,8 @@ namespace SpaceTraveler.UISystem
                 CloseSettings();
             if (_shopUI.activeSelf)
                 CloseShop();
+            if (_confirmGUI.activeSelf)
+                _confirmGUI.SetActive(false);
 
             Vector3 temp = Camera.main.ScreenToWorldPoint(clickPosition);
             temp.z = 0;
