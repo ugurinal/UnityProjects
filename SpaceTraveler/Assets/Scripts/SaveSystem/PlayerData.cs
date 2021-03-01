@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SpaceTraveler.ManagerSystem;
 
 namespace SpaceTraveler.SaveAndLoadSystem
 {

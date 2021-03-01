@@ -6,6 +6,7 @@ using GooglePlayGames.BasicApi;
 using UnityEngine.SocialPlatforms;
 using TMPro;
 using UnityEngine.SceneManagement;
+using SpaceTraveler.ManagerSystem;
 
 public class GoogleAuth : MonoBehaviour
 {

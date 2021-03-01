@@ -7,6 +7,7 @@ using SpaceTraveler.DamageSystem;
 using SpaceTraveler.Enemy;
 using SpaceTraveler.LevelSystem;
 using SpaceTraveler.PowerUPSystem;
+using SpaceTraveler.ManagerSystem;
 
 namespace SpaceTraveler.Player
 {

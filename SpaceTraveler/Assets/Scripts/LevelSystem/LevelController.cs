@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using SpaceTraveler.Player;
 using SpaceTraveler.ShopSystem;
 using SpaceTraveler.UISystem;
+using SpaceTraveler.ManagerSystem;
 
 namespace SpaceTraveler.LevelSystem
 {

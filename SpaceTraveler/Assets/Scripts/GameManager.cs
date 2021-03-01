@@ -2,153 +2,139 @@
 using UnityEngine;
 using SpaceTraveler.SaveAndLoadSystem;
 
-public class GameManager : MonoBehaviour
+namespace SpaceTraveler.ManagerSystem
 {
     #region DESCRIPTION
 
-    //  *********************************************************************************************
-    //  * This is the gamemanager class that almost control everything.                             *
-    //  * This script take care of player pref (save), game current state, shop system etc.         *
-    //  *********************************************************************************************
+    /// <summary>
+    /// This is the gamemanager class that almost control everything.
+    /// This script take care of player pref (save), game current state, shop system etc.
+    /// </summary>
 
     #endregion DESCRIPTION
 
-    #region FIELDS
-
-    public static GameManager Instance;
-    public string PlayerName { get; set; } = null;
-    public int Coin { get; set; } = 5000;
-    public int Diamond { get; set; } = 10;
-    public int LevelReached { get; set; } = 0;
-    public int SelectedShip { get; set; } = 0;
-    public List<int> PurchasedShips { get; set; } = new List<int>();
-    public List<int> HighScores { get; set; } = new List<int>();
-    public List<int> LevelStars { get; set; } = new List<int>();
-    public bool OneShotPU { get; set; } = false;
-    public bool TwoShotPU { get; set; } = false;
-    public bool LifePU { get; set; } = false;
-    public bool IsPlayerAlive { get; set; } = true;
-    public bool IsPaused { get; set; } = false;
-
-    #endregion FIELDS
-
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        SetSingleton();
+        #region FIELDS
 
-        LoadPlayerData();
+        private static GameManager _instance = null;
+        public static GameManager Instance { get => _instance; }
+        public string PlayerName { get; set; } = null;
+        public int Coin { get; set; } = 5000;
+        public int Diamond { get; set; } = 10;
+        public int LevelReached { get; set; } = 0;
+        public int SelectedShip { get; set; } = 0;
+        public List<int> PurchasedShips { get; set; } = new List<int>();
+        public List<int> HighScores { get; set; } = new List<int>();
+        public List<int> LevelStars { get; set; } = new List<int>();
+        public bool OneShotPU { get; set; } = false;
+        public bool TwoShotPU { get; set; } = false;
+        public bool LifePU { get; set; } = false;
+        public bool IsPlayerAlive { get; set; } = true;
+        public bool IsPaused { get; set; } = false;
 
-        IsPlayerAlive = true;
-        IsPaused = false;
-    }
+        #endregion FIELDS
 
-    private void SetSingleton()
-    {
-        if (Instance == null)
+        private void Awake()
         {
-            Instance = this;
+            MakeSingleton();
+
+            LoadPlayerData();
+
+            //  IsPlayerAlive = true;
+            //  IsPaused = false;
         }
-        else
+
+        private void MakeSingleton()
         {
-            if (Instance != this)
+            if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
             }
+            else
+            {
+                DontDestroyOnLoad(gameObject);
+            }
         }
 
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public void SaveData()
-    {
-        SaveLoadManager.SavePlayer(this);
-    }
-
-    private void LoadPlayerData()
-    {
-        Debug.Log("Loading player data...");
-        PlayerData data = SaveLoadManager.LoadPlayer();
-
-        Coin = data.Coin;
-        Diamond = data.Diamond;
-        LevelReached = data.LevelReached;
-        HighScores = data.HighScores;
-        LevelStars = data.LevelStars;
-        PurchasedShips = data.PurchasedShips;
-        SelectedShip = data.SelectedShip;
-        OneShotPU = data.OneShotPU;
-        TwoShotPU = data.TwoShotPU;
-        LifePU = data.LifePU;
-    }
-
-    public void IncreaseCoin(int coin)
-    {
-        Coin += coin;
-        SaveData();
-    }
-
-    public void IncreaseDiamond(int diamond)
-    {
-        Diamond += diamond;
-        SaveData();
-    }
-
-    public bool CanEffort(int price, bool isDiamond)
-    {
-        if (isDiamond)
+        public void SaveData()
         {
-            if (Diamond >= price)
+            SaveLoadManager.SavePlayer(this);
+        }
+
+        private void LoadPlayerData()
+        {
+            Debug.Log("Loading player data...");
+            PlayerData data = SaveLoadManager.LoadPlayer();
+
+            Coin = data.Coin;
+            Diamond = data.Diamond;
+            LevelReached = data.LevelReached;
+            HighScores = data.HighScores;
+            LevelStars = data.LevelStars;
+            PurchasedShips = data.PurchasedShips;
+            SelectedShip = data.SelectedShip;
+            OneShotPU = data.OneShotPU;
+            TwoShotPU = data.TwoShotPU;
+            LifePU = data.LifePU;
+        }
+
+        public void IncreaseCoin(int coin)
+        {
+            Coin += coin;
+            SaveData();
+        }
+
+        public void IncreaseDiamond(int diamond)
+        {
+            Diamond += diamond;
+            SaveData();
+        }
+
+        public bool CanEffort(int price, bool isDiamond)
+        {
+            if (isDiamond)
             {
-                return true;
+                return Diamond >= price;
             }
             else
             {
-                return false;
+                return Coin >= price;
             }
         }
-        else
+
+        public void PurchaseShip(int index, int price, bool isDiamond)
         {
-            if (Coin >= price)
+            if (isDiamond)
             {
-                return true;
+                IncreaseDiamond(-price);
             }
             else
             {
-                return false;
+                IncreaseCoin(-price);
             }
-        }
-    }
 
-    public void PurchaseShip(int index, int price, bool isDiamond)
-    {
-        if (isDiamond)
+            PurchasedShips.Add(index);
+
+            SaveData();
+        }
+
+        public void SelectShip(int index)
         {
-            IncreaseDiamond(-price);
+            SelectedShip = index;
+            SaveData();
         }
-        else
+
+        public void IncreaseLevel(int levelToUnlock)
         {
-            IncreaseCoin(-price);
+            // if its not new level
+            if (LevelReached >= levelToUnlock) return;
+
+            LevelReached = levelToUnlock;
+            LevelStars.Add(0);
+            HighScores.Add(0);
+
+            SaveData();
         }
-
-        PurchasedShips.Add(index);
-
-        SaveData();
-    }
-
-    public void SelectShip(int index)
-    {
-        SelectedShip = index;
-        SaveData();
-    }
-
-    public void IncreaseLevel(int levelToUnlock)
-    {
-        if (LevelReached >= levelToUnlock) return;
-
-        LevelReached = levelToUnlock;
-        LevelStars.Add(0);
-        HighScores.Add(0);
-
-        SaveData();
     }
 }

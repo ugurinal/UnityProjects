@@ -1,6 +1,7 @@
 ﻿using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using UnityEngine;
+using SpaceTraveler.ManagerSystem;
 
 namespace SpaceTraveler.SaveAndLoadSystem
 {

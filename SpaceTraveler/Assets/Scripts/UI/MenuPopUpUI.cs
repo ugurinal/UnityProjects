@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using SpaceTraveler.ShopSystem;
+using SpaceTraveler.ManagerSystem;
 
 namespace SpaceTraveler.UISystem
 {

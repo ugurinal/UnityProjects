@@ -1,12 +1,12 @@
 ﻿using TMPro;
 using UnityEngine;
+using SpaceTraveler.ManagerSystem;
 
 public class TimeText : MonoBehaviour
 {
     private GameManager gameManager;
 
     private TextMeshProUGUI timeText;
-
 
     private void Start()
     {

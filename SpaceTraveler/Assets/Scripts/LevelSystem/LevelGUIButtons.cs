@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using SpaceTraveler.ShopSystem;
 using SpaceTraveler.UISystem;
+using SpaceTraveler.ManagerSystem;
 
 namespace SpaceTraveler.LevelSystem
 {
@@ -89,6 +90,7 @@ namespace SpaceTraveler.LevelSystem
         {
             int price = _powerUps._ShopItems[0].Price;
 
+            // if its already bought
             if (_gameManager.OneShotPU)
             {
                 Debug.Log("1");
@@ -120,6 +122,7 @@ namespace SpaceTraveler.LevelSystem
         {
             int price = _powerUps._ShopItems[1].Price;
 
+            // if its already bought
             if (_gameManager.TwoShotPU)
             {
                 Debug.Log("2");
@@ -151,6 +154,7 @@ namespace SpaceTraveler.LevelSystem
         {
             int price = _powerUps._ShopItems[2].Price;
 
+            // if its already bought
             if (_gameManager.LifePU)
             {
                 Debug.Log("3");
