@@ -10,6 +10,9 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
+Assets/GPGSIds.cs
+Assets/GPGSIds.cs.meta
+
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
