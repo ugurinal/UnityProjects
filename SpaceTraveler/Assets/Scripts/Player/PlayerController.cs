@@ -35,6 +35,8 @@ namespace SpaceTraveler.Player
         private LevelController _levelController;
         private SoundController _soundController;
 
+        private int _layerMask = 0;
+
         private void Awake()
         {
             MakeSingleton();
@@ -46,6 +48,8 @@ namespace SpaceTraveler.Player
             SetUpMovementBoundaries();
 
             SetUpPlayer();
+
+            _layerMask = LayerMask.GetMask("Enemy");      // for raycast laser
         }
 
         private void Update()
@@ -69,10 +73,28 @@ namespace SpaceTraveler.Player
             KeyboardMovement();
             //TouchMovement();
 
-            if (!_isAttacking)
+            if (_playerProperties.ShootingType == PlayerProperties.ShootingTypes.Projectile)
             {
-                _soundController.PlaySFX("projectile");
-                Shoot();
+                if (!_isAttacking)
+                {
+                    _soundController.PlaySFX("projectile");
+                    Shoot();
+                }
+            }
+            else if (_playerProperties.ShootingType == PlayerProperties.ShootingTypes.Laser)
+            {
+                RaycastHit2D hit = Physics2D.Raycast(transform.forward, Vector2.up, 50.0f, _layerMask);
+                if (hit.collider != null)
+                {
+                    Debug.Log(hit.collider.gameObject.name);
+                    Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up) * hit.distance, Color.red, 2f);
+                    Debug.Log("Hit");
+                }
+                else
+                {
+                    Debug.Log("Not hit");
+                }
+                //Debug.Log("LASER BEAM!!!");
             }
         }
 

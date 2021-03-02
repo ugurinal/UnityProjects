@@ -20,6 +20,10 @@ namespace SpaceTraveler.Player
         public float MovementSpeedAndroid = 2f;
         public float XPadding = 0.4f;
 
+        [Header("Shooting Type")]
+        [Space(7)]
+        public ShootingTypes ShootingType = ShootingTypes.Projectile;
+
         [Header("Projectile Properties")]
         [Space(7)]
         public GameObject ProjectilePrefab = null;
@@ -55,5 +59,11 @@ namespace SpaceTraveler.Player
         new Vector2(-0.5f, 10),
         new Vector2(0.5f, 10),
     };
+
+        public enum ShootingTypes
+        {
+            Projectile,
+            Laser
+        }
     }
 }

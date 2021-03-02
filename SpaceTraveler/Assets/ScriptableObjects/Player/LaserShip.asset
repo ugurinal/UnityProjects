@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82d2055235000c14e827551c53afd66a, type: 3}
-  m_Name: PlayerRed
+  m_Name: LaserShip
   m_EditorClassIdentifier: 
   PlayerLife: 1
   PlayerDmg: 1
-  FireSpeed: 0.18
+  ShootSpeed: 0.18
   PlayerInstantiatePos: {x: 0, y: -8, z: 0}
   PlayerLerpPos: {x: 0, y: -3.5, z: 0}
   MovementSpeedHorizontal: 6
   MovementSpeedVertical: 6
   MovementSpeedAndroid: 2
   XPadding: 0.4
+  ShootingType: 1
   ProjectilePrefab: {fileID: 69777656218909228, guid: 644ed54f946aaba46a44472d33f8c8ad,
     type: 3}
   OddLaserPositions:

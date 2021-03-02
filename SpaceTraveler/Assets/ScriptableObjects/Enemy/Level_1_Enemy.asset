@@ -17,6 +17,6 @@ MonoBehaviour:
   CoinToEarn: 50
   Projectile: {fileID: 69777656218909228, guid: 9000072e8ca7c7444a2ad9643898bbd5,
     type: 3}
-  MinTimeBetweenShots: 0.2
-  MaxTimeBetweenShots: 4
+  MinTimeBetweenShots: 2
+  MaxTimeBetweenShots: 10
   ShotSpeed: 1.5
