@@ -38,6 +38,9 @@ namespace SpaceTraveler.Player
 
         private int _layerMask = 0;
 
+        private Camera _mainCamera = null;
+        private LineRenderer _lineRenderer = null;
+
         private void Awake()
         {
             MakeSingleton();
@@ -49,6 +52,10 @@ namespace SpaceTraveler.Player
             SetUpMovementBoundaries();
 
             SetUpPlayer();
+
+            _mainCamera = Camera.main;
+
+            _lineRenderer = GetComponent<LineRenderer>();
 
             _layerMask = LayerMask.GetMask("Enemy");      // for raycast laser
             _currentShootingType = _playerProperties.ShootingType;
@@ -85,6 +92,9 @@ namespace SpaceTraveler.Player
             }
             else if (_currentShootingType == PlayerProperties.ShootingTypes.Laser)
             {
+                EnableLaser();
+
+                /*
                 RaycastHit2D hit = Physics2D.Raycast(transform.forward, Vector2.up, 50.0f, _layerMask);
                 if (hit.collider != null)
                 {
@@ -96,7 +106,7 @@ namespace SpaceTraveler.Player
                 {
                     Debug.Log("Not hit");
                 }
-                //Debug.Log("LASER BEAM!!!");
+                //Debug.Log("LASER BEAM!!!");*/
             }
         }
 
@@ -145,6 +155,36 @@ namespace SpaceTraveler.Player
             {
                 Debug.Log("SoundController is not initialized!");
             }
+        }
+
+        private void EnableLaser()
+        {
+            float target;
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 15f, _layerMask);
+
+            if (hit.collider != null)
+            {
+                Debug.Log("Hit " + hit.collider.gameObject.name);
+
+                Vector3 hitPos = hit.transform.position;
+                target = hitPos.y - transform.position.y;
+            }
+            else
+            {
+                Debug.Log("Not Hit!");
+
+                if (transform.position.y < 0)
+                {
+                    target = _mainCamera.orthographicSize + (transform.position.y * -1);
+                }
+                else
+                {
+                    target = _mainCamera.orthographicSize - transform.position.y;
+                }
+            }
+
+            _lineRenderer.SetPosition(1, new Vector3(0f, target, 0f));
         }
 
         private void Shoot()
@@ -318,6 +358,12 @@ namespace SpaceTraveler.Player
             {
                 _canPlayerMove = true;
                 _enemySpawner.StartEnemySpawn();     //// when player lerp ends start spawning enemies.
+
+                if (_lineRenderer != null)
+                {
+                    _lineRenderer.enabled = true;
+                    _lineRenderer.SetPosition(0, new Vector3(0f, 1.25f, 0f));
+                }
             }
         }
 
