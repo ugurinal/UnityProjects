@@ -26,6 +26,7 @@ namespace SpaceTraveler.Player
         private int _shotCounter = 1;
         private GameObject _currentProjectile = null;
         private int _playerCurrentLife = 1;
+        private PlayerProperties.ShootingTypes _currentShootingType;
 
         private bool _isAttacking = false;
         private bool _canPlayerMove = false;
@@ -50,6 +51,7 @@ namespace SpaceTraveler.Player
             SetUpPlayer();
 
             _layerMask = LayerMask.GetMask("Enemy");      // for raycast laser
+            _currentShootingType = _playerProperties.ShootingType;
         }
 
         private void Update()
@@ -73,7 +75,7 @@ namespace SpaceTraveler.Player
             KeyboardMovement();
             //TouchMovement();
 
-            if (_playerProperties.ShootingType == PlayerProperties.ShootingTypes.Projectile)
+            if (_currentShootingType == PlayerProperties.ShootingTypes.Projectile)
             {
                 if (!_isAttacking)
                 {
@@ -81,7 +83,7 @@ namespace SpaceTraveler.Player
                     Shoot();
                 }
             }
-            else if (_playerProperties.ShootingType == PlayerProperties.ShootingTypes.Laser)
+            else if (_currentShootingType == PlayerProperties.ShootingTypes.Laser)
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.forward, Vector2.up, 50.0f, _layerMask);
                 if (hit.collider != null)
