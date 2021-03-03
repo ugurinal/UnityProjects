@@ -159,7 +159,7 @@ namespace SpaceTraveler.Player
 
             if (hit.collider != null)
             {
-                Debug.Log("Hit " + hit.collider.transform.name);
+                //Debug.Log("Hit " + hit.collider.transform.name);
 
                 Vector3 hitPos = hit.transform.position;
                 target = hitPos.y - transform.position.y;
@@ -171,7 +171,7 @@ namespace SpaceTraveler.Player
             }
             else
             {
-                Debug.Log("Not Hit!");
+                //Debug.Log("Not Hit!");
 
                 if (transform.position.y < 0)
                 {
@@ -268,10 +268,25 @@ namespace SpaceTraveler.Player
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log(other.name);
+            if (other.CompareTag("Enemy"))
+            {
+                // if shield is active
+                if (transform.GetChild(1).gameObject.activeSelf)
+                {
+                    transform.GetChild(1).gameObject.SetActive(false);
+                }
+                else
+                {
+                    other.GetComponent<Enemy.Enemy>().TakeDamage(100f); // 100 testing purpose
+                    _levelController.DecreasePlayerLife();
+                }
+                return;
+            }
 
             if (other.CompareTag("EnemyProjectile"))
             {
+                Debug.Log("Player - OnTrigger - " + other.transform.name);
+
                 // if shield is active
                 if (transform.GetChild(1).gameObject.activeSelf)
                 {
@@ -285,19 +300,23 @@ namespace SpaceTraveler.Player
                 damageDealer.Hit();
 
                 _levelController.DecreasePlayerLife();
+                return;
             }
 
             if (other.CompareTag("+1"))
             {
                 IncrementShotCounter(1);
                 Destroy(other.gameObject);
+                return;
             }
-            else if (other.CompareTag("+2"))
+            if (other.CompareTag("+2"))
             {
                 IncrementShotCounter(2);
                 Destroy(other.gameObject);
+                return;
             }
-            else if (other.CompareTag("PowerUPProjectiles"))
+
+            if (other.CompareTag("PowerUPProjectiles"))
             {
                 PowerUP powerUp = other.GetComponent<PowerUP>();
 
@@ -311,33 +330,15 @@ namespace SpaceTraveler.Player
                 }
 
                 Destroy(other.gameObject);
+                return;
             }
-            else if (other.CompareTag("PowerUPShield"))
+
+            if (other.CompareTag("PowerUPShield"))
             {
                 ShieldOn(true);
                 Destroy(other.gameObject);
+                return;
             }
-
-            /*
-
-            if (other.tag == "Enemy" || other.tag == "EnemyProjectile")
-            {
-                playerLife--;
-                if (playerLife <= 0)
-                {
-                    levelController.ShowLoseGUI();
-                    transform.GetChild(0).gameObject.SetActive(false);
-                    GetComponent<Animator>().enabled = true;
-                }
-            }
-            */
-
-            //levelController.ShowLoseGUI();
-            // when player dies show losegui
-
-            // When animation ends the player object will be deleted. Because in the player animation, animation destroyer script is attached to it.
-            // Animation destroyer deletes the game object.
-            //Invoke("DestroyGameObject", 1);
         }
 
         private void DestroyGameObject()
@@ -412,10 +413,12 @@ namespace SpaceTraveler.Player
 
         private void SetUpProjectile(PowerUP powerUP)
         {
-            _lineRenderer.enabled = false;
+            if (TryGetComponent(out LineRenderer _lineRenderer))
+                _lineRenderer.enabled = false;
 
             if (powerUP == null)
             {
+                Debug.Log("Power UP is null creatnig projectile");
                 _currentProjectile = _playerProperties.ProjectilePrefab;
             }
             else
