@@ -22,6 +22,7 @@ MonoBehaviour:
   MovementSpeedAndroid: 2
   XPadding: 0.4
   ShootingType: 0
+  LaserMaterial: {fileID: 2100000, guid: 3037a07982a401c47a2079ce856a34ba, type: 2}
   ProjectilePrefab: {fileID: 69777656218909228, guid: 644ed54f946aaba46a44472d33f8c8ad,
     type: 3}
   OddLaserPositions:
