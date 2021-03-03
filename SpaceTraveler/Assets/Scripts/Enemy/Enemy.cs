@@ -108,6 +108,7 @@ namespace SpaceTraveler.Enemy
 
         private void KillThisEnemy()
         {
+            tag = "Untagged";
             _isAlive = false;
             _levelController.DestroyEnemy(_enemyProperties.ScoreToAdd, _enemyProperties.CoinToEarn);
             SpawnPowerUP();
@@ -191,6 +192,14 @@ namespace SpaceTraveler.Enemy
                         break;
                 }
             }
+        }
+
+        public void TakeDamage(float damage)
+        {
+            Debug.Log("Taking Damage");
+            _curHealth -= damage;
+            if (_curHealth <= 0)
+                KillThisEnemy();
         }
     }
 }
