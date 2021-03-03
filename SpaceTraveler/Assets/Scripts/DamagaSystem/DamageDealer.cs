@@ -24,21 +24,14 @@ namespace SpaceTraveler.DamageSystem
 
         #endregion FIELDS
 
-        private void Start()
-        {
-            // checks if this script attached to a player projectile or not,
-            // if it is, it updates the damage by player ship
-            // because every player ship has its own damage multiplier
-
-            if (CompareTag("PlayerProjectile"))
-            {
-                _damage *= PlayerController.Instance.GetDamage();
-            }
-        }
-
         public void Hit()
         {
             Destroy(gameObject);    // this function is called from others scripts ontrigger functions
+        }
+
+        public void IncreaseDamage(float multiplier)
+        {
+            _damage *= multiplier;
         }
     }
 }
