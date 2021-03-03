@@ -6,9 +6,9 @@ namespace SpaceTraveler.Player
     public class PlayerProperties : ScriptableObject
     {
         [Header("Player Properties")]
-        public int PlayerLife = 0;
-        public float PlayerDmg = 0;
-        public float ShootSpeed = 0.18f;
+        public int ShipLife = 0;
+        public float ShipDamage = 0;
+        public float ShipShootSpeed = 0.18f;
 
         [Header("Player Movement")]
         [Space(7)]
@@ -23,6 +23,7 @@ namespace SpaceTraveler.Player
         [Header("Shooting Type")]
         [Space(7)]
         public ShootingTypes ShootingType = ShootingTypes.Projectile;
+        public Material LaserMaterial = null;
 
         [Header("Projectile Properties")]
         [Space(7)]
