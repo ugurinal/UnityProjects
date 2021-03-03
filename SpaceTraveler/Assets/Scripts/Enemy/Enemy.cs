@@ -72,35 +72,14 @@ namespace SpaceTraveler.Enemy
         {
             if (!_isAlive) return;
 
-            if (other.CompareTag("Player"))
-            {
-                _levelController.DecreasePlayerLife();
-                KillThisEnemy();
-
-                return;
-            }
-
-            if (other.CompareTag("Shield"))
-            {
-                KillThisEnemy();
-                // damage dealer script that is attached to this game object will take care of shield
-                // so we don't need to do anything in here
-                return;
-            }
-
             if (other.CompareTag("PlayerProjectile"))
             {
                 DamageDealer damageDealer = other.gameObject.GetComponent<DamageDealer>();
 
-                _curHealth -= damageDealer.Damage;
-
                 other.GetComponent<Animator>().enabled = true;
                 other.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, 0f);
 
-                if (_curHealth <= 0)
-                {
-                    KillThisEnemy();
-                }
+                TakeDamage(damageDealer.Damage);
 
                 return;
             }
@@ -142,7 +121,7 @@ namespace SpaceTraveler.Enemy
                         break;
 
                     case 1:
-                        Debug.Log("Instantiate an assistant");
+                        //Debug.Log("Instantiate an assistant");
                         break;
 
                     case 2:
@@ -180,15 +159,15 @@ namespace SpaceTraveler.Enemy
                         break;
 
                     case 4:
-                        Debug.Log("Instantiate a damage multiplier");
+                        //Debug.Log("Instantiate a damage multiplier");
                         break;
 
                     case 5:
-                        Debug.Log("Instantiate a score multiplier");
+                        //Debug.Log("Instantiate a score multiplier");
                         break;
 
                     default:
-                        Debug.Log("Default power up");
+                        //Debug.Log("Default power up");
                         break;
                 }
             }
