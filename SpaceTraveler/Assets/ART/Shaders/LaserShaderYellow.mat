@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_LaserShader
+  m_Name: LaserShaderYellow
   m_Shader: {fileID: -6465566751694194690, guid: 5b2a50a84658de84a8bf4eb53e30eb4f,
     type: 3}
   m_ShaderKeywords: 
@@ -22,8 +22,9 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - Vector1_2B4095B5: 5
+    - Vector1_450BD610: 100
     - Vector1_E2DF3780: 10
     - Vector1_FB8A107A: 73.24
     m_Colors:
-    - Color_99DBB48C: {r: 1.2422018, g: 3.9676657, b: 9.080921, a: 1}
+    - Color_99DBB48C: {r: 10.86562, g: 2.434552, b: 0.6662883, a: 1}
     - Vector2_CD324DB5: {r: -1, g: 0, b: 0, a: 0}
