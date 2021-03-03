@@ -27,6 +27,9 @@ namespace SpaceTraveler.Player
         private GameObject _currentProjectile = null;
         private int _playerCurrentLife = 1;
         private PlayerProperties.ShootingTypes _currentShootingType;
+        private float _currentDamageMultiplier = 0f;
+        private float _currentProjectileDamage = 0f;
+        private float _currentLaserDamage = 0f;
 
         private bool _isAttacking = false;
         private bool _canPlayerMove = false;
@@ -38,7 +41,6 @@ namespace SpaceTraveler.Player
 
         private int _layerMask = 0;
 
-        private Camera _mainCamera = null;
         private LineRenderer _lineRenderer = null;
 
         private void Awake()
@@ -53,12 +55,7 @@ namespace SpaceTraveler.Player
 
             SetUpPlayer();
 
-            _mainCamera = Camera.main;
-
-            _lineRenderer = GetComponent<LineRenderer>();
-
             _layerMask = LayerMask.GetMask("Enemy");      // for raycast laser
-            _currentShootingType = _playerProperties.ShootingType;
         }
 
         private void Update()
@@ -70,16 +67,16 @@ namespace SpaceTraveler.Player
                 return;
             }
 
-            //if (Application.platform == RuntimePlatform.WindowsEditor)
-            //{
-            //    KeyboardMovement();
-            //}
-            //else
-            //{
-            //    TouchMovement();
-            //}
+            if (Application.platform == RuntimePlatform.WindowsEditor)
+            {
+                KeyboardMovement();
+            }
+            else
+            {
+                TouchMovement();
+            }
 
-            KeyboardMovement();
+            //KeyboardMovement();
             //TouchMovement();
 
             if (_currentShootingType == PlayerProperties.ShootingTypes.Projectile)
@@ -93,28 +90,25 @@ namespace SpaceTraveler.Player
             else if (_currentShootingType == PlayerProperties.ShootingTypes.Laser)
             {
                 EnableLaser();
-
-                /*
-                RaycastHit2D hit = Physics2D.Raycast(transform.forward, Vector2.up, 50.0f, _layerMask);
-                if (hit.collider != null)
-                {
-                    Debug.Log(hit.collider.gameObject.name);
-                    Debug.DrawRay(transform.position, transform.TransformDirection(Vector2.up) * hit.distance, Color.red, 2f);
-                    Debug.Log("Hit");
-                }
-                else
-                {
-                    Debug.Log("Not hit");
-                }
-                //Debug.Log("LASER BEAM!!!");*/
             }
         }
 
         private void SetUpPlayer()
         {
-            _currentProjectile = _playerProperties.ProjectilePrefab;
-            _shotCounter = 1;
-            _playerCurrentLife = 1;
+            _currentDamageMultiplier = _playerProperties.ShipDamage;
+
+            _currentShootingType = _playerProperties.ShootingType;
+
+            if (_currentShootingType == PlayerProperties.ShootingTypes.Laser)
+            {
+                SetUpLaser(null);
+            }
+            else if (_currentShootingType == PlayerProperties.ShootingTypes.Projectile)
+            {
+                SetUpProjectile(null);
+            }
+
+            _playerCurrentLife = _playerProperties.ShipLife;
             CheckPowerUp();
 
             _levelController.SetPlayerLife(_playerCurrentLife);
@@ -165,10 +159,15 @@ namespace SpaceTraveler.Player
 
             if (hit.collider != null)
             {
-                Debug.Log("Hit " + hit.collider.gameObject.name);
+                Debug.Log("Hit " + hit.collider.transform.name);
 
                 Vector3 hitPos = hit.transform.position;
                 target = hitPos.y - transform.position.y;
+
+                if (hit.transform.GetComponent<Enemy.Enemy>() != null)
+                {
+                    hit.transform.GetComponent<Enemy.Enemy>().TakeDamage(_currentLaserDamage);
+                }
             }
             else
             {
@@ -176,11 +175,11 @@ namespace SpaceTraveler.Player
 
                 if (transform.position.y < 0)
                 {
-                    target = _mainCamera.orthographicSize + (transform.position.y * -1);
+                    target = 5f + (transform.position.y * -1);  // 5 = camera orthographicSize
                 }
                 else
                 {
-                    target = _mainCamera.orthographicSize - transform.position.y;
+                    target = 5f - transform.position.y;
                 }
             }
 
@@ -202,6 +201,7 @@ namespace SpaceTraveler.Player
                 {
                     GameObject projectile = Instantiate(_currentProjectile, transform.position + _playerProperties.EvenLaserPositions[i], Quaternion.identity);
                     projectile.GetComponent<Rigidbody2D>().velocity = _playerProperties.EvenLaserVelocities[i];
+                    projectile.GetComponent<DamageDealer>().IncreaseDamage(_currentProjectileDamage);
                 }
             }
             else
@@ -210,10 +210,11 @@ namespace SpaceTraveler.Player
                 {
                     GameObject projectile = Instantiate(_currentProjectile, transform.position + _playerProperties.OddLaserPositions[i], Quaternion.identity);
                     projectile.GetComponent<Rigidbody2D>().velocity = _playerProperties.OddLaserVelocities[i];
+                    projectile.GetComponent<DamageDealer>().IncreaseDamage(_currentProjectileDamage);
                 }
             }
 
-            yield return new WaitForSeconds(_playerProperties.ShootSpeed);
+            yield return new WaitForSeconds(_playerProperties.ShipShootSpeed);
             _isAttacking = false;
         }
 
@@ -298,7 +299,17 @@ namespace SpaceTraveler.Player
             }
             else if (other.CompareTag("PowerUPProjectiles"))
             {
-                ChangeProjectile(other.GetComponent<PowerUP>().Projectile[0]);
+                PowerUP powerUp = other.GetComponent<PowerUP>();
+
+                if (powerUp.ShootingTypes == PlayerProperties.ShootingTypes.Laser)
+                {
+                    SetUpLaser(powerUp);
+                }
+                else if (powerUp.ShootingTypes == PlayerProperties.ShootingTypes.Projectile)
+                {
+                    SetUpProjectile(powerUp);
+                }
+
                 Destroy(other.gameObject);
             }
             else if (other.CompareTag("PowerUPShield"))
@@ -369,7 +380,7 @@ namespace SpaceTraveler.Player
 
         public float GetDamage()
         {
-            return _playerProperties.PlayerDmg;
+            return _playerProperties.ShipDamage;
         }
 
         public void IncrementShotCounter(int value)
@@ -380,9 +391,41 @@ namespace SpaceTraveler.Player
                 _shotCounter = 5;
         }
 
-        public void ChangeProjectile(GameObject projectile)
+        private void SetUpLaser(PowerUP powerUP)
         {
-            _currentProjectile = projectile;
+            if (_lineRenderer == null)
+                _lineRenderer = GetComponent<LineRenderer>();
+
+            if (powerUP == null)
+            {
+                _lineRenderer.material = _playerProperties.LaserMaterial;
+            }
+            else
+            {
+                GetComponent<LineRenderer>().material = powerUP.LaserMaterials[0];
+            }
+
+            _currentLaserDamage = _lineRenderer.material.GetFloat("Laser_Damage") * _currentDamageMultiplier;
+            _currentShootingType = PlayerProperties.ShootingTypes.Laser;
+            _lineRenderer.enabled = true;
+        }
+
+        private void SetUpProjectile(PowerUP powerUP)
+        {
+            _lineRenderer.enabled = false;
+
+            if (powerUP == null)
+            {
+                _currentProjectile = _playerProperties.ProjectilePrefab;
+            }
+            else
+            {
+                _currentProjectile = powerUP.Projectile[0];
+            }
+
+            _currentProjectileDamage = _currentProjectile.GetComponent<DamageDealer>().Damage * _playerProperties.ShipDamage;
+            _currentShootingType = PlayerProperties.ShootingTypes.Projectile;
+            _shotCounter = 1;
         }
 
         public void ShieldOn(bool isOn)
