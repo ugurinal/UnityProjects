@@ -64,7 +64,7 @@ namespace SpaceTraveler.Player
             {
                 if (_lineRenderer != null)
                 {
-                    _lineRenderer.enabled = true;
+                    _lineRenderer.enabled = false;
                 }
                 return;
             }
@@ -381,7 +381,7 @@ namespace SpaceTraveler.Player
                 if (_lineRenderer != null)
                 {
                     _lineRenderer.enabled = true;
-                    _lineRenderer.SetPosition(0, new Vector3(0f, 1.25f, 0f));
+                    //_lineRenderer.SetPosition(0, new Vector3(0f, 1.25f, 0f));
                 }
             }
         }
@@ -401,8 +401,9 @@ namespace SpaceTraveler.Player
 
         private void SetUpLaser(PowerUP powerUP)
         {
+            transform.GetChild(2).gameObject.SetActive(true);
             if (_lineRenderer == null)
-                _lineRenderer = GetComponent<LineRenderer>();
+                _lineRenderer = transform.GetChild(2).GetComponent<LineRenderer>();
 
             if (powerUP == null)
             {
@@ -420,6 +421,7 @@ namespace SpaceTraveler.Player
 
         private void SetUpProjectile(PowerUP powerUP)
         {
+            transform.GetChild(2).gameObject.SetActive(false);
             if (TryGetComponent(out LineRenderer _lineRenderer))
                 _lineRenderer.enabled = false;
 
