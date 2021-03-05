@@ -60,7 +60,14 @@ namespace SpaceTraveler.Player
 
         private void Update()
         {
-            if (!_gameManager.IsPlayerAlive || _gameManager.IsPaused) return;
+            if (!_gameManager.IsPlayerAlive || _gameManager.IsPaused)
+            {
+                if (_lineRenderer != null)
+                {
+                    _lineRenderer.enabled = true;
+                }
+                return;
+            }
             if (!_canPlayerMove)
             {
                 PlayerBotToTopLerp();
@@ -420,6 +427,7 @@ namespace SpaceTraveler.Player
             {
                 Debug.Log("Power UP is null creatnig projectile");
                 _currentProjectile = _playerProperties.ProjectilePrefab;
+                _shotCounter = 1;
             }
             else
             {
@@ -428,7 +436,6 @@ namespace SpaceTraveler.Player
 
             _currentProjectileDamage = _currentProjectile.GetComponent<DamageDealer>().Damage * _playerProperties.ShipDamage;
             _currentShootingType = PlayerProperties.ShootingTypes.Projectile;
-            _shotCounter = 1;
         }
 
         public void ShieldOn(bool isOn)

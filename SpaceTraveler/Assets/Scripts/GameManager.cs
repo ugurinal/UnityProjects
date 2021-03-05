@@ -43,6 +43,8 @@ namespace SpaceTraveler.ManagerSystem
 
             //  IsPlayerAlive = true;
             //  IsPaused = false;
+
+            Application.targetFrameRate = -1;
         }
 
         private void MakeSingleton()
