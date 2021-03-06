@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using SpaceTraveler.AudioSystem;
+﻿using SpaceTraveler.AudioSystem;
 using SpaceTraveler.DamageSystem;
 using SpaceTraveler.Enemy;
 using SpaceTraveler.LevelSystem;
-using SpaceTraveler.PowerUPSystem;
 using SpaceTraveler.ManagerSystem;
+using SpaceTraveler.PowerUPSystem;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace SpaceTraveler.Player
 {
@@ -18,6 +18,9 @@ namespace SpaceTraveler.Player
 
         [Header("Player Properties")]
         [SerializeField] private PlayerProperties _playerProperties = null;
+
+        [SerializeField] private GameObject _laserSpawnGO = null;
+        [SerializeField] private LineRenderer _lineRenderer = null;
 
         // screen boundries
         private float _minX = 0, _maxX = 0, _minY = 0, _maxY = 0;
@@ -41,8 +44,6 @@ namespace SpaceTraveler.Player
 
         private int _layerMask = 0;
 
-        private LineRenderer _lineRenderer = null;
-
         private void Awake()
         {
             MakeSingleton();
@@ -62,10 +63,6 @@ namespace SpaceTraveler.Player
         {
             if (!_gameManager.IsPlayerAlive || _gameManager.IsPaused)
             {
-                if (_lineRenderer != null)
-                {
-                    _lineRenderer.enabled = false;
-                }
                 return;
             }
             if (!_canPlayerMove)
@@ -119,6 +116,8 @@ namespace SpaceTraveler.Player
             CheckPowerUp();
 
             _levelController.SetPlayerLife(_playerCurrentLife);
+
+            _laserSpawnGO.SetActive(false);
         }
 
         private void MakeSingleton()
@@ -378,10 +377,9 @@ namespace SpaceTraveler.Player
                 _canPlayerMove = true;
                 _enemySpawner.StartEnemySpawn();     //// when player lerp ends start spawning enemies.
 
-                if (_lineRenderer != null)
+                if (_currentShootingType == PlayerProperties.ShootingTypes.Laser)
                 {
-                    _lineRenderer.enabled = true;
-                    //_lineRenderer.SetPosition(0, new Vector3(0f, 1.25f, 0f));
+                    _laserSpawnGO.SetActive(true);
                 }
             }
         }
@@ -393,37 +391,35 @@ namespace SpaceTraveler.Player
 
         public void IncrementShotCounter(int value)
         {
-            _shotCounter += value;
+            if (_currentShootingType == PlayerProperties.ShootingTypes.Projectile)
+            {
+                _shotCounter += value;
 
-            if (_shotCounter >= 5)
-                _shotCounter = 5;
+                if (_shotCounter >= 5)
+                    _shotCounter = 5;
+            }
         }
 
         private void SetUpLaser(PowerUP powerUP)
         {
-            transform.GetChild(2).gameObject.SetActive(true);
-            if (_lineRenderer == null)
-                _lineRenderer = transform.GetChild(2).GetComponent<LineRenderer>();
-
             if (powerUP == null)
             {
                 _lineRenderer.material = _playerProperties.LaserMaterial;
             }
             else
             {
-                GetComponent<LineRenderer>().material = powerUP.LaserMaterials[0];
+                _lineRenderer.material = powerUP.LaserMaterials[0];
             }
 
             _currentLaserDamage = _lineRenderer.material.GetFloat("Laser_Damage") * _currentDamageMultiplier;
             _currentShootingType = PlayerProperties.ShootingTypes.Laser;
-            _lineRenderer.enabled = true;
+
+            _laserSpawnGO.SetActive(true);
         }
 
         private void SetUpProjectile(PowerUP powerUP)
         {
-            transform.GetChild(2).gameObject.SetActive(false);
-            if (TryGetComponent(out LineRenderer _lineRenderer))
-                _lineRenderer.enabled = false;
+            _laserSpawnGO.SetActive(false);
 
             if (powerUP == null)
             {
