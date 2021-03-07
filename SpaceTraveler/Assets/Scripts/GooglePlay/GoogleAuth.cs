@@ -57,7 +57,7 @@ public class GoogleAuth : MonoBehaviour
 
     private IEnumerator GoToMainMenu()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene("MainMenu");
     }
 }
