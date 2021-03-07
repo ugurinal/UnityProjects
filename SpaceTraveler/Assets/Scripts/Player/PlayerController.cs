@@ -263,13 +263,13 @@ namespace SpaceTraveler.Player
 
             _minX = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).x + _playerProperties.XPadding;
             _maxX = gameCamera.ViewportToWorldPoint(new Vector3(1, 0, 0)).x - _playerProperties.XPadding;
-            _minY = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y - 0.1f;          // Because Player sprite pivot is bottom center
-            _maxY = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - 1.25f;         // Because Player sprite pivot is bottom center
+            _minY = gameCamera.ViewportToWorldPoint(new Vector3(0, 0, 0)).y - 0.1f - _playerProperties.YPadding;          // Because Player sprite pivot is bottom center
+            _maxY = gameCamera.ViewportToWorldPoint(new Vector3(0, 1, 0)).y - 1.25f - _playerProperties.YPadding;         // Because Player sprite pivot is bottom center
 
             _minXAndroid = gameCamera.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + _playerProperties.XPadding;
             _maxXAndroid = gameCamera.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - _playerProperties.XPadding;
-            _minYAndroid = gameCamera.ScreenToWorldPoint(new Vector3(0, 0, 0)).y - 0.1f;                 // Because Player sprite pivot is bottom center
-            _maxYAndroid = gameCamera.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).y - 1.25f;    // Because Player sprite pivot is bottom center
+            _minYAndroid = gameCamera.ScreenToWorldPoint(new Vector3(0, 0, 0)).y - 0.1f - _playerProperties.YPadding;                 // Because Player sprite pivot is bottom center
+            _maxYAndroid = gameCamera.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).y - 1.25f - _playerProperties.YPadding;    // Because Player sprite pivot is bottom center
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -280,12 +280,12 @@ namespace SpaceTraveler.Player
                 if (transform.GetChild(1).gameObject.activeSelf)
                 {
                     transform.GetChild(1).gameObject.SetActive(false);
+                    return;
                 }
-                else
-                {
-                    other.GetComponent<Enemy.Enemy>().TakeDamage(100f); // 100 testing purpose
-                    _levelController.DecreasePlayerLife();
-                }
+
+                other.GetComponent<Enemy.Enemy>().TakeDamage(100f); // 100 testing purpose
+                _levelController.DecreasePlayerLife();
+
                 return;
             }
 

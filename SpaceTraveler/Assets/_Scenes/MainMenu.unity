@@ -3200,6 +3200,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2428104401968276748, guid: 43db6b681a373f54781c45501e0be9c1,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 57a795c4fbe38804ea7560cfc4f26fb9, type: 2}
+    - target: {fileID: 2428104401968276750, guid: 43db6b681a373f54781c45501e0be9c1,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 93aaf36ddcabc5145867baaf64b5de4e,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43db6b681a373f54781c45501e0be9c1, type: 3}
 --- !u!224 &1652341648 stripped
@@ -4468,15 +4479,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 979607584}
     m_Modifications:
-    - target: {fileID: 1754195893, guid: 43db6b681a373f54781c45501e0be9c1, type: 3}
-      propertyPath: m_Name
-      value: Use_btn0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2428104401308675941, guid: 43db6b681a373f54781c45501e0be9c1,
-        type: 3}
-      propertyPath: m_Name
-      value: Buy_btn0
-      objectReference: {fileID: 0}
     - target: {fileID: 2428104401322132158, guid: 43db6b681a373f54781c45501e0be9c1,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5041,7 +5043,7 @@ Animator:
   m_GameObject: {fileID: 2428104402415879304}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 603afe726d6da544d8e55a642fb33278, type: 2}
+  m_Controller: {fileID: 9100000, guid: 20771ffa03c3f41448adbf29b4dde878, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

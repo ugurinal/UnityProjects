@@ -19,6 +19,7 @@ namespace SpaceTraveler.Player
         public float MovementSpeedVertical = 6f;
         public float MovementSpeedAndroid = 2f;
         public float XPadding = 0.4f;
+        public float YPadding = 0.4f;
 
         [Header("Shooting Type")]
         [Space(7)]

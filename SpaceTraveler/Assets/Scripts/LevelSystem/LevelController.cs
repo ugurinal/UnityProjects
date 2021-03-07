@@ -29,6 +29,8 @@ namespace SpaceTraveler.LevelSystem
         [SerializeField] private float _diamondRate = 0f;
         [SerializeField] private float _powerUpChance = 0f;
 
+        [SerializeField] private GameObject playerShip; // test purpose only
+
         public float PowerUpChance { get => _powerUpChance; }
 
         private int _currentLevel = 0;
@@ -67,7 +69,8 @@ namespace SpaceTraveler.LevelSystem
             _bestScore = _gameManager.HighScores[_currentLevel - 1];
 
             // instantiate selected ship
-            Instantiate(_shopItems._ShopItems[_gameManager.SelectedShip].ShipPrefab, new Vector3(0f, -8f - 0f), quaternion.identity);
+            //Instantiate(_shopItems._ShopItems[_gameManager.SelectedShip].ShipPrefab, new Vector3(0f, -8f - 0f), quaternion.identity);
+            Instantiate(playerShip, new Vector3(0f, -8f - 0f), quaternion.identity);    // test purpose only
 
             _player = PlayerController.Instance;
         }
