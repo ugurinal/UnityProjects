@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9299d946250303a41b5e25831efd0672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerProperties: {fileID: 11400000, guid: 71ed78dcc61755848b82002586332f4c, type: 2}
+  _playerProperties: {fileID: 11400000, guid: 508060b1697283c4ba275cdf8958f8e6, type: 2}
   _laserSpawnGO: {fileID: 7446156508790041415}
   _lineRenderer: {fileID: 7808010884851171544}
 --- !u!1 &5777671172135565765

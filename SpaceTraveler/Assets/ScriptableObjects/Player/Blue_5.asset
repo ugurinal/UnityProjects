@@ -20,8 +20,8 @@ MonoBehaviour:
   MovementSpeedHorizontal: 6
   MovementSpeedVertical: 6
   MovementSpeedAndroid: 2
-  XPadding: 0.35
-  YPadding: 0
+  XPadding: 0.45
+  YPadding: 0.5
   ShootingType: 1
   LaserMaterial: {fileID: 2100000, guid: 3037a07982a401c47a2079ce856a34ba, type: 2}
   ProjectilePrefab: {fileID: 69777656218909228, guid: 644ed54f946aaba46a44472d33f8c8ad,
