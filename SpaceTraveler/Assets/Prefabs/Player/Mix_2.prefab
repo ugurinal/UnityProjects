@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 1535596269}
   - component: {fileID: 1905584648494983908}
   m_Layer: 8
-  m_Name: Blue_2
+  m_Name: Mix_2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -306,7 +306,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: adb94271687b3af4aba1964726edbcee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4023cf83b7267d44985125bc7e10ac36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

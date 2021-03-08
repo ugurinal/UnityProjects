@@ -167,7 +167,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 93aaf36ddcabc5145867baaf64b5de4e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e533a6f98910634bad63ab8b71110d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -188,7 +188,7 @@ Animator:
   m_GameObject: {fileID: 635623810}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ec01830082c0f64ea425f2c24280aa2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 603afe726d6da544d8e55a642fb33278, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 1535596269}
   - component: {fileID: 1905584648494983908}
   m_Layer: 8
-  m_Name: Blue_2
+  m_Name: Red_2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -306,7 +306,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: adb94271687b3af4aba1964726edbcee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c01a626bd3edaa46bef55744d682246, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
