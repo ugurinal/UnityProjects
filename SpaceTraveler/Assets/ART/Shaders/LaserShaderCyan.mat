@@ -21,9 +21,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
+    - Laser_Damage: 50
     - Vector1_2B4095B5: 5
     - Vector1_E2DF3780: 10
     - Vector1_FB8A107A: 73.24
     m_Colors:
     - Color_99DBB48C: {r: 1.2422018, g: 3.9676657, b: 9.080921, a: 1}
+    - Laser_ParticleColor: {r: 0.27058825, g: 0.59607846, b: 1, a: 1}
     - Vector2_CD324DB5: {r: -1, g: 0, b: 0, a: 0}
