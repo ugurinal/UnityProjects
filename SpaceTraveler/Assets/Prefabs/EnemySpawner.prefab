@@ -43,8 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 581b4b242cd98304f87f5283f8f0a300, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveConfigs:
+  _waveConfigs:
   - {fileID: 11400000, guid: 3555f5f0158c65349abc01ae09197fd8, type: 2}
   - {fileID: 11400000, guid: e20bffb35de0c7d459bdbaea77da835a, type: 2}
-  levelController: {fileID: 0}
-  wave: {fileID: 0}
+  _waveTMP: {fileID: 0}
+  enemyParent: {fileID: 0}
