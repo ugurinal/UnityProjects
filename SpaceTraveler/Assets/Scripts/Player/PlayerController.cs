@@ -161,16 +161,12 @@ namespace SpaceTraveler.Player
         {
             float target;
 
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 15f, _layerMask);
+            RaycastHit2D hit = Physics2D.Raycast(_laserSpawnGO.transform.position, Vector2.up, 15f, _layerMask);
 
             if (hit.collider != null)
             {
-                //Debug.Log("Hit " + hit.collider.transform.name);
-
                 Vector3 hitPos = hit.transform.position;
-                target = hitPos.y - transform.position.y - 1.5f;    // since player pivot is (0.5,-0.5) we substract 1.5 from y position
-
-                Debug.Log("Target = " + target);
+                target = hitPos.y - _laserSpawnGO.transform.position.y;    // length of enemy that get hits and laser transform y position
 
                 if (hit.transform.GetComponent<Enemy.Enemy>() != null)
                 {
@@ -179,8 +175,6 @@ namespace SpaceTraveler.Player
             }
             else
             {
-                //Debug.Log("Not Hit!");
-
                 if (transform.position.y < 0)
                 {
                     target = 5f + (transform.position.y * -1);  // 5 = camera orthographicSize
@@ -191,8 +185,9 @@ namespace SpaceTraveler.Player
                 }
             }
 
+            // set particle position and line renderer y position
+            _laserSpawnGO.transform.GetChild(1).transform.localPosition = new Vector3(_laserSpawnGO.transform.GetChild(1).transform.localPosition.x, target - 0.2f, _laserSpawnGO.transform.GetChild(1).transform.localPosition.z);
             _lineRenderer.SetPosition(1, new Vector3(0f, target, 0f));
-            Debug.Log("Line 1 = " + _lineRenderer.GetPosition(1));
         }
 
         private void Shoot()
@@ -294,8 +289,6 @@ namespace SpaceTraveler.Player
 
             if (other.CompareTag("EnemyProjectile"))
             {
-                Debug.Log("Player - OnTrigger - " + other.transform.name);
-
                 // if shield is active
                 if (transform.GetChild(1).gameObject.activeSelf)
                 {
@@ -417,6 +410,13 @@ namespace SpaceTraveler.Player
             _currentLaserDamage = _lineRenderer.material.GetFloat("Laser_Damage") * _currentDamageMultiplier;
             _currentShootingType = PlayerProperties.ShootingTypes.Laser;
 
+            // set particle color based on laser material
+            for (int i = 0; i < 2; i++)
+            {
+                var mainParticle = _laserSpawnGO.transform.GetChild(i).transform.GetChild(1).GetComponent<ParticleSystem>().main;
+                mainParticle.startColor = _lineRenderer.material.GetColor("Laser_ParticleColor");
+            }
+
             _laserSpawnGO.SetActive(true);
         }
 
@@ -426,7 +426,6 @@ namespace SpaceTraveler.Player
 
             if (powerUP == null)
             {
-                Debug.Log("Power UP is null creatnig projectile");
                 _currentProjectile = _playerProperties.ProjectilePrefab;
                 _shotCounter = 1;
             }
