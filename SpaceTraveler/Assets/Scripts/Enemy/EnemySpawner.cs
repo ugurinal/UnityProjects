@@ -29,6 +29,8 @@ namespace SpaceTraveler.Enemy
         [Space(20)]
         [SerializeField] private TextMeshProUGUI _waveTMP = null;
 
+        [SerializeField] private Transform enemyParent;
+
         private LevelController _levelController = null;
 
         #endregion FIELDS
@@ -95,7 +97,7 @@ namespace SpaceTraveler.Enemy
         {
             for (int i = 0; i < wave.NumberOfEnemies; i++)
             {
-                GameObject enemy = Instantiate(wave.EnemyPrefab, wave.GetWaypoints()[0].transform.position, Quaternion.identity);
+                GameObject enemy = Instantiate(wave.EnemyPrefab, wave.GetWaypoints()[0].transform.position, Quaternion.identity, enemyParent);
                 enemy.GetComponent<EnemyPathing>().SetWaveConfig(wave);
                 yield return new WaitForSeconds(wave.TimeBetweenSpawns);
             }
