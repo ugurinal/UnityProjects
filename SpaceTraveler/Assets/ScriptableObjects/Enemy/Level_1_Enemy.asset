@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0216ce6b8affc874fa19ba615fd6a232, type: 3}
   m_Name: Level_1_Enemy
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  MaxHealth: 999999
   ScoreToAdd: 100
   CoinToEarn: 50
   Projectile: {fileID: 69777656218909228, guid: 9000072e8ca7c7444a2ad9643898bbd5,
