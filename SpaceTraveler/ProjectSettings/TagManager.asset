@@ -4,8 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy1
-  - Fireball1
   - Enemy
   - PlayerProjectile
   - +2
