@@ -168,7 +168,9 @@ namespace SpaceTraveler.Player
                 //Debug.Log("Hit " + hit.collider.transform.name);
 
                 Vector3 hitPos = hit.transform.position;
-                target = hitPos.y - transform.position.y;
+                target = hitPos.y - transform.position.y - 1.5f;    // since player pivot is (0.5,-0.5) we substract 1.5 from y position
+
+                Debug.Log("Target = " + target);
 
                 if (hit.transform.GetComponent<Enemy.Enemy>() != null)
                 {
@@ -190,6 +192,7 @@ namespace SpaceTraveler.Player
             }
 
             _lineRenderer.SetPosition(1, new Vector3(0f, target, 0f));
+            Debug.Log("Line 1 = " + _lineRenderer.GetPosition(1));
         }
 
         private void Shoot()
