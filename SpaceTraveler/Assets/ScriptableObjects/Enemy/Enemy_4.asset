@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0216ce6b8affc874fa19ba615fd6a232, type: 3}
-  m_Name: Level_1_Enemy
+  m_Name: Enemy_4
   m_EditorClassIdentifier: 
-  MaxHealth: 999999
-  ScoreToAdd: 100
-  CoinToEarn: 50
-  Projectile: {fileID: 69777656218909228, guid: 9000072e8ca7c7444a2ad9643898bbd5,
+  MaxHealth: 1000
+  ScoreToAdd: 500
+  CoinToEarn: 125
+  Projectile: {fileID: 69777656218909228, guid: 9ea5326485db3854c87bceaba8f2d7f5,
     type: 3}
   MinTimeBetweenShots: 30
   MaxTimeBetweenShots: 50
