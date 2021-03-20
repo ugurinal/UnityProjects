@@ -9,6 +9,7 @@ namespace TowerDefense.Tower
     {
         [SerializeField] private float _range = 15f;
         [SerializeField] private Transform _target = null;
+        [SerializeField] private float _rotationSpeed = 5f;
 
         private void Start()
         {
@@ -24,14 +25,11 @@ namespace TowerDefense.Tower
 
             if (_target != null)
             {
+                LookAtTarget();
+
                 if (Vector3.Distance(_target.position, transform.position) >= _range)
                 {
                     UpdateNearestEnemy();
-                }
-
-                if (_target != null)
-                {
-                    // lock target
                 }
             }
         }
@@ -65,6 +63,15 @@ namespace TowerDefense.Tower
             {
                 _target = null;
             }
+        }
+
+        private void LookAtTarget()
+        {
+            Vector3 direction = _target.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, _rotationSpeed * Time.deltaTime).eulerAngles;
+
+            transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
         }
 
         private void OnDrawGizmosSelected()
