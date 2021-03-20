@@ -16,6 +16,6 @@ MonoBehaviour:
   EnemyPrefab: {fileID: 678438591116523897, guid: 43bec5abe7cd4a141978ef3e63438e46,
     type: 3}
   NumberOfEnemies: 5
-  EnemySpawnSpeed: 1
-  EnemySpeed: 1
+  EnemySpawnSpeed: 2
+  EnemySpeed: 40
   NextWaveTime: 10

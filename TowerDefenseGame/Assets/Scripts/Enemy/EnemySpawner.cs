@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TowerDefense.Level;
 
 namespace TowerDefense.Enemy
 {
@@ -11,7 +12,19 @@ namespace TowerDefense.Enemy
 
         private void Start()
         {
+            SetEnemySize();
             StartCoroutine(StartEnemyWaves());
+        }
+
+        private void SetEnemySize()
+        {
+            int enemySize = 0;
+            for (int i = 0; i < _waveConfig.Count; i++)
+            {
+                enemySize += _waveConfig[i].NumberOfEnemies;
+            }
+
+            LevelController.Instance.SetEnemySize(enemySize);
         }
 
         private IEnumerator StartEnemyWaves()
@@ -27,7 +40,11 @@ namespace TowerDefense.Enemy
         {
             for (int i = 0; i < wave.NumberOfEnemies; i++)
             {
-                Instantiate(wave.EnemyPrefab, _startPosition, Quaternion.identity);
+                EnemyPathing enemy = Instantiate(wave.EnemyPrefab, _startPosition, Quaternion.identity).GetComponent<EnemyPathing>();
+                enemy.SetWaypoints(wave.GetWayPoints());
+                enemy.Speed = wave.EnemySpeed;
+
+                LevelController.Instance.AddEnemyList(enemy.gameObject);
                 yield return new WaitForSeconds(wave.EnemySpawnSpeed);
             }
         }
