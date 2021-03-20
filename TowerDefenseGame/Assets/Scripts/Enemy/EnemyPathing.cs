@@ -24,19 +24,27 @@ namespace TowerDefense.Enemy
 
         private void Update()
         {
-            if (_currentIdx >= _waypoints.Count)
-            {
-                Debug.Log("Decrease Life!");
-                return;
-            }
+            HandleMovement();
+            UpdateWaypoint();
+        }
 
-            if (Vector3.Distance(transform.position, _waypoints[_currentIdx].position) <= 0.001f)
+        private void HandleMovement()
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _waypoints[_currentIdx].position, _movementSpeed * Time.deltaTime);
+        }
+
+        private void UpdateWaypoint()
+        {
+            if (Vector3.Distance(_waypoints[_currentIdx].position, transform.position) < 0.001f)
             {
+                if (_currentIdx >= _waypoints.Count - 1)
+                {
+                    Debug.Log(transform.position);
+                    Destroy(gameObject);
+                    return;
+                }
+
                 _currentIdx++;
-            }
-            else
-            {
-                transform.position = Vector3.MoveTowards(transform.position, _waypoints[_currentIdx].position, _movementSpeed * Time.deltaTime);
             }
         }
     }

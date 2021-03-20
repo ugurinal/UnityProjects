@@ -47,7 +47,7 @@ namespace TowerDefense.Level
         public void AddEnemyList(GameObject enemy)
         {
             _enemies.Add(enemy);
-            Debug.Log("Enemy added!");
+            //Debug.Log("Enemy added!");
         }
     }
 }
