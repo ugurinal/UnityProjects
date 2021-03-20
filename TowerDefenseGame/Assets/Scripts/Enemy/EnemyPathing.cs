@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using TowerDefense.Level;
 
 namespace TowerDefense.Enemy
 {
@@ -40,6 +41,7 @@ namespace TowerDefense.Enemy
                 if (_currentIdx >= _waypoints.Count - 1)
                 {
                     Debug.Log(transform.position);
+                    LevelController.Instance.RemoveEnemy(gameObject);
                     Destroy(gameObject);
                     return;
                 }
