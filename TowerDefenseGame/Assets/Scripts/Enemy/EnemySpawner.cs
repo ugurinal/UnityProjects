@@ -10,6 +10,8 @@ namespace TowerDefense.Enemy
         [SerializeField] private List<WaveConfig> _waveConfig;
         [SerializeField] private Vector3 _startPosition;
 
+        [SerializeField] private Transform _enemyParent;
+
         private void Start()
         {
             SetEnemySize();
@@ -40,7 +42,7 @@ namespace TowerDefense.Enemy
         {
             for (int i = 0; i < wave.NumberOfEnemies; i++)
             {
-                EnemyPathing enemy = Instantiate(wave.EnemyPrefab, _startPosition, Quaternion.identity).GetComponent<EnemyPathing>();
+                EnemyPathing enemy = Instantiate(wave.EnemyPrefab, _startPosition, Quaternion.identity,_enemyParent).GetComponent<EnemyPathing>();
                 enemy.SetWaypoints(wave.GetWayPoints());
                 enemy.Speed = wave.EnemySpeed;
 

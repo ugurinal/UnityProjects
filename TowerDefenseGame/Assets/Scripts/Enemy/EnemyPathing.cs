@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using TowerDefense.Level;
 
@@ -10,6 +10,7 @@ namespace TowerDefense.Enemy
         private int _currentIdx;
 
         private float _movementSpeed;
+
 
         private void Start()
         {

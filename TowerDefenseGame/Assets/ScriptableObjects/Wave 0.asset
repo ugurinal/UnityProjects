@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: {fileID: 7982185575103233423, guid: 2c71f5da27423d74b8f36bff7ef88429, type: 3}
   EnemyPrefab: {fileID: 678438591116523897, guid: 43bec5abe7cd4a141978ef3e63438e46,
     type: 3}
-  NumberOfEnemies: 5
+  NumberOfEnemies: 1
   EnemySpawnSpeed: 10
   EnemySpeed: 10
   NextWaveTime: 10

@@ -8,6 +8,7 @@ public class BuildManager : MonoBehaviour
     public static BuildManager Instance { get => _instance; }
 
     [SerializeField] private List<GameObject> _towers;
+    [SerializeField] private Transform _towerParent;
 
     private void Awake()
     {
@@ -31,7 +32,7 @@ public class BuildManager : MonoBehaviour
         // show gui then instantiate
 
         /*GameObject tower =*/
-        Instantiate(_towers[0], position, Quaternion.identity);
+        Instantiate(_towers[0], position, Quaternion.identity, _towerParent);
     }
 
     private void Start()

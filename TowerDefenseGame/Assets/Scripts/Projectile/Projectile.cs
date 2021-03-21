@@ -19,11 +19,11 @@ public class Projectile : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, _target, _projectileSpeed * Time.deltaTime);
 
-        //if (Vector3.Distance(transform.position, _target) < 0.01f)
-        //{
-        //    Debug.Log("HIT!");
-        //    Destroy(gameObject);
-        //}
+        if (transform.position == _target)
+        {
+            Debug.Log("DESTROY");
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
