@@ -8,14 +8,19 @@ namespace TowerDefense.Tower
     public class AATower : MonoBehaviour
     {
         [Header("Tower Config")]
-        [SerializeField] private TowerConfig towerConfig;
+        [SerializeField] private TowerConfig _towerConfig;
 
         private float _range;
         private Transform _target = null;
 
+        private float _fireSpeed;
+        private float _fireCountdown;
+
         private void Start()
         {
-            _range = towerConfig.TowerRange;
+            _range = _towerConfig.TowerRange;
+            _fireSpeed = _towerConfig.FireSpeed;
+            _fireCountdown = 0f;
         }
 
         private void Update()
@@ -28,7 +33,7 @@ namespace TowerDefense.Tower
             if (_target != null)
             {
                 LookAtTarget();
-                // fire
+                Shoot();
 
                 if (Vector3.Distance(_target.position, transform.position) >= _range)
                 {
@@ -72,9 +77,20 @@ namespace TowerDefense.Tower
         {
             Vector3 direction = _target.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
-            Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, towerConfig.RotationSpeed * Time.deltaTime).eulerAngles;
+            Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, _towerConfig.RotationSpeed * Time.deltaTime).eulerAngles;
 
             transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
+
+        private void Shoot()
+        {
+            if (_fireCountdown <= 0)
+            {
+                GameObject projectile = Instantiate(_towerConfig.ProjectilePrefab, transform.position + new Vector3(0f, 2.5f, 2.2f), transform.rotation);
+                projectile.GetComponent<Projectile>().SetTarget(_target);
+                _fireCountdown = 1f / _fireSpeed;
+            }
+            _fireCountdown -= Time.deltaTime;
         }
 
         private void OnDrawGizmosSelected()
