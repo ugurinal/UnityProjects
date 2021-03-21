@@ -5,15 +5,17 @@ using TowerDefense.Level;
 
 namespace TowerDefense.Tower
 {
-    public class Tower : MonoBehaviour
+    public class AATower : MonoBehaviour
     {
-        [SerializeField] private float _range = 15f;
-        [SerializeField] private Transform _target = null;
-        [SerializeField] private float _rotationSpeed = 5f;
+        [Header("Tower Config")]
+        [SerializeField] private TowerConfig towerConfig;
+
+        private float _range;
+        private Transform _target = null;
 
         private void Start()
         {
-            UpdateNearestEnemy();
+            _range = towerConfig.TowerRange;
         }
 
         private void Update()
@@ -26,6 +28,7 @@ namespace TowerDefense.Tower
             if (_target != null)
             {
                 LookAtTarget();
+                // fire
 
                 if (Vector3.Distance(_target.position, transform.position) >= _range)
                 {
@@ -69,7 +72,7 @@ namespace TowerDefense.Tower
         {
             Vector3 direction = _target.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
-            Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, _rotationSpeed * Time.deltaTime).eulerAngles;
+            Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, towerConfig.RotationSpeed * Time.deltaTime).eulerAngles;
 
             transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
         }
