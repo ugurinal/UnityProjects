@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TowerDefense.Level;
+using TowerDefense.Damage;
 
-namespace TowerDefense.Tower
+namespace TowerDefense.Building
 {
     public class AATower : MonoBehaviour
     {

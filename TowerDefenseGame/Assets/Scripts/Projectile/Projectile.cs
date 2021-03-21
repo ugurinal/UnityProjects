@@ -3,42 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using TowerDefense.Level;
 
-public class Projectile : MonoBehaviour
+namespace TowerDefense.Damage
 {
-    [SerializeField] private float _projectileSpeed;
-    [SerializeField] private GameObject _projectileVFX;
-    private Transform _target;
-
-    public void SetTarget(Transform target)
+    public class Projectile : MonoBehaviour
     {
-        _target = target;
-    }
+        [SerializeField] private float _projectileSpeed;
+        [SerializeField] private GameObject _projectileVFX;
+        private Transform _target;
 
-    private void Update()
-    {
-        if (_target == null)
-            return;
-
-        Vector3 direction = _target.position - transform.position;
-        float distanceThisFrame = _projectileSpeed * Time.deltaTime;
-
-        if (direction.magnitude <= distanceThisFrame)
+        public void SetTarget(Transform target)
         {
-            HitTarget();
-            return;
+            _target = target;
         }
 
-        transform.Translate(direction.normalized * distanceThisFrame, Space.World);
-    }
+        private void Update()
+        {
+            if (_target == null)
+                return;
 
-    private void HitTarget()
-    {
-        Debug.Log("HIT - HIT - HIT - HIT - HIT - HIT");
-        GameObject impactVFX = Instantiate(_projectileVFX, transform.position, transform.rotation);
-        Destroy(impactVFX, 1f);
+            Vector3 direction = _target.position - transform.position;
+            float distanceThisFrame = _projectileSpeed * Time.deltaTime;
 
-        LevelController.Instance.RemoveEnemy(_target.gameObject);
-        Destroy(_target.gameObject);
-        Destroy(gameObject);
+            if (direction.magnitude <= distanceThisFrame)
+            {
+                HitTarget();
+                return;
+            }
+
+            transform.Translate(direction.normalized * distanceThisFrame, Space.World);
+        }
+
+        private void HitTarget()
+        {
+            Debug.Log("HIT - HIT - HIT - HIT - HIT - HIT");
+            GameObject impactVFX = Instantiate(_projectileVFX, transform.position, transform.rotation);
+            Destroy(impactVFX, 1f);
+
+            LevelController.Instance.RemoveEnemy(_target.gameObject);
+            Destroy(_target.gameObject);
+            Destroy(gameObject);
+        }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TowerDefense.Tower
+namespace TowerDefense.Building
 {
     [CreateAssetMenu(menuName = "Tower Defense/Tower/Tower Config")]
     public class TowerConfig : ScriptableObject

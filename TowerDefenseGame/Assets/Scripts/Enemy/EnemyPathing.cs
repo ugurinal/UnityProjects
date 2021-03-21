@@ -11,7 +11,6 @@ namespace TowerDefense.Enemy
 
         private float _movementSpeed;
 
-
         private void Start()
         {
             _currentIdx = 0;
