@@ -8,19 +8,15 @@ namespace TowerDefense.Building
     {
         private void OnMouseDown()
         {
-            if (!IsPointerOverUIObject())
+            if (!IsPointerOverGameObject())
             {
                 BuildManager.Instance.CloseShopPanel();
             }
         }
 
-        public static bool IsPointerOverUIObject()
+        public static bool IsPointerOverGameObject()
         {
-            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-            eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            List<RaycastResult> results = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-            return results.Count > 0;
+            return EventSystem.current.IsPointerOverGameObject();
         }
     }
 }
