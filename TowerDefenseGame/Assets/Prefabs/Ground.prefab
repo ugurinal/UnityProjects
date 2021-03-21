@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2123687859733238314}
   - component: {fileID: 2123687859733238313}
   - component: {fileID: 2123687859733238312}
+  - component: {fileID: -1087591301314749870}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -79,3 +80,15 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &-1087591301314749870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123687859733238318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd865cf567354d0469007c7cd644e4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
