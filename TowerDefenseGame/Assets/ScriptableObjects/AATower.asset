@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TowerRange: 15
   RotationSpeed: 5
+  TowerInstantiateOffset: {x: 0, y: 0.5, z: 0}
   ProjectilePrefab: {fileID: 891992894330584653, guid: c994af21cf9bc244fb82de16229fa182,
     type: 3}
   FireSpeed: 3

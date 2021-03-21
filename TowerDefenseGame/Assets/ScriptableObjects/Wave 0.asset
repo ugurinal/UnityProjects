@@ -17,5 +17,5 @@ MonoBehaviour:
     type: 3}
   NumberOfEnemies: 5
   EnemySpawnSpeed: 10
-  EnemySpeed: 20
+  EnemySpeed: 10
   NextWaveTime: 10
