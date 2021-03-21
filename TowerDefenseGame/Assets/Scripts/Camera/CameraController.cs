@@ -39,7 +39,7 @@ namespace TowerDefense.Camera
             Vector3 pos = transform.position;
             pos.y -= scroll * _cameraSettings.ScrollSpeed * Time.deltaTime * 500f;
 
-            Mathf.Clamp(pos.y, _cameraSettings.CameraMinY, _cameraSettings.CameraMaxY);
+            pos.y = Mathf.Clamp(pos.y, _cameraSettings.CameraMinY, _cameraSettings.CameraMaxY);
 
             transform.position = pos;
         }
