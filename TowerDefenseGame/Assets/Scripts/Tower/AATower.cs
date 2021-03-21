@@ -10,6 +10,8 @@ namespace TowerDefense.Tower
         [Header("Tower Config")]
         [SerializeField] private TowerConfig _towerConfig;
 
+        [SerializeField] private Transform _firePoint;
+
         private float _range;
         private Transform _target = null;
 
@@ -86,8 +88,8 @@ namespace TowerDefense.Tower
         {
             if (_fireCountdown <= 0)
             {
-                GameObject projectile = Instantiate(_towerConfig.ProjectilePrefab, transform.position + new Vector3(0f, 2.5f, 2.2f), transform.rotation);
-                projectile.GetComponent<Projectile>().SetTarget(_target);
+                GameObject projectile = Instantiate(_towerConfig.ProjectilePrefab, _firePoint.position, _firePoint.rotation);
+                projectile.GetComponent<Projectile>().SetTarget(_target.position);
                 _fireCountdown = 1f / _fireSpeed;
             }
             _fireCountdown -= Time.deltaTime;

@@ -10,6 +10,7 @@ namespace TowerDefense.Tower
         [Header("Tower Settings")]
         public float TowerRange;
         public float RotationSpeed;
+        public Vector3 TowerInstantiateOffset;
 
         [Header("Projectile Settings")]
         [Space(10f)]
