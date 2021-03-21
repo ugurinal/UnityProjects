@@ -89,7 +89,7 @@ namespace TowerDefense.Tower
             if (_fireCountdown <= 0)
             {
                 GameObject projectile = Instantiate(_towerConfig.ProjectilePrefab, _firePoint.position, _firePoint.rotation);
-                projectile.GetComponent<Projectile>().SetTarget(_target.position);
+                projectile.GetComponent<Projectile>().SetTarget(_target);
                 _fireCountdown = 1f / _fireSpeed;
             }
             _fireCountdown -= Time.deltaTime;

@@ -42,7 +42,7 @@ namespace TowerDefense.Enemy
         {
             for (int i = 0; i < wave.NumberOfEnemies; i++)
             {
-                EnemyPathing enemy = Instantiate(wave.EnemyPrefab, _startPosition, Quaternion.identity,_enemyParent).GetComponent<EnemyPathing>();
+                EnemyPathing enemy = Instantiate(wave.EnemyPrefab, _startPosition, Quaternion.identity, _enemyParent).GetComponent<EnemyPathing>();
                 enemy.SetWaypoints(wave.GetWayPoints());
                 enemy.Speed = wave.EnemySpeed;
 
