@@ -35,10 +35,13 @@ namespace TowerDefense.Camera
         private void UpdateCameraHeight()
         {
             float scroll = Input.GetAxis("Mouse ScrollWheel");
-            Vector3 targetPos = new Vector3(0f, -1 * scroll * _cameraSettings.ScrollSpeed * Time.deltaTime * 500f, 0f);
-            Vector3 nextPos = Vector3.Lerp(transform.position, transform.position - targetPos, 1f);
-            nextPos.y = Mathf.Clamp(nextPos.y, _cameraSettings.CameraMinY, _cameraSettings.CameraMaxY);
-            transform.position = nextPos;
+
+            Vector3 pos = transform.position;
+            pos.y -= scroll * _cameraSettings.ScrollSpeed * Time.deltaTime * 500f;
+
+            Mathf.Clamp(pos.y, _cameraSettings.CameraMinY, _cameraSettings.CameraMaxY);
+
+            transform.position = pos;
         }
     }
 }
