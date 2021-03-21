@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace TowerDefense.Building
 {
     public class Node : MonoBehaviour
     {
         [SerializeField] private Color _hoverColor;
+
+        [SerializeField] private GameObject _shopPanel;
 
         private GameObject _tower;
 
@@ -27,7 +30,10 @@ namespace TowerDefense.Building
                 return;
             }
 
-            BuildManager.Instance.BuildTower(transform.position);
+            if (!IsPointerOverUIObject())
+            {
+                BuildManager.Instance.OpenShopPanel(transform.position);
+            }
         }
 
         private void OnMouseEnter()
@@ -40,6 +46,15 @@ namespace TowerDefense.Building
         {
             transform.position -= new Vector3(0, 1f, 0f);
             _renderer.material.color = _startColor;
+        }
+
+        public static bool IsPointerOverUIObject()
+        {
+            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+            eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            List<RaycastResult> results = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+            return results.Count > 0;
         }
     }
 }
