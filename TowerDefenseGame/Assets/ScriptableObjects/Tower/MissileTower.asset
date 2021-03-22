@@ -15,6 +15,6 @@ MonoBehaviour:
   TowerRange: 30
   RotationSpeed: 7
   TowerInstantiateOffset: {x: 0, y: 0.5, z: 0}
-  ProjectilePrefab: {fileID: 891992894330584653, guid: c994af21cf9bc244fb82de16229fa182,
+  ProjectilePrefab: {fileID: 2544986975234295208, guid: 1085ba268f168ca479d9644c5edca721,
     type: 3}
   FireSpeed: 0.25

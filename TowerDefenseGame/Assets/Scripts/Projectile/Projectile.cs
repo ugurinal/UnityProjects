@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TowerDefense.Level;
+using TowerDefense.Enemy;
 
 namespace TowerDefense.Damage
 {
@@ -9,6 +10,7 @@ namespace TowerDefense.Damage
     {
         [SerializeField] private float _projectileSpeed;
         [SerializeField] private GameObject _projectileVFX;
+        [SerializeField] private float _explosionRadius;
         private Transform _target;
 
         public void SetTarget(Transform target)
@@ -34,6 +36,8 @@ namespace TowerDefense.Damage
             }
 
             transform.Translate(direction.normalized * distanceThisFrame, Space.World);
+
+            transform.LookAt(_target);
         }
 
         private void HitTarget()
@@ -42,9 +46,45 @@ namespace TowerDefense.Damage
             GameObject impactVFX = Instantiate(_projectileVFX, transform.position, transform.rotation);
             Destroy(impactVFX, 1f);
 
-            LevelController.Instance.RemoveEnemy(_target.gameObject);
-            Destroy(_target.gameObject);
+            if (_explosionRadius > 0)
+            {
+                Explode();
+            }
+            else
+            {
+                Enemy.Enemy enemy = _target.GetComponent<Enemy.Enemy>();
+
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(100);
+                }
+                else
+                {
+                    Debug.Log("Enemy is null !");
+                }
+            }
+
             Destroy(gameObject);
+        }
+
+        private void Explode()
+        {
+            Collider[] hits = Physics.OverlapSphere(transform.position, _explosionRadius);
+
+            foreach (Collider go in hits)
+            {
+                Enemy.Enemy enemy = go.GetComponent<Enemy.Enemy>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(100);
+                }
+            }
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, _explosionRadius);
         }
     }
 }

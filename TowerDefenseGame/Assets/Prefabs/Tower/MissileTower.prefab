@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 4725148360437140655}
   - component: {fileID: 4725148360438240807}
   - component: {fileID: 4725148360426762437}
-  - component: {fileID: 4725148360434024845}
   - component: {fileID: 6845499776677020887}
   m_Layer: 0
   m_Name: MissileTower
@@ -133,19 +132,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &4725148360434024845
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4725148360436162233}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.466382, y: 0.9213911, z: 2.7931714}
-  m_Center: {x: 0.014002562, y: 0.46069515, z: 0.0000011920929}
 --- !u!114 &6845499776677020887
 MonoBehaviour:
   m_ObjectHideFlags: 0

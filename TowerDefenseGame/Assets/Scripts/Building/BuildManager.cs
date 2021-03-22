@@ -14,7 +14,6 @@ namespace TowerDefense.Building
         [SerializeField] private Transform _towerParent;
         [SerializeField] private GameObject _shopPanel;
 
-        //private Vector3 _towerPosition;
         private Node _node; // which node is selected
 
         private void Awake()
@@ -53,7 +52,6 @@ namespace TowerDefense.Building
 
         public void OpenShopPanel(Node node)
         {
-            //_towerPosition = node position;
             _node = node;
             _shopPanel.transform.position = node.transform.position + new Vector3(0f, 8f, 0f);
             _shopPanel.SetActive(true);

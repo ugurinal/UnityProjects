@@ -8,7 +8,6 @@ namespace TowerDefense.Building
     public class Node : MonoBehaviour
     {
         [SerializeField] private Color _hoverColor;
-
         [SerializeField] private GameObject _shopPanel;
 
         private GameObject _tower;
