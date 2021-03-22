@@ -11,6 +11,7 @@ namespace TowerDefense.Building
         [Header("Tower Config")]
         [SerializeField] private TowerConfig _towerConfig;
 
+        [SerializeField] private Transform _partToRotate;
         [SerializeField] private Transform _firePoint;
 
         private float _range;
@@ -24,10 +25,14 @@ namespace TowerDefense.Building
             _range = _towerConfig.TowerRange;
             _fireSpeed = _towerConfig.FireSpeed;
             _fireCountdown = 0f;
+
+            transform.position += _towerConfig.TowerInstantiateOffset;
         }
 
         private void Update()
         {
+            _fireCountdown -= Time.deltaTime;   // evet  target is null decrease countdown
+
             if (_target == null)
             {
                 UpdateNearestEnemy();
@@ -78,11 +83,17 @@ namespace TowerDefense.Building
 
         private void LookAtTarget()
         {
-            Vector3 direction = _target.position - transform.position;
+            Vector3 direction = _target.position - _partToRotate.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
-            Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, _towerConfig.RotationSpeed * Time.deltaTime).eulerAngles;
+            Vector3 rotation = Quaternion.Lerp(_partToRotate.rotation, lookRotation, _towerConfig.RotationSpeed * Time.deltaTime).eulerAngles;
 
-            transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            _partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
+            //Vector3 direction = _target.position - transform.position;
+            //Quaternion lookRotation = Quaternion.LookRotation(direction);
+            //Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, _towerConfig.RotationSpeed * Time.deltaTime).eulerAngles;
+
+            //transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
         }
 
         private void Shoot()
@@ -93,7 +104,6 @@ namespace TowerDefense.Building
                 projectile.GetComponent<Projectile>().SetTarget(_target);
                 _fireCountdown = 1f / _fireSpeed;
             }
-            _fireCountdown -= Time.deltaTime;
         }
 
         private void OnDrawGizmosSelected()

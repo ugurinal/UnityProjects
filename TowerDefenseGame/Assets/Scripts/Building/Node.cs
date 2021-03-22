@@ -32,7 +32,7 @@ namespace TowerDefense.Building
 
             if (!IsPointerOverGameObject())
             {
-                BuildManager.Instance.OpenShopPanel(transform.position);
+                BuildManager.Instance.OpenShopPanel(this);
             }
         }
 
@@ -51,6 +51,11 @@ namespace TowerDefense.Building
         public static bool IsPointerOverGameObject()
         {
             return EventSystem.current.IsPointerOverGameObject();
+        }
+
+        public void SetTower(GameObject tower)
+        {
+            _tower = tower;
         }
     }
 }

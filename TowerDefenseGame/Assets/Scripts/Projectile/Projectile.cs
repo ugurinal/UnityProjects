@@ -19,7 +19,10 @@ namespace TowerDefense.Damage
         private void Update()
         {
             if (_target == null)
+            {
+                Destroy(gameObject);
                 return;
+            }
 
             Vector3 direction = _target.position - transform.position;
             float distanceThisFrame = _projectileSpeed * Time.deltaTime;
