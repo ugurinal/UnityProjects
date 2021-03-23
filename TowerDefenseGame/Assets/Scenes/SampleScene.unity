@@ -10981,6 +10981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d4a5cc0dda3d24a8c7b97fbad49e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moneyText: {fileID: 1661819289}
   _startMoney: 10000
 --- !u!1001 &1418898858
 PrefabInstance:
