@@ -88,12 +88,6 @@ namespace TowerDefense.Building
             Vector3 rotation = Quaternion.Lerp(_partToRotate.rotation, lookRotation, _towerConfig.RotationSpeed * Time.deltaTime).eulerAngles;
 
             _partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
-            //Vector3 direction = _target.position - transform.position;
-            //Quaternion lookRotation = Quaternion.LookRotation(direction);
-            //Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, _towerConfig.RotationSpeed * Time.deltaTime).eulerAngles;
-
-            //transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
         }
 
         private void Shoot()

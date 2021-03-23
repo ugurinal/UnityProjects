@@ -10,7 +10,7 @@ namespace TowerDefense.Building
         private static BuildManager _instance;
         public static BuildManager Instance { get => _instance; }
 
-        [SerializeField] private List<GameObject> _towers;
+        [SerializeField] private List<TowerShop> _towers;
         [SerializeField] private Transform _towerParent;
         [SerializeField] private GameObject _shopPanel;
 
@@ -39,15 +39,15 @@ namespace TowerDefense.Building
 
             Button towerOne = _shopPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>();
             Button towerTwo = _shopPanel.transform.GetChild(0).GetChild(1).GetComponent<Button>();
-            Button towerThree = _shopPanel.transform.GetChild(0).GetChild(2).GetComponent<Button>();
+            //Button towerThree = _shopPanel.transform.GetChild(0).GetChild(2).GetComponent<Button>();
 
             towerOne.onClick.RemoveAllListeners();
             towerTwo.onClick.RemoveAllListeners();
-            towerThree.onClick.RemoveAllListeners();
+            //towerThree.onClick.RemoveAllListeners();
 
             towerOne.onClick.AddListener(() => CreateTowerOne());
             towerTwo.onClick.AddListener(() => CreateTowerTwo());
-            towerThree.onClick.AddListener(() => CreateTowerThree());
+            //towerThree.onClick.AddListener(() => CreateTowerThree());
         }
 
         public void OpenShopPanel(Node node)
@@ -64,20 +64,20 @@ namespace TowerDefense.Building
 
         private void CreateTowerOne()
         {
-            _node.SetTower(Instantiate(_towers[0], _node.transform.position, Quaternion.Euler(new Vector3(0f, -90f, 0f)), _towerParent));
+            _node.SetTower(Instantiate(_towers[0].Prefab, _node.transform.position, Quaternion.identity, _towerParent));
             _shopPanel.SetActive(false);
         }
 
         private void CreateTowerTwo()
         {
-            _node.SetTower(Instantiate(_towers[1], _node.transform.position, Quaternion.Euler(new Vector3(0f, -90f, 0f)), _towerParent));
+            _node.SetTower(Instantiate(_towers[1].Prefab, _node.transform.position, Quaternion.identity, _towerParent));
             _shopPanel.SetActive(false);
         }
 
-        private void CreateTowerThree()
-        {
-            _node.SetTower(Instantiate(_towers[2], _node.transform.position, Quaternion.Euler(new Vector3(0f, -90f, 0f)), _towerParent));
-            _shopPanel.SetActive(false);
-        }
+        //private void CreateTowerThree()
+        //{
+        //    _node.SetTower(Instantiate(_towers[2].Prefab, _node.transform.position, Quaternion.Euler(new Vector3(0f, -90f, 0f)), _towerParent));
+        //    _shopPanel.SetActive(false);
+        //}
     }
 }

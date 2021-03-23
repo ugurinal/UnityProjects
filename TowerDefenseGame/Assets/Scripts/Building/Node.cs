@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace TowerDefense.Building
@@ -24,19 +22,19 @@ namespace TowerDefense.Building
         private void OnMouseDown()
         {
             if (_tower != null)
-            {
-                Debug.Log("You can not place tower!");
                 return;
-            }
 
-            if (!IsPointerOverGameObject())
-            {
-                BuildManager.Instance.OpenShopPanel(this);
-            }
+            if (IsPointerOverGameObject())
+                return;
+
+            BuildManager.Instance.OpenShopPanel(this);
         }
 
         private void OnMouseEnter()
         {
+            if (IsPointerOverGameObject())
+                return;
+
             transform.position += new Vector3(0, 1f, 0f);
             _renderer.material.color = _hoverColor;
         }
