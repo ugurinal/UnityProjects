@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -70,7 +69,7 @@ namespace TowerDefense.Building
             _node.SetTower(Instantiate(_towers[0].Prefab, _node.transform.position, Quaternion.identity, _towerParent));
             _shopPanel.SetActive(false);
 
-            PlayerStats.PurchaseTower(_towers[0].Cost);
+            PlayerStats.Instance.PurchaseTower(_towers[0].Cost);
         }
 
         private void CreateTowerTwo()
@@ -81,12 +80,12 @@ namespace TowerDefense.Building
             _node.SetTower(Instantiate(_towers[1].Prefab, _node.transform.position, Quaternion.identity, _towerParent));
             _shopPanel.SetActive(false);
 
-            PlayerStats.PurchaseTower(_towers[1].Cost);
+            PlayerStats.Instance.PurchaseTower(_towers[1].Cost);
         }
 
         private bool CanEffort(TowerShop tower)
         {
-            return PlayerStats.Money > tower.Cost;
+            return PlayerStats.Instance.Money > tower.Cost;
         }
 
         //private void CreateTowerThree()
