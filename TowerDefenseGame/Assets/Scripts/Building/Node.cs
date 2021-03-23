@@ -32,9 +32,6 @@ namespace TowerDefense.Building
 
         private void OnMouseEnter()
         {
-            if (IsPointerOverGameObject())
-                return;
-
             transform.position += new Vector3(0, 1f, 0f);
             _renderer.material.color = _hoverColor;
         }

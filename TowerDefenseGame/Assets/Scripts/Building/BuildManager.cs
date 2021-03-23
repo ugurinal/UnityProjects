@@ -64,14 +64,29 @@ namespace TowerDefense.Building
 
         private void CreateTowerOne()
         {
+            if (!CanEffort(_towers[0]))
+                return;
+
             _node.SetTower(Instantiate(_towers[0].Prefab, _node.transform.position, Quaternion.identity, _towerParent));
             _shopPanel.SetActive(false);
+
+            PlayerStats.PurchaseTower(_towers[0].Cost);
         }
 
         private void CreateTowerTwo()
         {
+            if (!CanEffort(_towers[1]))
+                return;
+
             _node.SetTower(Instantiate(_towers[1].Prefab, _node.transform.position, Quaternion.identity, _towerParent));
             _shopPanel.SetActive(false);
+
+            PlayerStats.PurchaseTower(_towers[1].Cost);
+        }
+
+        private bool CanEffort(TowerShop tower)
+        {
+            return PlayerStats.Money > tower.Cost;
         }
 
         //private void CreateTowerThree()
