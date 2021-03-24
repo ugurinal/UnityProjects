@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4630905465461518288}
   - component: {fileID: 4630905465461518289}
   - component: {fileID: 4630905465461518290}
+  - component: {fileID: 1565926453}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -120,11 +121,11 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: df1ede3cf13b4e1429547d16804145d5, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &4630905465461518290
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,3 +142,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.0044796616}
   m_Size: {x: 0.15730846, y: 0.29294118}
   m_Direction: 0
+--- !u!114 &1565926453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630905465461518291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb57a5fae8b8ab4384a57b619acfc8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerSettings: {fileID: 11400000, guid: 61fab389a999e5645aee9f8211019dc8, type: 2}
+  _playerInput: {fileID: 11400000, guid: 8ede2b9623bca0c4eacc482cb931e790, type: 2}

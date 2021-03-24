@@ -1,18 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PlayerSettings : MonoBehaviour
+namespace Platformer2D.Player
 {
-    // Start is called before the first frame update
-    void Start()
+    [CreateAssetMenu(menuName = "Platformer2D/Player/Player Settings")]
+    public class PlayerSettings : ScriptableObject
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public float MovementSpeed = 5f;
     }
 }
