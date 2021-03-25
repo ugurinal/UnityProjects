@@ -72,8 +72,7 @@ namespace Platformer2D.Player
             _myBody.gravityScale = 0f;
 
             bool playerHasSpeed = Mathf.Abs(_playerInput.VerticalAxis) > Mathf.Epsilon;
-            if (playerHasSpeed)
-                _anim.SetBool("Climbing", true);
+            _anim.SetBool("Climbing", playerHasSpeed);
         }
     }
 }
