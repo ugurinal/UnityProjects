@@ -12,11 +12,15 @@ namespace Platformer2D.Player
         private Animator _anim;
         private Collider2D _myCollider;
 
+        private float _originalGravityScale;
+
         private void Start()
         {
             _myBody = GetComponent<Rigidbody2D>();
             _anim = GetComponent<Animator>();
             _myCollider = GetComponent<Collider2D>();
+
+            _originalGravityScale = _myBody.gravityScale;
         }
 
         private void FixedUpdate()
@@ -58,11 +62,14 @@ namespace Platformer2D.Player
             if (!_myCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
             {
                 _anim.SetBool("Climbing", false);
+                _myBody.gravityScale = _originalGravityScale;
                 return;
             }
 
             Vector2 speed = new Vector2(_myBody.velocity.x, _playerInput.VerticalAxis * _playerSettings.MovementSpeed);
             _myBody.velocity = speed;
+
+            _myBody.gravityScale = 0f;
 
             bool playerHasSpeed = Mathf.Abs(_playerInput.VerticalAxis) > Mathf.Epsilon;
             if (playerHasSpeed)
