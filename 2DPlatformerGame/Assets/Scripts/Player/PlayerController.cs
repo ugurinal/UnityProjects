@@ -45,7 +45,7 @@ namespace Platformer2D.Player
 
             if (playerHasSpeed)
             {
-                transform.localScale = new Vector3(Mathf.Sign(_playerInput.HorizontalAxis) * 1f, 1f, 1f);
+                transform.localScale = new Vector3(Mathf.Sign(_playerInput.HorizontalAxis) * 1f, transform.localScale.y, transform.localScale.z);
             }
         }
 
