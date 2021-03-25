@@ -6,5 +6,6 @@ namespace Platformer2D.Player
     public class PlayerSettings : ScriptableObject
     {
         public float MovementSpeed = 5f;
+        public float JumpSpeed = 5f;
     }
 }

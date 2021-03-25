@@ -5,11 +5,15 @@ namespace Platformer2D.PlayerInput
     [CreateAssetMenu(menuName = "Platformer2D/Input/Input Data")]
     public class InputData : ScriptableObject
     {
-        public float HorizontalMovement;
+        public float HorizontalAxis;
+        public float VerticalAxis;
+        public float JumpAxis;
 
         public void ProcessInput()
         {
-            HorizontalMovement = Input.GetAxis("Horizontal");
+            HorizontalAxis = Input.GetAxis("Horizontal");
+            VerticalAxis = Input.GetAxis("Vertical");
+            JumpAxis = Input.GetAxis("Jump");
         }
     }
 }
