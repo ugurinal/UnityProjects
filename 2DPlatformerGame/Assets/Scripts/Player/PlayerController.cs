@@ -10,7 +10,8 @@ namespace Platformer2D.Player
 
         private Rigidbody2D _myBody;
         private Animator _anim;
-        private Collider2D _myCollider;
+        private CapsuleCollider2D _capsuleCollider; //
+        private BoxCollider2D _boxCollider; // for jump
 
         private float _originalGravityScale;
 
@@ -18,7 +19,8 @@ namespace Platformer2D.Player
         {
             _myBody = GetComponent<Rigidbody2D>();
             _anim = GetComponent<Animator>();
-            _myCollider = GetComponent<Collider2D>();
+            _capsuleCollider = GetComponent<CapsuleCollider2D>();
+            _boxCollider = GetComponent<BoxCollider2D>();
 
             _originalGravityScale = _myBody.gravityScale;
         }
@@ -51,7 +53,7 @@ namespace Platformer2D.Player
 
         private void Jump()
         {
-            if (!_myCollider.IsTouchingLayers())    // if its not touching ground or layer
+            if (!_boxCollider.IsTouchingLayers())    // if its not touching ground or layer
                 return;
             Vector2 jumpVelecity = new Vector2(0f, _playerInput.JumpAxis * _playerSettings.JumpSpeed);
             _myBody.velocity += jumpVelecity;
@@ -59,7 +61,7 @@ namespace Platformer2D.Player
 
         private void Climb()
         {
-            if (!_myCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
+            if (!_boxCollider.IsTouchingLayers(LayerMask.GetMask("Climbing")))
             {
                 _anim.SetBool("Climbing", false);
                 _myBody.gravityScale = _originalGravityScale;
