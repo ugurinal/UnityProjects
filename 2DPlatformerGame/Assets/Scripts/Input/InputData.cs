@@ -11,8 +11,8 @@ namespace Platformer2D.PlayerInput
 
         public void ProcessInput()
         {
-            HorizontalAxis = Input.GetAxis("Horizontal");
-            VerticalAxis = Input.GetAxis("Vertical");
+            HorizontalAxis = Input.GetAxisRaw("Horizontal");
+            VerticalAxis = Input.GetAxisRaw("Vertical");
             JumpAxis = Input.GetAxis("Jump");
         }
     }

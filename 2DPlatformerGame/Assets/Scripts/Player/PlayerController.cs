@@ -37,8 +37,8 @@ namespace Platformer2D.Player
 
         private void JumpNew()
         {
-            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector2.down, 0.6f, LayerMask.GetMask("Ground"));
-            Debug.DrawRay(transform.position, Vector2.down * 0.6f, Color.green);
+            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector2.down, transform.localScale.y * 0.6f, LayerMask.GetMask("Ground"));
+            Debug.DrawRay(transform.position, Vector2.down * transform.localScale.y * 0.6f, Color.green);
 
             if (hit2D.collider != null)
             {
