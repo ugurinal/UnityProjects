@@ -28,9 +28,24 @@ namespace Platformer2D.Player
         private void FixedUpdate()
         {
             MoveCharacter();
-            Climb();
-            Jump();
             FlipCharacter();
+            JumpNew();
+
+            //Jump();
+            Climb();
+        }
+
+        private void JumpNew()
+        {
+            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, Vector2.down, 0.6f, LayerMask.GetMask("Ground"));
+            Debug.DrawRay(transform.position, Vector2.down * 0.6f, Color.green);
+
+            if (hit2D.collider != null)
+            {
+                Debug.Log(hit2D.transform.name);
+                Vector2 jumpVelecity = new Vector2(0f, _playerInput.JumpAxis * _playerSettings.JumpSpeed);
+                _myBody.velocity += jumpVelecity;
+            }
         }
 
         private void MoveCharacter()
