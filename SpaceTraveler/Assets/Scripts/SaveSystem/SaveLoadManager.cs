@@ -24,12 +24,13 @@ namespace SpaceTraveler.SaveAndLoadSystem
         {
             if (File.Exists(Application.persistentDataPath + "/player.sav"))
             {
+                Debug.Log("Data found");
+
                 BinaryFormatter bf = new BinaryFormatter();
                 FileStream stream = new FileStream(Application.persistentDataPath + "/player.sav", FileMode.Open);
 
                 PlayerData data = (PlayerData)bf.Deserialize(stream);
 
-                Debug.Log("Data found");
                 return data;
             }
             else
