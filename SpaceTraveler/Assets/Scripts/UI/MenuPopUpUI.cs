@@ -35,14 +35,19 @@ namespace SpaceTraveler.UISystem
         [SerializeField] private Button _cancelButton = null;
 
         [Header("Shop Item DataBase")]
-        [SerializeField] private GameObject[] _shopItemsInHieararchy = null;
+        //[SerializeField] private GameObject[] _shopItemsInHieararchy = null;
+        [SerializeField] private GameObject _shopItemOriginal;
+        [SerializeField] private Transform _shopItemsParent;
         [SerializeField] private ShopItems _shopItemsSO = null;
 
         private GameManager _gameManager;
+        private GameObject[] _shopItems;
 
         private void Start()
         {
             _gameManager = GameManager.Instance;
+
+            _shopItems = new GameObject[_shopItemsSO._ShopItems.Count];
 
             SetButtons();
             SetShopItems();
@@ -67,8 +72,16 @@ namespace SpaceTraveler.UISystem
             _openShopButton.onClick.AddListener(OpenShop);
             _closeShopButton.onClick.AddListener(CloseShop);
 
+            // instantiate shop item buttons
+
+            for (int i = 0; i < _shopItems.Length; i++)
+            {
+                _shopItems[i] = Instantiate(_shopItemOriginal, _shopItemsParent);
+                _shopItems[i].GetComponent<RectTransform>().sizeDelta = new Vector2(180f, 180f);
+            }
+
             // Purchase and use button on click event
-            for (int i = 0; i < _shopItemsInHieararchy.Length; i++)
+            for (int i = 0; i < _shopItems.Length; i++)
             {
                 int index = i;
                 // https://docs.microsoft.com/tr-tr/archive/blogs/ericlippert/closing-over-the-loop-variable-considered-harmful
@@ -78,8 +91,8 @@ namespace SpaceTraveler.UISystem
                 //not the one corresponding to the button I clicked.
                 // so it would always call PurhcaseShip(i which is last lets say 3) with everybutton.
 
-                Button purchaseButton = _shopItemsInHieararchy[i].transform.GetChild(2).GetComponent<Button>();
-                Button useButton = _shopItemsInHieararchy[i].transform.GetChild(3).GetComponent<Button>();
+                Button purchaseButton = _shopItems[i].transform.GetChild(2).GetComponent<Button>();
+                Button useButton = _shopItems[i].transform.GetChild(3).GetComponent<Button>();
 
                 purchaseButton.onClick.RemoveAllListeners();
                 purchaseButton.onClick.AddListener(delegate
@@ -125,24 +138,24 @@ namespace SpaceTraveler.UISystem
 
             for (int i = 0; i < purchasedShips.Count; i++)
             {
-                _shopItemsInHieararchy[purchasedShips[i]].transform.GetChild(2).gameObject.SetActive(false);
-                _shopItemsInHieararchy[purchasedShips[i]].transform.GetChild(3).gameObject.SetActive(true);
+                _shopItems[purchasedShips[i]].transform.GetChild(2).gameObject.SetActive(false);
+                _shopItems[purchasedShips[i]].transform.GetChild(3).gameObject.SetActive(true);
             }
         }
 
         private void SetShopItems()
         {
-            for (int i = 0; i < _shopItemsInHieararchy.Length; i++)
+            for (int i = 0; i < _shopItems.Length; i++)
             {
                 if (_shopItemsSO._ShopItems[i].IsDiamond)
                 {
-                    _shopItemsInHieararchy[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
-                    _shopItemsInHieararchy[i].transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
+                    _shopItems[i].transform.GetChild(2).transform.GetChild(0).gameObject.SetActive(false);
+                    _shopItems[i].transform.GetChild(2).transform.GetChild(1).gameObject.SetActive(true);
                 }
 
                 // The code below gets the data from scriptable object and updates the shop items in the shop like price, name etc
-                _shopItemsInHieararchy[i].transform.GetChild(2).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _shopItemsSO._ShopItems[i].Price.ToString();
-                _shopItemsInHieararchy[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _shopItemsSO._ShopItems[i].Name;
+                _shopItems[i].transform.GetChild(2).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _shopItemsSO._ShopItems[i].Price.ToString();
+                _shopItems[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _shopItemsSO._ShopItems[i].Name;
             }
 
             UpdateUseButton();
@@ -167,8 +180,8 @@ namespace SpaceTraveler.UISystem
         public void SelectShip(int index)
         {
             int previousShip = _gameManager.SelectedShip;
-            _shopItemsInHieararchy[previousShip].transform.GetChild(3).GetComponent<Button>().interactable = true;
-            _shopItemsInHieararchy[previousShip].transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = "USE";
+            _shopItems[previousShip].transform.GetChild(3).GetComponent<Button>().interactable = true;
+            _shopItems[previousShip].transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = "USE";
 
             // selects ship to spawn in levels
             _gameManager.SelectShip(index);
@@ -196,8 +209,8 @@ namespace SpaceTraveler.UISystem
         {
             int selectedShip = _gameManager.SelectedShip;
 
-            _shopItemsInHieararchy[selectedShip].transform.GetChild(3).GetComponent<Button>().interactable = false;
-            _shopItemsInHieararchy[selectedShip].transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = "USING";
+            _shopItems[selectedShip].transform.GetChild(3).GetComponent<Button>().interactable = false;
+            _shopItems[selectedShip].transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().text = "USING";
         }
 
         private void OpenConfirmationWindow(int index, int shipPrice, bool isDiamond)
@@ -222,8 +235,8 @@ namespace SpaceTraveler.UISystem
             MainMenuManager.Instance.UpdateCurrency();
 
             // this function deactives purchase button and activates use button instead
-            _shopItemsInHieararchy[index].transform.GetChild(2).gameObject.SetActive(false);
-            _shopItemsInHieararchy[index].transform.GetChild(3).gameObject.SetActive(true);
+            _shopItems[index].transform.GetChild(2).gameObject.SetActive(false);
+            _shopItems[index].transform.GetChild(3).gameObject.SetActive(true);
 
             _confirmGUI.SetActive(false);
         }

@@ -10,6 +10,9 @@ namespace SpaceTraveler.ShopSystem
         public class Items
         {
             public string Name = null;
+            public Sprite ShipSprite;
+            public Sprite ShipExhaustSprite;
+            public AnimationClip ShipExhaustAnimator;
             public int Price = 0;
             public bool IsDiamond = false;
 
