@@ -47,11 +47,23 @@ namespace SpaceTraveler.UISystem
         {
             _gameManager = GameManager.Instance;
 
-            _shopItems = new GameObject[_shopItemsSO._ShopItems.Count];
-
+            InstantiateShopItems();
             SetButtons();
             SetShopItems();
             SetPurchasedShips();
+        }
+
+        private void InstantiateShopItems()
+        {
+            // instantiate shop item buttons
+
+            _shopItems = new GameObject[_shopItemsSO._ShopItems.Count];
+
+            for (int i = 0; i < _shopItems.Length; i++)
+            {
+                _shopItems[i] = Instantiate(_shopItemOriginal, _shopItemsParent);
+                _shopItems[i].GetComponent<RectTransform>().sizeDelta = new Vector2(180f, 180f);
+            }
         }
 
         private void SetButtons()
@@ -71,14 +83,6 @@ namespace SpaceTraveler.UISystem
             _closeShopButton.onClick.RemoveAllListeners();
             _openShopButton.onClick.AddListener(OpenShop);
             _closeShopButton.onClick.AddListener(CloseShop);
-
-            // instantiate shop item buttons
-
-            for (int i = 0; i < _shopItems.Length; i++)
-            {
-                _shopItems[i] = Instantiate(_shopItemOriginal, _shopItemsParent);
-                _shopItems[i].GetComponent<RectTransform>().sizeDelta = new Vector2(180f, 180f);
-            }
 
             // Purchase and use button on click event
             for (int i = 0; i < _shopItems.Length; i++)
@@ -154,8 +158,12 @@ namespace SpaceTraveler.UISystem
                 }
 
                 // The code below gets the data from scriptable object and updates the shop items in the shop like price, name etc
-                _shopItems[i].transform.GetChild(2).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _shopItemsSO._ShopItems[i].Price.ToString();
-                _shopItems[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _shopItemsSO._ShopItems[i].Name;
+                _shopItems[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _shopItemsSO._ShopItems[i].Name; //  item name
+                _shopItems[i].transform.GetChild(2).transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _shopItemsSO._ShopItems[i].Price.ToString();   // item price
+                _shopItems[i].transform.GetChild(1).transform.GetChild(1).GetComponent<Image>().sprite = _shopItemsSO._ShopItems[i].ShipSprite;   // ship sprite
+                _shopItems[i].transform.GetChild(1).transform.GetChild(0).GetComponent<Image>().sprite = _shopItemsSO._ShopItems[i].ShipExhaustSprite;   // ship exhaust sprite
+                _shopItems[i].transform.GetChild(1).transform.GetChild(0).GetComponent<Animator>().runtimeAnimatorController = _shopItemsSO._ShopItems[i].ShipExhaustAnimator;   // ship exhaust animation
+                _shopItems[i].transform.GetChild(1).transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0f, -23f, 0f);   // ship exhaust position
             }
 
             UpdateUseButton();

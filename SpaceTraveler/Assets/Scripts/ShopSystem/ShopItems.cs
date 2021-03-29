@@ -12,7 +12,7 @@ namespace SpaceTraveler.ShopSystem
             public string Name = null;
             public Sprite ShipSprite;
             public Sprite ShipExhaustSprite;
-            public AnimationClip ShipExhaustAnimator;
+            public RuntimeAnimatorController ShipExhaustAnimator;
             public int Price = 0;
             public bool IsDiamond = false;
 

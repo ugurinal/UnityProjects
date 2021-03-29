@@ -15,17 +15,21 @@ MonoBehaviour:
   _ShopItems:
   - Name: Red Falcon
     ShipSprite: {fileID: 21300000, guid: 4027e5d3b44db73498f8be4c68846724, type: 3}
-    ShipExhaustSprite: {fileID: 0}
-    ShipExhaustAnimator: {fileID: 0}
+    ShipExhaustSprite: {fileID: 21300000, guid: 8e533a6f98910634bad63ab8b71110d6,
+      type: 3}
+    ShipExhaustAnimator: {fileID: 9100000, guid: 20771ffa03c3f41448adbf29b4dde878,
+      type: 2}
     Price: 0
     IsDiamond: 0
     ShipPrefab: {fileID: 1905584648494983915, guid: 200f0fc07411d4846936f17afa037ef2,
       type: 3}
   - Name: Blue Falcon
-    ShipSprite: {fileID: 0}
-    ShipExhaustSprite: {fileID: 0}
-    ShipExhaustAnimator: {fileID: 0}
-    Price: 2000
+    ShipSprite: {fileID: 21300000, guid: 3e3794c8a4f4b8d48bf7d5e111236140, type: 3}
+    ShipExhaustSprite: {fileID: 21300000, guid: 93aaf36ddcabc5145867baaf64b5de4e,
+      type: 3}
+    ShipExhaustAnimator: {fileID: 9100000, guid: 57a795c4fbe38804ea7560cfc4f26fb9,
+      type: 2}
+    Price: 5000
     IsDiamond: 0
     ShipPrefab: {fileID: 1905584648494983915, guid: 3aeb162242b8d7c44a28db8953fb1e2d,
       type: 3}
@@ -33,9 +37,9 @@ MonoBehaviour:
     ShipSprite: {fileID: 21300000, guid: 826d0dbbbf1927f40a1beae4514a7b23, type: 3}
     ShipExhaustSprite: {fileID: 21300000, guid: 93aaf36ddcabc5145867baaf64b5de4e,
       type: 3}
-    ShipExhaustAnimator: {fileID: 7400000, guid: 610d96c07b2261f438fe96ee675a36e2,
+    ShipExhaustAnimator: {fileID: 9100000, guid: 57a795c4fbe38804ea7560cfc4f26fb9,
       type: 2}
-    Price: 1000
+    Price: 20000
     IsDiamond: 0
     ShipPrefab: {fileID: 1905584648494983915, guid: be100b6adf961ee4286e45fc19146a81,
       type: 3}
@@ -43,9 +47,9 @@ MonoBehaviour:
     ShipSprite: {fileID: 21300000, guid: da6ef3f99d8ce8b46a7f4fbb0b4d4bc4, type: 3}
     ShipExhaustSprite: {fileID: 21300000, guid: 93aaf36ddcabc5145867baaf64b5de4e,
       type: 3}
-    ShipExhaustAnimator: {fileID: 7400000, guid: 0716800baa6791743bca010f82a0701c,
+    ShipExhaustAnimator: {fileID: 9100000, guid: 57a795c4fbe38804ea7560cfc4f26fb9,
       type: 2}
-    Price: 1000
+    Price: 20000
     IsDiamond: 0
     ShipPrefab: {fileID: 1905584648494983915, guid: 158d7841a9b22ba42829f5b44f1e6caf,
       type: 3}
@@ -53,9 +57,9 @@ MonoBehaviour:
     ShipSprite: {fileID: 21300000, guid: ee6181aaec086e741ade7c69b2d66e46, type: 3}
     ShipExhaustSprite: {fileID: 21300000, guid: 93aaf36ddcabc5145867baaf64b5de4e,
       type: 3}
-    ShipExhaustAnimator: {fileID: 7400000, guid: 610d96c07b2261f438fe96ee675a36e2,
+    ShipExhaustAnimator: {fileID: 9100000, guid: 57a795c4fbe38804ea7560cfc4f26fb9,
       type: 2}
-    Price: 1000
+    Price: 20000
     IsDiamond: 0
     ShipPrefab: {fileID: 1905584648494983915, guid: 543b3b5be1cd2ab4099e82a5fc3809ad,
       type: 3}
@@ -63,9 +67,9 @@ MonoBehaviour:
     ShipSprite: {fileID: 21300000, guid: 323bfd11e382f0e48b9c74918979c4ef, type: 3}
     ShipExhaustSprite: {fileID: 21300000, guid: 8e533a6f98910634bad63ab8b71110d6,
       type: 3}
-    ShipExhaustAnimator: {fileID: 7400000, guid: 0716800baa6791743bca010f82a0701c,
+    ShipExhaustAnimator: {fileID: 9100000, guid: 20771ffa03c3f41448adbf29b4dde878,
       type: 2}
-    Price: 1000
+    Price: 20000
     IsDiamond: 0
     ShipPrefab: {fileID: 1905584648494983915, guid: 1734b64e21142a542948b9ce9df4680e,
       type: 3}
@@ -73,9 +77,9 @@ MonoBehaviour:
     ShipSprite: {fileID: 21300000, guid: 2ed4d4f1ac10136468c8adec9622ed43, type: 3}
     ShipExhaustSprite: {fileID: 21300000, guid: ee69e97aab4eced4fbb2196a08b61adc,
       type: 3}
-    ShipExhaustAnimator: {fileID: 7400000, guid: b6efac29a6e1c82478366a557ec19d9c,
+    ShipExhaustAnimator: {fileID: 9100000, guid: 8c447a422061f084780b008f46d188b4,
       type: 2}
-    Price: 1000
+    Price: 20000
     IsDiamond: 0
     ShipPrefab: {fileID: 1905584648494983915, guid: 08b19f7846dc43a4088ab0724e65d807,
       type: 3}
