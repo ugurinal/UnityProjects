@@ -47,7 +47,7 @@ namespace SpaceTraveler.SaveAndLoadSystem
             List<int> purchasedShips = new List<int>();
             purchasedShips.Add(0);
 
-            Coin = 5000;
+            Coin = 500000;
             Diamond = 10;
             LevelReached = 1;
             HighScores = highScores;
