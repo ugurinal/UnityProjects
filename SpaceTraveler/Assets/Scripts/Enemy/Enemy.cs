@@ -19,22 +19,25 @@ namespace SpaceTraveler.Enemy
         #region FIELDS
 
         // power up
-        [Header("Power UP Properties")]
-        [SerializeField] private PowerUpConfig _powerUps = null;    // store power ups informations
+        [Header("Power UP Properties")] [SerializeField]
+        private PowerUpConfig _powerUps = null; // store power ups informations
 
         // enemy properties
-        [Header("Enemy Properties")]
-        [SerializeField] private EnemyProperties _enemyProperties;
+        [Header("Enemy Properties")] [SerializeField]
+        private EnemyProperties _enemyProperties;
+
         private float _curHealth = 0f;
-        private float _shotTimeCounter = 0f;            // this gets random value within the range of mintime and max time
-        private bool _isAlive = true;                                    // state of enemy, true by default
+        private float _shotTimeCounter = 0f; // this gets random value within the range of mintime and max time
+        private bool _isAlive = true; // state of enemy, true by default
 
-        private Animator _animator = null;                               // animator component of gameobject that this script is attached to
+        private Animator _animator = null; // animator component of gameobject that this script is attached to
 
-        private LevelController _levelController = null;                 // we need this script in order the decrease the number of enemies in the scene
-        private float _powerUpChance = 0;                                // this will be assigned from level controller
-                                                                         // power up chance is unique in every level
-                                                                         // power up chance is based on level not enemy
+        private LevelController
+            _levelController = null; // we need this script in order the decrease the number of enemies in the scene
+
+        private float _powerUpChance = 0; // this will be assigned from level controller
+        // power up chance is unique in every level
+        // power up chance is based on level not enemy
 
         #endregion FIELDS
 
@@ -58,14 +61,16 @@ namespace SpaceTraveler.Enemy
             if (_shotTimeCounter <= 0f)
             {
                 Shoot();
-                _shotTimeCounter = Random.Range(_enemyProperties.MinTimeBetweenShots, _enemyProperties.MaxTimeBetweenShots);
+                _shotTimeCounter = Random.Range(_enemyProperties.MinTimeBetweenShots,
+                    _enemyProperties.MaxTimeBetweenShots);
             }
         }
 
         private void Shoot()
         {
             GameObject enemyShot = Instantiate(_enemyProperties.Projectile, transform.position, Quaternion.identity);
-            enemyShot.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -_enemyProperties.ShotSpeed);   // shot speed in minus because it goes downward
+            enemyShot.GetComponent<Rigidbody2D>().velocity =
+                new Vector2(0f, -_enemyProperties.ShotSpeed); // shot speed in minus because it goes downward
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -91,10 +96,12 @@ namespace SpaceTraveler.Enemy
             _isAlive = false;
             _levelController.DestroyEnemy(_enemyProperties.ScoreToAdd, _enemyProperties.CoinToEarn);
             SpawnPowerUP();
+            
+            
 
-            _animator.enabled = true;    // // this will destroy this (enemy) game object when animation ends
-                                         // so no need do destroy in here
-            Destroy(gameObject.GetComponent<PolygonCollider2D>());  // destroy collider just in case
+            _animator.enabled = true; // // this will destroy this (enemy) game object when animation ends
+            // so no need do destroy in here
+            Destroy(gameObject.GetComponent<PolygonCollider2D>()); // destroy collider just in case
         }
 
         // spawn power up when enemy dies
@@ -104,7 +111,8 @@ namespace SpaceTraveler.Enemy
 
             if (chance <= _powerUpChance)
             {
-                int whichPowerUp = (int)Random.Range(0f, 5f);
+                //int whichPowerUp = (int) Random.Range(0f, 5f);
+                int whichPowerUp = 3;
                 GameObject powerUP;
                 // if powerup == 0 instantiate a shield
                 // if powerup == 1 instantiate an assistant (a minigun that is attached to ship for example)
@@ -125,7 +133,7 @@ namespace SpaceTraveler.Enemy
                         break;
 
                     case 2:
-                        int whichInc = (int)Random.Range(0f, 100);
+                        int whichInc = (int) Random.Range(0f, 100);
                         if (whichInc <= _powerUps.ShotInc0Chance)
                         {
                             powerUP = Instantiate(_powerUps.ShotInc1, transform.position, Quaternion.identity);
@@ -134,27 +142,36 @@ namespace SpaceTraveler.Enemy
                         {
                             powerUP = Instantiate(_powerUps.ShotInc0, transform.position, Quaternion.identity);
                         }
+
                         powerUP.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -1f);
                         break;
 
                     case 3:
-                        int whichProjectile = (int)Random.Range(0f, 100);
+                        int whichProjectile = (int) Random.Range(0f, 100);
+
+                        Debug.Log(whichProjectile);
+
                         if (whichProjectile <= _powerUps.Proj0Chance)
                         {
+                            Debug.Log("FIRST");
                             powerUP = Instantiate(_powerUps.Projectile0, transform.position, Quaternion.identity);
                         }
                         else if (whichProjectile <= _powerUps.Proj1Chance)
                         {
+                            Debug.Log("SECOND");
                             powerUP = Instantiate(_powerUps.Projectile1, transform.position, Quaternion.identity);
                         }
                         else if (whichProjectile <= _powerUps.Proj2Chance)
                         {
+                            Debug.Log("THIRD");
                             powerUP = Instantiate(_powerUps.Projectile2, transform.position, Quaternion.identity);
                         }
                         else
                         {
+                            Debug.Log("LAST");
                             powerUP = Instantiate(_powerUps.Projectile3, transform.position, Quaternion.identity);
                         }
+
                         powerUP.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, -1f);
                         break;
 
